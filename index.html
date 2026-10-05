@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#0f172a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -53,2849 +56,331 @@ input,select,textarea{width:100%;padding:11px;border:1px solid var(--border);bor
 </head>
 <body>
 
-<header>
+<header><div class="header-inner"><div class="header-left"><button class="hamburger" onclick="toggleSidebar()">☰</button><div class="logo">🧰 مساعدك <span>اليومي</span></div></div><div class="header-actions"><button class="top-btn install-btn" onclick="openInstallModal()">⬇️ تنزيل</button><button class="top-btn" onclick="toggleDark()">🌙</button><a class="ah13" href="https://ahmedhafezfrontend-ah13.netlify.app" target="_blank">AH13</a></div></div></header>
+<div class="overlay" id="overlay" onclick="toggleSidebar(false)"></div>
+<aside class="sidebar" id="sidebar"><div class="sidebar-head"><h2>☰ القائمة</h2><button onclick="toggleSidebar(false)">×</button></div>
+<button class="side-link" onclick="goHome()">🏠 الرئيسية</button><button class="side-link" onclick="openTool('weather')">🌤️ الطقس</button><button class="side-link" onclick="openTool('prayer')">🕌 الصلاة والقبلة</button><button class="side-link" onclick="openTool('quran')">📖 القرآن الكريم</button><button class="side-link" onclick="openTool('islamic')">🤲 الأذكار والأحاديث</button><button class="side-link" onclick="openTool('reminders')">⏰ التذكيرات</button><button class="side-link" onclick="openTool('expenses')">💰 المصروفات</button><button class="side-link" onclick="openTool('files')">🔄 تحويل الملفات</button><button class="side-link" onclick="openTool('focus')">🍅 مؤقت التركيز</button><button class="side-link" onclick="openTool('backup')">💾 النسخ الاحتياطي</button><button class="side-link" onclick="openTool('account')">👤 الحساب والمزامنة</button><button class="side-link" onclick="openCurrencySite()">💱 العملات والاقتصاد</button></aside>
 
-<div class="header-inner">
-
-<div class="header-left">
-
-<button class="hamburger" onclick="toggleSidebar()">
-☰
-</button>
-
-<div class="logo">
-🧰 مساعدك <span>اليومي</span>
-
-</div>
-
-</div>
-
-<div class="header-actions">
-
-<button class="top-btn install-btn" onclick="openInstallModal()">
-⬇️ تنزيل
-</button>
-
-<button class="top-btn" onclick="toggleDark()">
-🌙
-</button>
-
-<a class="ah13" href="https://ahmedhafezfrontend-ah13.netlify.app" target="_blank">AH13</a>
-
-</div>
-
-</div>
-
-</header>
-
-<div class="overlay" id="overlay" onclick="toggleSidebar(false)">
-
-</div>
-
-<aside class="sidebar" id="sidebar">
-
-<div class="sidebar-head">
-
-<h2>
-☰ القائمة
-</h2>
-
-<button onclick="toggleSidebar(false)">
-×
-</button>
-
-</div>
-
-<button class="side-link" onclick="goHome()">
-🏠 الرئيسية
-</button>
-
-<button class="side-link" onclick="openTool('weather')">
-🌤️ الطقس
-</button>
-
-<button class="side-link" onclick="openTool('prayer')">
-🕌 الصلاة والقبلة
-</button>
-
-<button class="side-link" onclick="openTool('quran')">
-📖 القرآن الكريم
-</button>
-
-<button class="side-link" onclick="openTool('islamic')">
-🤲 الأذكار والأحاديث
-</button>
-
-<button class="side-link" onclick="openTool('reminders')">
-⏰ التذكيرات
-</button>
-
-<button class="side-link" onclick="openTool('expenses')">
-💰 المصروفات
-</button>
-
-<button class="side-link" onclick="openTool('files')">
-🔄 تحويل الملفات
-</button>
-
-<button class="side-link" onclick="openTool('focus')">
-🍅 مؤقت التركيز
-</button>
-
-<button class="side-link" onclick="openTool('backup')">
-💾 النسخ الاحتياطي
-</button>
-
-<button class="side-link" onclick="openTool('account')">
-👤 الحساب والمزامنة
-</button>
-
-<button class="side-link" onclick="openCurrencySite()">
-💱 العملات والاقتصاد
-</button>
-
-</aside>
-
-<section class="hero">
-
-<h1>
-كل ما تحتاجه يوميًا في تطبيق واحد 🚀
-</h1>
-
-<p>
-طقس، صلاة، قبلة، قرآن كامل قراءة واستماع، أذكار، مئات الأحاديث، تذكيرات، مصروفات، أدوات، تحويل ملفات ومزامنة.
-</p>
-
-<div class="hero-mini">
-
-<span class="pill" id="hijriDate">📅 ...</span>
-<span class="pill" id="locationPill">📍 لم تحدد موقعك</span>
-<span class="pill" id="syncPill">☁️ محلي</span>
-
-</div>
-
-</section>
+<section class="hero"><h1>كل ما تحتاجه يوميًا في تطبيق واحد 🚀</h1><p>طقس، صلاة، قبلة، قرآن كامل قراءة واستماع، أذكار، مئات الأحاديث، تذكيرات، مصروفات، أدوات، تحويل ملفات ومزامنة.</p><div class="hero-mini"><span class="pill" id="hijriDate">🕌 التاريخ الهجري ...</span><span class="pill" id="gregorianDate">📆 التاريخ الميلادي ...</span><span class="pill" id="locationPill">📍 لم تحدد موقعك</span><span class="pill" id="syncPill">☁️ محلي</span></div></section>
 
 <main class="container">
-
 <section id="homeSection">
-
-<div class="dashboard">
-
-<div class="dash-card">
-
-<small>الطقس الآن</small>
-<strong id="dashWeather">--°</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>الصلاة القادمة</small>
-<strong id="dashPrayer">--</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>رصيدك</small>
-<strong id="dashBalance">0</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>المهام المتبقية</small>
-<strong id="dashTasks">0</strong>
-
-</div>
-
-</div>
-
-<div class="section-title">
-
-<h2>
-الأدوات الرئيسية
-</h2>
-
-<p>
-اضغط على أي أداة لفتحها.
-</p>
-
-</div>
-
+<div class="dashboard"><div class="dash-card"><small>الطقس الآن</small><strong id="dashWeather">--°</strong></div><div class="dash-card"><small>الصلاة القادمة</small><strong id="dashPrayer">--</strong></div><div class="dash-card"><small>رصيدك</small><strong id="dashBalance">0</strong></div><div class="dash-card"><small>المهام المتبقية</small><strong id="dashTasks">0</strong></div></div>
+<div class="section-title"><h2>الأدوات الرئيسية</h2><p>اضغط على أي أداة لفتحها.</p></div>
 <div class="tools-grid">
-
-<div class="tool-card currency-card" onclick="openCurrencySite()">
-
-<div class="icon">
-💱
+<div class="tool-card currency-card" onclick="openCurrencySite()"><div class="icon">💱</div><h3>نبض الاقتصاد</h3><p>العملات والذهب والأسعار الاقتصادية.</p></div>
+<div class="tool-card" onclick="openTool('weather')"><div class="icon">🌤️</div><h3>الطقس</h3><p>الطقس الحالي حسب موقعك.</p></div>
+<div class="tool-card" onclick="openTool('prayer')"><div class="icon">🕌</div><h3>الصلاة والقبلة</h3><p>مواقيت الصلاة واتجاه القبلة.</p></div>
+<div class="tool-card" onclick="openTool('quran')"><div class="icon">📖</div><h3>القرآن الكريم</h3><p>اقرأ السورة كاملة أو استمع لها كاملة.</p></div>
+<div class="tool-card" onclick="openTool('islamic')"><div class="icon">🤲</div><h3>الأذكار والأحاديث</h3><p>أذكار كثيرة ومكتبة أحاديث كبيرة.</p></div>
+<div class="tool-card" onclick="openTool('reminders')"><div class="icon">⏰</div><h3>التذكيرات</h3><p>تنبيهات للمهام والمواعيد.</p></div>
+<div class="tool-card" onclick="openTool('expenses')"><div class="icon">💰</div><h3>المصروفات</h3><p>دخل ومصروفات وميزانية شهرية.</p></div>
+<div class="tool-card" onclick="openTool('files')"><div class="icon">🔄</div><h3>تحويل الملفات</h3><p>صور إلى PDF وصيغ صور وتحويل فيديو.</p></div>
+<div class="tool-card" onclick="openTool('focus')"><div class="icon">🍅</div><h3>مؤقت التركيز</h3><p>25 أو 45 أو 60 دقيقة.</p></div>
+<div class="tool-card" onclick="openTool('backup')"><div class="icon">💾</div><h3>نسخ احتياطي</h3><p>تصدير واستعادة بياناتك.</p></div>
+<div class="tool-card" onclick="openTool('tasks')"><div class="icon">✅</div><h3>المهام اليومية</h3><p>قائمة مهام محفوظة تلقائيًا.</p></div>
+<div class="tool-card" onclick="openTool('notes')"><div class="icon">📝</div><h3>الملاحظات</h3><p>دفتر ملاحظات سريع.</p></div>
+<div class="tool-card" onclick="openTool('calculator')"><div class="icon">🧮</div><h3>آلة حاسبة</h3><p>حسابات سريعة.</p></div>
+<div class="tool-card" onclick="openTool('age')"><div class="icon">🎂</div><h3>حساب العمر</h3><p>السنوات والشهور والأيام.</p></div>
+<div class="tool-card" onclick="openTool('discount')"><div class="icon">🏷️</div><h3>الخصم والنسبة</h3><p>حساب الخصومات والنسب.</p></div>
+<div class="tool-card" onclick="openTool('units')"><div class="icon">📏</div><h3>تحويل الوحدات</h3><p>طول ووزن وحرارة.</p></div>
+<div class="tool-card" onclick="openTool('password')"><div class="icon">🔐</div><h3>كلمة مرور قوية</h3><p>توليد كلمات مرور آمنة.</p></div>
+<div class="tool-card" onclick="openTool('qr')"><div class="icon">📱</div><h3>QR Code</h3><p>إنشاء QR لأي نص أو رابط.</p></div>
+<div class="tool-card" onclick="openTool('zakat')"><div class="icon">🪙</div><h3>حاسبة الزكاة</h3><p>حساب 2.5%.</p></div>
+<div class="tool-card" onclick="openTool('bmi')"><div class="icon">⚖️</div><h3>BMI</h3><p>حساب مؤشر كتلة الجسم.</p></div>
+<div class="tool-card" onclick="openTool('account')"><div class="icon">☁️</div><h3>حساب ومزامنة</h3><p>اسم مستخدم وكلمة مرور.</p></div>
 </div>
-
-<h3>
-نبض الاقتصاد
-</h3>
-
-<p>
-العملات والذهب والأسعار الاقتصادية.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('weather')">
-
-<div class="icon">
-🌤️
-</div>
-
-<h3>
-الطقس
-</h3>
-
-<p>
-الطقس الحالي حسب موقعك.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('prayer')">
-
-<div class="icon">
-🕌
-</div>
-
-<h3>
-الصلاة والقبلة
-</h3>
-
-<p>
-مواقيت الصلاة واتجاه القبلة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('quran')">
-
-<div class="icon">
-📖
-</div>
-
-<h3>
-القرآن الكريم
-</h3>
-
-<p>
-اقرأ السورة كاملة أو استمع لها كاملة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('islamic')">
-
-<div class="icon">
-🤲
-</div>
-
-<h3>
-الأذكار والأحاديث
-</h3>
-
-<p>
-أذكار كثيرة ومكتبة أحاديث كبيرة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('reminders')">
-
-<div class="icon">
-⏰
-</div>
-
-<h3>
-التذكيرات
-</h3>
-
-<p>
-تنبيهات للمهام والمواعيد.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('expenses')">
-
-<div class="icon">
-💰
-</div>
-
-<h3>
-المصروفات
-</h3>
-
-<p>
-دخل ومصروفات وميزانية شهرية.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('files')">
-
-<div class="icon">
-🔄
-</div>
-
-<h3>
-تحويل الملفات
-</h3>
-
-<p>
-صور إلى PDF وصيغ صور وتحويل فيديو.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('focus')">
-
-<div class="icon">
-🍅
-</div>
-
-<h3>
-مؤقت التركيز
-</h3>
-
-<p>
-25 أو 45 أو 60 دقيقة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('backup')">
-
-<div class="icon">
-💾
-</div>
-
-<h3>
-نسخ احتياطي
-</h3>
-
-<p>
-تصدير واستعادة بياناتك.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('tasks')">
-
-<div class="icon">
-✅
-</div>
-
-<h3>
-المهام اليومية
-</h3>
-
-<p>
-قائمة مهام محفوظة تلقائيًا.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('notes')">
-
-<div class="icon">
-📝
-</div>
-
-<h3>
-الملاحظات
-</h3>
-
-<p>
-دفتر ملاحظات سريع.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('calculator')">
-
-<div class="icon">
-🧮
-</div>
-
-<h3>
-آلة حاسبة
-</h3>
-
-<p>
-حسابات سريعة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('age')">
-
-<div class="icon">
-🎂
-</div>
-
-<h3>
-حساب العمر
-</h3>
-
-<p>
-السنوات والشهور والأيام.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('discount')">
-
-<div class="icon">
-🏷️
-</div>
-
-<h3>
-الخصم والنسبة
-</h3>
-
-<p>
-حساب الخصومات والنسب.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('units')">
-
-<div class="icon">
-📏
-</div>
-
-<h3>
-تحويل الوحدات
-</h3>
-
-<p>
-طول ووزن وحرارة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('password')">
-
-<div class="icon">
-🔐
-</div>
-
-<h3>
-كلمة مرور قوية
-</h3>
-
-<p>
-توليد كلمات مرور آمنة.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('qr')">
-
-<div class="icon">
-📱
-</div>
-
-<h3>
-QR Code
-</h3>
-
-<p>
-إنشاء QR لأي نص أو رابط.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('zakat')">
-
-<div class="icon">
-🪙
-</div>
-
-<h3>
-حاسبة الزكاة
-</h3>
-
-<p>
-حساب 2.5%.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('bmi')">
-
-<div class="icon">
-⚖️
-</div>
-
-<h3>
-BMI
-</h3>
-
-<p>
-حساب مؤشر كتلة الجسم.
-</p>
-
-</div>
-
-<div class="tool-card" onclick="openTool('account')">
-
-<div class="icon">
-☁️
-</div>
-
-<h3>
-حساب ومزامنة
-</h3>
-
-<p>
-اسم مستخدم وكلمة مرور.
-</p>
-
-</div>
-
-</div>
-
 </section>
 
-<section class="tool" id="weather">
+<section class="tool" id="weather"><div class="tool-header"><h2>🌤️ الطقس</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><button class="primary" onclick="locateAndRefresh()">📍 تحديد موقعي وتحديث الطقس</button><div class="result" id="weatherResult">اضغط تحديد موقعي.</div></div></section>
 
-<div class="tool-header">
+<section class="tool" id="prayer"><div class="tool-header"><h2>🕌 مواقيت الصلاة والقبلة</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid2"><button class="primary" onclick="locateAndRefresh()">📍 استخدام موقعي</button><select id="prayerMethod" onchange="refreshPrayer()"><option value="4">أم القرى - مكة</option><option value="5">الهيئة المصرية العامة للمساحة</option><option value="3">رابطة العالم الإسلامي</option><option value="2">ISNA</option></select></div><div class="prayer-grid" id="prayerGrid" style="margin-top:14px"></div><div class="result" id="nextPrayerBox">حدد موقعك أولًا.</div></div><div class="panel"><h2>🧭 اتجاه القبلة</h2><div class="qibla-compass"><div class="qibla-arrow" id="qiblaArrow"></div><div class="qibla-center"></div></div><div class="result" id="qiblaText">حدد موقعك لمعرفة الاتجاه.</div></div></section>
 
-<h2>
-🌤️ الطقس
-</h2>
+<section class="tool" id="quran"><div class="tool-header"><h2>📖 القرآن الكريم</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel">
+<div class="quran-tabs"><button class="quran-tab active" onclick="openQuranTab('surahs',this)">📖 السور</button><button class="quran-tab" onclick="openQuranTab('juz',this)">📚 الأجزاء</button><button class="quran-tab" onclick="openQuranTab('search',this)">🔍 البحث</button><button class="quran-tab" onclick="openQuranTab('favorites',this)">⭐ المفضلة</button><button class="quran-tab" onclick="openQuranTab('khatma',this)">✅ الختمة</button><button class="quran-tab" onclick="openQuranTab('memorize',this)">🧠 الحفظ</button></div>
+<div class="quran-page active" id="quranPage_surahs"><div class="grid2"><select id="quranSurahSelect"></select><select id="reciterSelect"><option value="ar.alafasy|128">مشاري راشد العفاسي</option><option value="ar.husary|128">محمود خليل الحصري</option><option value="ar.minshawi|128">محمد صديق المنشاوي</option><option value="ar.sudais|192">عبدالرحمن السديس</option><option value="ar.shuraim|128">سعود الشريم</option><option value="ar.abdulbasit|192">عبدالباسط عبدالصمد</option></select></div><br><div class="grid3"><button class="primary" onclick="loadSelectedSurah()">📖 اقرأ السورة كاملة</button><button class="success" onclick="playFullSurah()">▶️ استمع للسورة كاملة</button><button class="warning" onclick="toggleFavoriteSurah()">⭐ إضافة/حذف المفضلة</button></div><div class="quran-toolbar"><button onclick="changeQuranFont(2)">A+</button><button onclick="changeQuranFont(-2)">A-</button><button onclick="continueReading()">🔖 متابعة آخر سورة</button></div><audio id="surahAudioPlayer" class="quran-audio" controls preload="none"></audio><div id="quranReader"></div></div>
+<div class="quran-page" id="quranPage_juz"><h3>اختر الجزء</h3><div class="juz-grid" id="juzGrid"></div><div id="juzReader" style="margin-top:15px"></div></div>
+<div class="quran-page" id="quranPage_search"><div class="quran-search"><input id="quranSearchInput" placeholder="اكتب كلمة أو جزءًا من آية"><button class="primary" onclick="searchQuran()">🔍 بحث</button></div><div id="quranSearchResults" style="margin-top:15px"></div></div>
+<div class="quran-page" id="quranPage_favorites"><h3>⭐ السور المفضلة</h3><div id="quranFavorites"></div></div>
+<div class="quran-page" id="quranPage_khatma"><h3>✅ خطة ختم القرآن</h3><div class="grid2"><select id="khatmaDays"><option value="7">ختمة في 7 أيام</option><option value="15">ختمة في 15 يومًا</option><option value="30" selected>ختمة في 30 يومًا</option><option value="60">ختمة في 60 يومًا</option></select><button class="primary" onclick="startKhatma()">بدء الختمة</button></div><div class="result" id="khatmaInfo">لم تبدأ ختمة بعد.</div><div class="khatma-progress"><span id="khatmaProgress"></span></div><button class="success" onclick="completeKhatmaDay()">✅ أكملت ورد اليوم</button></div>
+<div class="quran-page" id="quranPage_memorize"><h3>🧠 وضع الحفظ</h3><div class="grid4"><select id="memorySurah"></select><input id="memoryFrom" type="number" min="1" value="1" placeholder="من آية"><input id="memoryTo" type="number" min="1" value="5" placeholder="إلى آية"><select id="repeatCount"><option value="1">مرة</option><option value="3">3 مرات</option><option value="5">5 مرات</option><option value="10">10 مرات</option></select></div><br><button class="primary" onclick="startMemorize()">ابدأ الحفظ</button><div id="memorizeArea" style="margin-top:15px"></div></div>
+</div></section>
 
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
+<section class="tool" id="islamic"><div class="tool-header"><h2>🤲 الأذكار والأحاديث</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="islamic-tabs"><button class="islamic-tab active" onclick="openIslamicTab('adhkar',this)">🤲 الأذكار</button><button class="islamic-tab" onclick="openIslamicTab('hadith',this)">📜 الأحاديث</button><button class="islamic-tab" onclick="openIslamicTab('tasbeeh',this)">📿 المسبحة</button></div>
+<div class="islamic-page active" id="islamicPage_adhkar"><div class="adhkar-categories"><button onclick="loadAdhkarCategory('morning')">🌅 الصباح</button><button onclick="loadAdhkarCategory('evening')">🌙 المساء</button><button onclick="loadAdhkarCategory('sleep')">😴 النوم</button><button onclick="loadAdhkarCategory('wakeup')">☀️ الاستيقاظ</button><button onclick="loadAdhkarCategory('afterPrayer')">🕌 بعد الصلاة</button><button onclick="loadAdhkarCategory('home')">🏠 المنزل</button><button onclick="loadAdhkarCategory('travel')">🚗 السفر</button><button onclick="loadAdhkarCategory('food')">🍽️ الطعام</button><button onclick="loadAdhkarCategory('general')">❤️ عامة</button></div><div class="result" id="adhkarTitle"></div><div id="adhkarList"></div></div>
+<div class="islamic-page" id="islamicPage_hadith"><h3>📜 مكتبة الأحاديث النبوية</h3><p style="color:var(--muted);line-height:1.8;margin-bottom:12px">اختر كتابًا لتحميل مئات أو آلاف الأحاديث العربية ثم ابحث بداخلها.</p><div class="hadith-toolbar"><select id="hadithBook" onchange="resetHadithPage();loadHadiths()"><option value="ara-bukhari">صحيح البخاري</option><option value="ara-muslim">صحيح مسلم</option><option value="ara-abudawud">سنن أبي داود</option><option value="ara-tirmidhi">جامع الترمذي</option><option value="ara-nasai">سنن النسائي</option><option value="ara-ibnmajah">سنن ابن ماجه</option><option value="ara-malik">موطأ مالك</option></select><input id="hadithSearch" placeholder="ابحث بكلمة داخل الأحاديث"><button class="primary" onclick="searchHadiths()">🔍 بحث</button></div><br><div class="grid2"><button class="success" onclick="loadHadiths()">📚 عرض الأحاديث</button><button class="gray" onclick="randomHadith()">🎲 حديث عشوائي</button></div><div class="result" id="hadithStatus">اختر الكتاب واضغط عرض الأحاديث.</div><div id="hadithList"></div><div class="hadith-pagination"><button class="gray" onclick="previousHadithPage()">السابق</button><strong id="hadithPageInfo">صفحة 1</strong><button class="primary" onclick="nextHadithPage()">التالي</button></div></div>
+<div class="islamic-page" id="islamicPage_tasbeeh"><div class="tasbeeh"><h2>📿 المسبحة</h2><select id="tasbeehPhrase" style="max-width:320px;margin:auto"><option>سبحان الله</option><option>الحمد لله</option><option>الله أكبر</option><option>لا إله إلا الله</option><option>أستغفر الله</option><option>لا حول ولا قوة إلا بالله</option><option>اللهم صل وسلم على نبينا محمد</option></select><br><br><div class="tasbeeh-count" id="tasbeehCount">0</div><button class="tasbeeh-btn" onclick="tasbeehPlus()">سبّح</button><br><br><div class="quran-toolbar" style="justify-content:center"><button onclick="setTasbeehTarget(33)">هدف 33</button><button onclick="setTasbeehTarget(100)">هدف 100</button><button onclick="tasbeehReset()">تصفير</button></div><div class="result" id="tasbeehInfo"></div></div></div>
+</div></section>
 
-</div>
+<section class="tool" id="reminders"><div class="tool-header"><h2>⏰ التذكيرات</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid3"><input id="reminderTitle" placeholder="اسم التذكير"><input id="reminderDate" type="datetime-local"><select id="reminderType"><option>عادي</option><option>مذاكرة</option><option>عمل</option><option>دواء</option><option>ورد قرآن</option><option>فاتورة</option></select></div><br><textarea id="reminderNote" placeholder="ملاحظة اختيارية"></textarea><br><div class="grid2"><button class="primary" onclick="addReminder()">إضافة</button><button class="success" onclick="requestNotifications()">🔔 السماح بالإشعارات</button></div><div class="result">التذكير المحلي يعمل أثناء تشغيل الموقع أو التطبيق. الإشعارات المضمونة بعد الإغلاق الكامل تحتاج Web Push / FCM.</div><div id="remindersList"></div></div></section>
 
-<div class="panel">
+<section class="tool" id="expenses"><div class="tool-header"><h2>💰 المصروفات والميزانية</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="dashboard"><div class="dash-card"><small>الرصيد</small><strong id="expBalance">0</strong></div><div class="dash-card"><small>دخل الشهر</small><strong id="expMonthIncome">0</strong></div><div class="dash-card"><small>مصروف الشهر</small><strong id="expMonthExpense">0</strong></div><div class="dash-card"><small>متبقي الميزانية</small><strong id="expBudgetLeft">--</strong></div></div><div class="panel"><h2>إضافة عملية</h2><div class="grid4"><select id="expenseType"><option value="expense">مصروف</option><option value="income">دخل</option></select><input id="expenseTitle" placeholder="الوصف"><input id="expenseAmount" type="number" placeholder="المبلغ"><select id="expenseCurrency"><option value="EGP">EGP جنيه</option><option value="SAR">SAR ريال</option><option value="USD">USD دولار</option><option value="EUR">EUR يورو</option><option value="QAR">QAR ريال قطري</option><option value="AED">AED درهم</option></select><select id="expenseCategory"><option>طعام</option><option>مواصلات</option><option>فواتير</option><option>تسوق</option><option>تعليم</option><option>صحة</option><option>راتب</option><option>عمل</option><option>ترفيه</option><option>أخرى</option></select><input id="expenseDate" type="date"><input id="expenseNote" placeholder="ملاحظة"><button class="primary" onclick="addExpense()">حفظ</button></div></div><div class="panel"><h2>الميزانية الشهرية</h2><div class="grid3"><input id="budgetInput" type="number" placeholder="قيمة الميزانية"><select id="budgetCurrency"><option>EGP</option><option>SAR</option><option>USD</option><option>EUR</option><option>QAR</option><option>AED</option></select><button class="primary" onclick="saveBudget()">حفظ الميزانية</button></div><br><div class="budget-bar"><div class="budget-fill" id="budgetFill"></div></div><div id="budgetInfo" class="result"></div></div><div class="panel"><div class="grid3"><input id="expenseSearch" placeholder="بحث" oninput="renderExpenses()"><select id="expenseFilter" onchange="renderExpenses()"><option value="all">الكل</option><option value="expense">المصروفات</option><option value="income">الدخل</option></select><button class="success" onclick="exportExpensesCSV()">⬇️ CSV</button></div><br><div class="table-wrap"><table><thead><tr><th>التاريخ</th><th>الوصف</th><th>النوع</th><th>التصنيف</th><th>المبلغ</th><th>العملة</th><th>حذف</th></tr></thead><tbody id="expenseTable"></tbody></table></div></div></section>
 
-<button class="primary" onclick="locateAndRefresh()">
-📍 تحديد موقعي وتحديث الطقس
-</button>
+<section class="tool" id="files"><div class="tool-header"><h2>🔄 تحويل الملفات</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><h2>🖼️ تحويل الصور</h2><input id="imageFile" type="file" accept="image/*" multiple><br><br><div class="grid4"><button class="primary" onclick="imagesToPDF()">صور → PDF</button><button class="success" onclick="convertImage('image/png','png')">صورة → PNG</button><button class="warning" onclick="convertImage('image/jpeg','jpg')">صورة → JPG</button><button class="gray" onclick="compressImage()">ضغط الصورة</button></div><div class="result" id="imageConvertStatus">اختر صورة أو أكثر.</div></div><div class="panel"><h2>📐 تغيير حجم الصورة</h2><div class="grid3"><input id="resizeWidth" type="number" placeholder="العرض px"><input id="resizeHeight" type="number" placeholder="الارتفاع px"><button class="primary" onclick="resizeImage()">تغيير الحجم</button></div></div><div class="panel"><h2>🎬 تحويل الفيديو / استخراج الصوت</h2><input id="videoFile" type="file" accept="video/*,audio/*"><br><br><div class="grid2"><select id="videoOutput"><option value="mp3">MP3 صوت</option><option value="webm">WEBM</option><option value="gif">GIF</option><option value="mp4">MP4</option></select><button class="primary" onclick="convertVideo()">بدء التحويل</button></div><br><div class="progress-line"><span id="videoProgress"></span></div><div class="result" id="videoStatus">التحويل يتم داخل جهازك وقد يكون بطيئًا مع الملفات الكبيرة.</div></div></section>
 
-<div class="result" id="weatherResult">
-اضغط تحديد موقعي.
-</div>
+<section class="tool" id="focus"><div class="tool-header"><h2>🍅 مؤقت التركيز</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel pomo"><select id="focusPreset" onchange="changeFocusPreset()" style="max-width:280px;margin:auto"><option value="25">25 دقيقة</option><option value="45">45 دقيقة</option><option value="50">50 دقيقة</option><option value="60">60 دقيقة</option></select><br><br><div class="pomo-time" id="pomoTime">25:00</div><p id="pomoMode">وقت التركيز</p><br><div class="grid3"><button class="success" onclick="startPomo()">بدء</button><button class="warning" onclick="pausePomo()">إيقاف مؤقت</button><button class="gray" onclick="resetPomo()">إعادة</button></div></div></section>
 
-</div>
+<section class="tool" id="backup"><div class="tool-header"><h2>💾 النسخ الاحتياطي</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><p style="line-height:1.8;color:var(--muted)">تصدير واستعادة المهام والملاحظات والمصروفات والتذكيرات والمسبحة والقرآن والختمة.</p><br><div class="backup-actions"><button class="primary" onclick="exportBackup()">⬇️ تصدير JSON</button><label class="success" style="display:inline-block;cursor:pointer">⬆️ استعادة<input id="backupFile" type="file" accept="application/json" hidden onchange="importBackup()"></label></div></div></section>
 
-</section>
+<section class="tool" id="tasks"><div class="tool-header"><h2>✅ المهام اليومية</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid3"><input id="taskInput" placeholder="اكتب المهمة"><input id="taskDate" type="date"><select id="taskPriority"><option value="normal">عادية</option><option value="important">مهمة</option><option value="urgent">عاجلة</option></select></div><br><button class="primary" onclick="addTask()">إضافة</button><div id="tasksList"></div></div></section>
+<section class="tool" id="notes"><div class="tool-header"><h2>📝 الملاحظات</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><input id="noteTitle" placeholder="عنوان الملاحظة"><br><br><textarea id="noteText" placeholder="اكتب ملاحظتك..."></textarea><br><button class="primary" onclick="saveNote()">حفظ</button><div id="notesList"></div></div></section>
 
-<section class="tool" id="prayer">
+<section class="tool" id="calculator"><div class="tool-header"><h2>🧮 الآلة الحاسبة</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel calculator"><input class="calc-screen" id="calcScreen" readonly><div class="calc-buttons"><button class="clear" onclick="calcClear()">C</button><button class="op" onclick="calcAdd('(')">(</button><button class="op" onclick="calcAdd(')')">)</button><button class="op" onclick="calcAdd('/')">÷</button><button class="num" onclick="calcAdd('7')">7</button><button class="num" onclick="calcAdd('8')">8</button><button class="num" onclick="calcAdd('9')">9</button><button class="op" onclick="calcAdd('*')">×</button><button class="num" onclick="calcAdd('4')">4</button><button class="num" onclick="calcAdd('5')">5</button><button class="num" onclick="calcAdd('6')">6</button><button class="op" onclick="calcAdd('-')">−</button><button class="num" onclick="calcAdd('1')">1</button><button class="num" onclick="calcAdd('2')">2</button><button class="num" onclick="calcAdd('3')">3</button><button class="op" onclick="calcAdd('+')">+</button><button class="num" onclick="calcAdd('0')">0</button><button class="num" onclick="calcAdd('.')">.</button><button class="num" onclick="calcBack()">⌫</button><button class="eq" onclick="calcResult()">=</button></div></div></section>
+<section class="tool" id="age"><div class="tool-header"><h2>🎂 حساب العمر</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid2"><input id="birthDate" type="date"><button class="primary" onclick="calculateAge()">احسب</button></div><div class="result" id="ageResult">اختر تاريخ الميلاد.</div></div></section>
+<section class="tool" id="discount"><div class="tool-header"><h2>🏷️ الخصم والنسبة</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid3"><input id="originalPrice" type="number" placeholder="السعر"><input id="discountPercent" type="number" placeholder="الخصم %"><button class="primary" onclick="calculateDiscount()">احسب</button></div><div class="result" id="discountResult">...</div></div><div class="panel"><div class="grid3"><input id="percentNumber" type="number" placeholder="الرقم"><input id="percentValue" type="number" placeholder="النسبة %"><button class="primary" onclick="calculatePercent()">احسب</button></div><div class="result" id="percentResult">...</div></div></section>
+<section class="tool" id="units"><div class="tool-header"><h2>📏 تحويل الوحدات</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><select id="unitType" onchange="updateUnits()"><option value="length">الطول</option><option value="weight">الوزن</option><option value="temperature">الحرارة</option></select><br><br><div class="grid3"><input id="unitValue" type="number" placeholder="القيمة"><select id="fromUnit"></select><select id="toUnit"></select></div><br><button class="primary" onclick="convertUnit()">تحويل</button><div class="result" id="unitResult">...</div></div></section>
+<section class="tool" id="password"><div class="tool-header"><h2>🔐 كلمة مرور قوية</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid2"><input id="passwordLength" type="number" value="16" min="4" max="64"><button class="primary" onclick="generatePassword()">إنشاء</button></div><br><div class="grid4"><label><input style="width:auto" type="checkbox" id="upper" checked> حروف كبيرة</label><label><input style="width:auto" type="checkbox" id="lower" checked> حروف صغيرة</label><label><input style="width:auto" type="checkbox" id="numbers" checked> أرقام</label><label><input style="width:auto" type="checkbox" id="symbols" checked> رموز</label></div><br><div class="grid2"><input id="passwordResult" readonly><button class="success" onclick="copyPassword()">نسخ</button></div></div></section>
+<section class="tool" id="qr"><div class="tool-header"><h2>📱 QR Code</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid2"><input id="qrText" placeholder="نص أو رابط"><button class="primary" onclick="makeQR()">إنشاء</button></div><div id="qrcode" style="margin-top:15px"></div></div></section>
+<section class="tool" id="zakat"><div class="tool-header"><h2>🪙 حاسبة الزكاة</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid2"><input id="zakatMoney" type="number" placeholder="المال الخاضع للزكاة"><button class="primary" onclick="calcZakat()">احسب 2.5%</button></div><div class="result" id="zakatResult">...</div></div></section>
+<section class="tool" id="bmi"><div class="tool-header"><h2>⚖️ مؤشر كتلة الجسم BMI</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="grid3"><input id="bmiWeight" type="number" placeholder="الوزن كجم"><input id="bmiHeight" type="number" placeholder="الطول سم"><button class="primary" onclick="calcBMI()">احسب</button></div><div class="result" id="bmiResult">...</div></div></section>
 
-<div class="tool-header">
-
-<h2>
-🕌 مواقيت الصلاة والقبلة
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid2">
-
-<button class="primary" onclick="locateAndRefresh()">
-📍 استخدام موقعي
-</button>
-
-<select id="prayerMethod" onchange="refreshPrayer()">
-
-<option value="4">أم القرى - مكة</option>
-<option value="5">الهيئة المصرية العامة للمساحة</option>
-<option value="3">رابطة العالم الإسلامي</option>
-<option value="2">ISNA</option>
-
-</select>
-
-</div>
-
-<div class="prayer-grid" id="prayerGrid" style="margin-top:14px">
-
-</div>
-
-<div class="result" id="nextPrayerBox">
-حدد موقعك أولًا.
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-🧭 اتجاه القبلة
-</h2>
-
-<div class="qibla-compass">
-
-<div class="qibla-arrow" id="qiblaArrow">
-
-</div>
-
-<div class="qibla-center">
-
-</div>
-
-</div>
-
-<div class="result" id="qiblaText">
-حدد موقعك لمعرفة الاتجاه.
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="quran">
-
-<div class="tool-header">
-
-<h2>
-📖 القرآن الكريم
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="quran-tabs">
-
-<button class="quran-tab active" onclick="openQuranTab('surahs',this)">
-📖 السور
-</button>
-
-<button class="quran-tab" onclick="openQuranTab('juz',this)">
-📚 الأجزاء
-</button>
-
-<button class="quran-tab" onclick="openQuranTab('search',this)">
-🔍 البحث
-</button>
-
-<button class="quran-tab" onclick="openQuranTab('favorites',this)">
-⭐ المفضلة
-</button>
-
-<button class="quran-tab" onclick="openQuranTab('khatma',this)">
-✅ الختمة
-</button>
-
-<button class="quran-tab" onclick="openQuranTab('memorize',this)">
-🧠 الحفظ
-</button>
-
-</div>
-
-<div class="quran-page active" id="quranPage_surahs">
-
-<div class="grid2">
-
-<select id="quranSurahSelect">
-
-</select>
-
-<select id="reciterSelect">
-
-<option value="ar.alafasy|128">مشاري راشد العفاسي</option>
-<option value="ar.husary|128">محمود خليل الحصري</option>
-<option value="ar.minshawi|128">محمد صديق المنشاوي</option>
-<option value="ar.sudais|192">عبدالرحمن السديس</option>
-<option value="ar.shuraim|128">سعود الشريم</option>
-<option value="ar.abdulbasit|192">عبدالباسط عبدالصمد</option>
-
-</select>
-
-</div>
-
-<br>
-
-<div class="grid3">
-
-<button class="primary" onclick="loadSelectedSurah()">
-📖 اقرأ السورة كاملة
-</button>
-
-<button class="success" onclick="playFullSurah()">
-▶️ استمع للسورة كاملة
-</button>
-
-<button class="warning" onclick="toggleFavoriteSurah()">
-⭐ إضافة/حذف المفضلة
-</button>
-
-</div>
-
-<div class="quran-toolbar">
-
-<button onclick="changeQuranFont(2)">
-A+
-</button>
-
-<button onclick="changeQuranFont(-2)">
-A-
-</button>
-
-<button onclick="continueReading()">
-🔖 متابعة آخر سورة
-</button>
-
-</div>
-
-<audio id="surahAudioPlayer" class="quran-audio" controls preload="none">
-
-</audio>
-
-<div id="quranReader">
-
-</div>
-
-</div>
-
-<div class="quran-page" id="quranPage_juz">
-
-<h3>
-اختر الجزء
-</h3>
-
-<div class="juz-grid" id="juzGrid">
-
-</div>
-
-<div id="juzReader" style="margin-top:15px">
-
-</div>
-
-</div>
-
-<div class="quran-page" id="quranPage_search">
-
-<div class="quran-search">
-
-<input id="quranSearchInput" placeholder="اكتب كلمة أو جزءًا من آية">
-
-<button class="primary" onclick="searchQuran()">
-🔍 بحث
-</button>
-
-</div>
-
-<div id="quranSearchResults" style="margin-top:15px">
-
-</div>
-
-</div>
-
-<div class="quran-page" id="quranPage_favorites">
-
-<h3>
-⭐ السور المفضلة
-</h3>
-
-<div id="quranFavorites">
-
-</div>
-
-</div>
-
-<div class="quran-page" id="quranPage_khatma">
-
-<h3>
-✅ خطة ختم القرآن
-</h3>
-
-<div class="grid2">
-
-<select id="khatmaDays">
-
-<option value="7">ختمة في 7 أيام</option>
-<option value="15">ختمة في 15 يومًا</option>
-<option value="30" selected>ختمة في 30 يومًا</option>
-<option value="60">ختمة في 60 يومًا</option>
-
-</select>
-
-<button class="primary" onclick="startKhatma()">
-بدء الختمة
-</button>
-
-</div>
-
-<div class="result" id="khatmaInfo">
-لم تبدأ ختمة بعد.
-</div>
-
-<div class="khatma-progress">
-
-<span id="khatmaProgress">
-</span>
-
-</div>
-
-<button class="success" onclick="completeKhatmaDay()">
-✅ أكملت ورد اليوم
-</button>
-
-</div>
-
-<div class="quran-page" id="quranPage_memorize">
-
-<h3>
-🧠 وضع الحفظ
-</h3>
-
-<div class="grid4">
-
-<select id="memorySurah">
-
-</select>
-
-<input id="memoryFrom" type="number" min="1" value="1" placeholder="من آية">
-<input id="memoryTo" type="number" min="1" value="5" placeholder="إلى آية">
-
-<select id="repeatCount">
-
-<option value="1">مرة</option>
-<option value="3">3 مرات</option>
-<option value="5">5 مرات</option>
-<option value="10">10 مرات</option>
-
-</select>
-
-</div>
-
-<br>
-
-<button class="primary" onclick="startMemorize()">
-ابدأ الحفظ
-</button>
-
-<div id="memorizeArea" style="margin-top:15px">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="islamic">
-
-<div class="tool-header">
-
-<h2>
-🤲 الأذكار والأحاديث
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="islamic-tabs">
-
-<button class="islamic-tab active" onclick="openIslamicTab('adhkar',this)">
-🤲 الأذكار
-</button>
-
-<button class="islamic-tab" onclick="openIslamicTab('hadith',this)">
-📜 الأحاديث
-</button>
-
-<button class="islamic-tab" onclick="openIslamicTab('tasbeeh',this)">
-📿 المسبحة
-</button>
-
-</div>
-
-<div class="islamic-page active" id="islamicPage_adhkar">
-
-<div class="adhkar-categories">
-
-<button onclick="loadAdhkarCategory('morning')">
-🌅 الصباح
-</button>
-
-<button onclick="loadAdhkarCategory('evening')">
-🌙 المساء
-</button>
-
-<button onclick="loadAdhkarCategory('sleep')">
-😴 النوم
-</button>
-
-<button onclick="loadAdhkarCategory('wakeup')">
-☀️ الاستيقاظ
-</button>
-
-<button onclick="loadAdhkarCategory('afterPrayer')">
-🕌 بعد الصلاة
-</button>
-
-<button onclick="loadAdhkarCategory('home')">
-🏠 المنزل
-</button>
-
-<button onclick="loadAdhkarCategory('travel')">
-🚗 السفر
-</button>
-
-<button onclick="loadAdhkarCategory('food')">
-🍽️ الطعام
-</button>
-
-<button onclick="loadAdhkarCategory('general')">
-❤️ عامة
-</button>
-
-</div>
-
-<div class="result" id="adhkarTitle">
-
-</div>
-
-<div id="adhkarList">
-
-</div>
-
-</div>
-
-<div class="islamic-page" id="islamicPage_hadith">
-
-<h3>
-📜 مكتبة الأحاديث النبوية
-</h3>
-
-<p style="color:var(--muted);line-height:1.8;margin-bottom:12px">
-اختر كتابًا لتحميل مئات أو آلاف الأحاديث العربية ثم ابحث بداخلها.
-</p>
-
-<div class="hadith-toolbar">
-
-<select id="hadithBook" onchange="resetHadithPage();loadHadiths()">
-
-<option value="ara-bukhari">صحيح البخاري</option>
-<option value="ara-muslim">صحيح مسلم</option>
-<option value="ara-abudawud">سنن أبي داود</option>
-<option value="ara-tirmidhi">جامع الترمذي</option>
-<option value="ara-nasai">سنن النسائي</option>
-<option value="ara-ibnmajah">سنن ابن ماجه</option>
-<option value="ara-malik">موطأ مالك</option>
-
-</select>
-
-<input id="hadithSearch" placeholder="ابحث بكلمة داخل الأحاديث">
-
-<button class="primary" onclick="searchHadiths()">
-🔍 بحث
-</button>
-
-</div>
-
-<br>
-
-<div class="grid2">
-
-<button class="success" onclick="loadHadiths()">
-📚 عرض الأحاديث
-</button>
-
-<button class="gray" onclick="randomHadith()">
-🎲 حديث عشوائي
-</button>
-
-</div>
-
-<div class="result" id="hadithStatus">
-اختر الكتاب واضغط عرض الأحاديث.
-</div>
-
-<div id="hadithList">
-
-</div>
-
-<div class="hadith-pagination">
-
-<button class="gray" onclick="previousHadithPage()">
-السابق
-</button>
-
-<strong id="hadithPageInfo">صفحة 1</strong>
-
-<button class="primary" onclick="nextHadithPage()">
-التالي
-</button>
-
-</div>
-
-</div>
-
-<div class="islamic-page" id="islamicPage_tasbeeh">
-
-<div class="tasbeeh">
-
-<h2>
-📿 المسبحة
-</h2>
-
-<select id="tasbeehPhrase" style="max-width:320px;margin:auto">
-
-<option>سبحان الله</option>
-<option>الحمد لله</option>
-<option>الله أكبر</option>
-<option>لا إله إلا الله</option>
-<option>أستغفر الله</option>
-<option>لا حول ولا قوة إلا بالله</option>
-<option>اللهم صل وسلم على نبينا محمد</option>
-
-</select>
-
-<br>
-<br>
-
-<div class="tasbeeh-count" id="tasbeehCount">
-0
-</div>
-
-<button class="tasbeeh-btn" onclick="tasbeehPlus()">
-سبّح
-</button>
-
-<br>
-<br>
-
-<div class="quran-toolbar" style="justify-content:center">
-
-<button onclick="setTasbeehTarget(33)">
-هدف 33
-</button>
-
-<button onclick="setTasbeehTarget(100)">
-هدف 100
-</button>
-
-<button onclick="tasbeehReset()">
-تصفير
-</button>
-
-</div>
-
-<div class="result" id="tasbeehInfo">
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="reminders">
-
-<div class="tool-header">
-
-<h2>
-⏰ التذكيرات
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="reminderTitle" placeholder="اسم التذكير">
-<input id="reminderDate" type="datetime-local">
-
-<select id="reminderType">
-
-<option>عادي</option>
-<option>مذاكرة</option>
-<option>عمل</option>
-<option>دواء</option>
-<option>ورد قرآن</option>
-<option>فاتورة</option>
-
-</select>
-
-</div>
-
-<br>
-
-<textarea id="reminderNote" placeholder="ملاحظة اختيارية">
-
-</textarea>
-
-<br>
-
-<div class="grid2">
-
-<button class="primary" onclick="addReminder()">
-إضافة
-</button>
-
-<button class="success" onclick="requestNotifications()">
-🔔 السماح بالإشعارات
-</button>
-
-</div>
-
-<div class="result">
-التذكير المحلي يعمل أثناء تشغيل الموقع أو التطبيق. الإشعارات المضمونة بعد الإغلاق الكامل تحتاج Web Push / FCM.
-</div>
-
-<div id="remindersList">
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="expenses">
-
-<div class="tool-header">
-
-<h2>
-💰 المصروفات والميزانية
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="dashboard">
-
-<div class="dash-card">
-
-<small>الرصيد</small>
-<strong id="expBalance">0</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>دخل الشهر</small>
-<strong id="expMonthIncome">0</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>مصروف الشهر</small>
-<strong id="expMonthExpense">0</strong>
-
-</div>
-
-<div class="dash-card">
-
-<small>متبقي الميزانية</small>
-<strong id="expBudgetLeft">--</strong>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-إضافة عملية
-</h2>
-
-<div class="grid4">
-
-<select id="expenseType">
-
-<option value="expense">مصروف</option>
-<option value="income">دخل</option>
-
-</select>
-
-<input id="expenseTitle" placeholder="الوصف">
-<input id="expenseAmount" type="number" placeholder="المبلغ">
-
-<select id="expenseCurrency">
-
-<option value="EGP">EGP جنيه</option>
-<option value="SAR">SAR ريال</option>
-<option value="USD">USD دولار</option>
-<option value="EUR">EUR يورو</option>
-<option value="QAR">QAR ريال قطري</option>
-<option value="AED">AED درهم</option>
-
-</select>
-
-<select id="expenseCategory">
-
-<option>طعام</option>
-<option>مواصلات</option>
-<option>فواتير</option>
-<option>تسوق</option>
-<option>تعليم</option>
-<option>صحة</option>
-<option>راتب</option>
-<option>عمل</option>
-<option>ترفيه</option>
-<option>أخرى</option>
-
-</select>
-
-<input id="expenseDate" type="date">
-<input id="expenseNote" placeholder="ملاحظة">
-
-<button class="primary" onclick="addExpense()">
-حفظ
-</button>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-الميزانية الشهرية
-</h2>
-
-<div class="grid3">
-
-<input id="budgetInput" type="number" placeholder="قيمة الميزانية">
-
-<select id="budgetCurrency">
-
-<option>EGP</option>
-<option>SAR</option>
-<option>USD</option>
-<option>EUR</option>
-<option>QAR</option>
-<option>AED</option>
-
-</select>
-
-<button class="primary" onclick="saveBudget()">
-حفظ الميزانية
-</button>
-
-</div>
-
-<br>
-
-<div class="budget-bar">
-
-<div class="budget-fill" id="budgetFill">
-
-</div>
-
-</div>
-
-<div id="budgetInfo" class="result">
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="expenseSearch" placeholder="بحث" oninput="renderExpenses()">
-
-<select id="expenseFilter" onchange="renderExpenses()">
-
-<option value="all">الكل</option>
-<option value="expense">المصروفات</option>
-<option value="income">الدخل</option>
-
-</select>
-
-<button class="success" onclick="exportExpensesCSV()">
-⬇️ CSV
-</button>
-
-</div>
-
-<br>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>التاريخ</th>
-<th>الوصف</th>
-<th>النوع</th>
-<th>التصنيف</th>
-<th>المبلغ</th>
-<th>العملة</th>
-<th>حذف</th>
-
-</tr>
-
-</thead>
-
-<tbody id="expenseTable">
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="files">
-
-<div class="tool-header">
-
-<h2>
-🔄 تحويل الملفات
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<h2>
-🖼️ تحويل الصور
-</h2>
-
-<input id="imageFile" type="file" accept="image/*" multiple>
-<br>
-<br>
-
-<div class="grid4">
-
-<button class="primary" onclick="imagesToPDF()">
-صور → PDF
-</button>
-
-<button class="success" onclick="convertImage('image/png','png')">
-صورة → PNG
-</button>
-
-<button class="warning" onclick="convertImage('image/jpeg','jpg')">
-صورة → JPG
-</button>
-
-<button class="gray" onclick="compressImage()">
-ضغط الصورة
-</button>
-
-</div>
-
-<div class="result" id="imageConvertStatus">
-اختر صورة أو أكثر.
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-📐 تغيير حجم الصورة
-</h2>
-
-<div class="grid3">
-
-<input id="resizeWidth" type="number" placeholder="العرض px">
-<input id="resizeHeight" type="number" placeholder="الارتفاع px">
-
-<button class="primary" onclick="resizeImage()">
-تغيير الحجم
-</button>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-🎬 تحويل الفيديو / استخراج الصوت
-</h2>
-
-<input id="videoFile" type="file" accept="video/*,audio/*">
-<br>
-<br>
-
-<div class="grid2">
-
-<select id="videoOutput">
-
-<option value="mp3">MP3 صوت</option>
-<option value="webm">WEBM</option>
-<option value="gif">GIF</option>
-<option value="mp4">MP4</option>
-
-</select>
-
-<button class="primary" onclick="convertVideo()">
-بدء التحويل
-</button>
-
-</div>
-
-<br>
-
-<div class="progress-line">
-
-<span id="videoProgress">
-</span>
-
-</div>
-
-<div class="result" id="videoStatus">
-التحويل يتم داخل جهازك وقد يكون بطيئًا مع الملفات الكبيرة.
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="focus">
-
-<div class="tool-header">
-
-<h2>
-🍅 مؤقت التركيز
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel pomo">
-
-<select id="focusPreset" onchange="changeFocusPreset()" style="max-width:280px;margin:auto">
-
-<option value="25">25 دقيقة</option>
-<option value="45">45 دقيقة</option>
-<option value="50">50 دقيقة</option>
-<option value="60">60 دقيقة</option>
-
-</select>
-
-<br>
-<br>
-
-<div class="pomo-time" id="pomoTime">
-25:00
-</div>
-
-<p id="pomoMode">
-وقت التركيز
-</p>
-
-<br>
-
-<div class="grid3">
-
-<button class="success" onclick="startPomo()">
-بدء
-</button>
-
-<button class="warning" onclick="pausePomo()">
-إيقاف مؤقت
-</button>
-
-<button class="gray" onclick="resetPomo()">
-إعادة
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="backup">
-
-<div class="tool-header">
-
-<h2>
-💾 النسخ الاحتياطي
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<p style="line-height:1.8;color:var(--muted)">
-تصدير واستعادة المهام والملاحظات والمصروفات والتذكيرات والمسبحة والقرآن والختمة.
-</p>
-
-<br>
-
-<div class="backup-actions">
-
-<button class="primary" onclick="exportBackup()">
-⬇️ تصدير JSON
-</button>
-
-<label class="success" style="display:inline-block;cursor:pointer">
-⬆️ استعادة<input id="backupFile" type="file" accept="application/json" hidden onchange="importBackup()">
-
-</label>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="tasks">
-
-<div class="tool-header">
-
-<h2>
-✅ المهام اليومية
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="taskInput" placeholder="اكتب المهمة">
-<input id="taskDate" type="date">
-
-<select id="taskPriority">
-
-<option value="normal">عادية</option>
-<option value="important">مهمة</option>
-<option value="urgent">عاجلة</option>
-
-</select>
-
-</div>
-
-<br>
-
-<button class="primary" onclick="addTask()">
-إضافة
-</button>
-
-<div id="tasksList">
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="notes">
-
-<div class="tool-header">
-
-<h2>
-📝 الملاحظات
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<input id="noteTitle" placeholder="عنوان الملاحظة">
-<br>
-<br>
-
-<textarea id="noteText" placeholder="اكتب ملاحظتك...">
-
-</textarea>
-
-<br>
-
-<button class="primary" onclick="saveNote()">
-حفظ
-</button>
-
-<div id="notesList">
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="calculator">
-
-<div class="tool-header">
-
-<h2>
-🧮 الآلة الحاسبة
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel calculator">
-
-<input class="calc-screen" id="calcScreen" readonly>
-
-<div class="calc-buttons">
-
-<button class="clear" onclick="calcClear()">
-C
-</button>
-
-<button class="op" onclick="calcAdd('(')">
-(
-</button>
-
-<button class="op" onclick="calcAdd(')')">
-)
-</button>
-
-<button class="op" onclick="calcAdd('/')">
-÷
-</button>
-
-<button class="num" onclick="calcAdd('7')">
-7
-</button>
-
-<button class="num" onclick="calcAdd('8')">
-8
-</button>
-
-<button class="num" onclick="calcAdd('9')">
-9
-</button>
-
-<button class="op" onclick="calcAdd('*')">
-×
-</button>
-
-<button class="num" onclick="calcAdd('4')">
-4
-</button>
-
-<button class="num" onclick="calcAdd('5')">
-5
-</button>
-
-<button class="num" onclick="calcAdd('6')">
-6
-</button>
-
-<button class="op" onclick="calcAdd('-')">
-−
-</button>
-
-<button class="num" onclick="calcAdd('1')">
-1
-</button>
-
-<button class="num" onclick="calcAdd('2')">
-2
-</button>
-
-<button class="num" onclick="calcAdd('3')">
-3
-</button>
-
-<button class="op" onclick="calcAdd('+')">
-+
-</button>
-
-<button class="num" onclick="calcAdd('0')">
-0
-</button>
-
-<button class="num" onclick="calcAdd('.')">
-.
-</button>
-
-<button class="num" onclick="calcBack()">
-⌫
-</button>
-
-<button class="eq" onclick="calcResult()">
-=
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="age">
-
-<div class="tool-header">
-
-<h2>
-🎂 حساب العمر
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid2">
-
-<input id="birthDate" type="date">
-
-<button class="primary" onclick="calculateAge()">
-احسب
-</button>
-
-</div>
-
-<div class="result" id="ageResult">
-اختر تاريخ الميلاد.
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="discount">
-
-<div class="tool-header">
-
-<h2>
-🏷️ الخصم والنسبة
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="originalPrice" type="number" placeholder="السعر">
-<input id="discountPercent" type="number" placeholder="الخصم %">
-
-<button class="primary" onclick="calculateDiscount()">
-احسب
-</button>
-
-</div>
-
-<div class="result" id="discountResult">
-...
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="percentNumber" type="number" placeholder="الرقم">
-<input id="percentValue" type="number" placeholder="النسبة %">
-
-<button class="primary" onclick="calculatePercent()">
-احسب
-</button>
-
-</div>
-
-<div class="result" id="percentResult">
-...
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="units">
-
-<div class="tool-header">
-
-<h2>
-📏 تحويل الوحدات
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<select id="unitType" onchange="updateUnits()">
-
-<option value="length">الطول</option>
-<option value="weight">الوزن</option>
-<option value="temperature">الحرارة</option>
-
-</select>
-
-<br>
-<br>
-
-<div class="grid3">
-
-<input id="unitValue" type="number" placeholder="القيمة">
-
-<select id="fromUnit">
-
-</select>
-
-<select id="toUnit">
-
-</select>
-
-</div>
-
-<br>
-
-<button class="primary" onclick="convertUnit()">
-تحويل
-</button>
-
-<div class="result" id="unitResult">
-...
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="password">
-
-<div class="tool-header">
-
-<h2>
-🔐 كلمة مرور قوية
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid2">
-
-<input id="passwordLength" type="number" value="16" min="4" max="64">
-
-<button class="primary" onclick="generatePassword()">
-إنشاء
-</button>
-
-</div>
-
-<br>
-
-<div class="grid4">
-
-<label>
-
-<input style="width:auto" type="checkbox" id="upper" checked> حروف كبيرة
-</label>
-
-<label>
-
-<input style="width:auto" type="checkbox" id="lower" checked> حروف صغيرة
-</label>
-
-<label>
-
-<input style="width:auto" type="checkbox" id="numbers" checked> أرقام
-</label>
-
-<label>
-
-<input style="width:auto" type="checkbox" id="symbols" checked> رموز
-</label>
-
-</div>
-
-<br>
-
-<div class="grid2">
-
-<input id="passwordResult" readonly>
-
-<button class="success" onclick="copyPassword()">
-نسخ
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="qr">
-
-<div class="tool-header">
-
-<h2>
-📱 QR Code
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid2">
-
-<input id="qrText" placeholder="نص أو رابط">
-
-<button class="primary" onclick="makeQR()">
-إنشاء
-</button>
-
-</div>
-
-<div id="qrcode" style="margin-top:15px">
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="zakat">
-
-<div class="tool-header">
-
-<h2>
-🪙 حاسبة الزكاة
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid2">
-
-<input id="zakatMoney" type="number" placeholder="المال الخاضع للزكاة">
-
-<button class="primary" onclick="calcZakat()">
-احسب 2.5%
-</button>
-
-</div>
-
-<div class="result" id="zakatResult">
-...
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="bmi">
-
-<div class="tool-header">
-
-<h2>
-⚖️ مؤشر كتلة الجسم BMI
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="grid3">
-
-<input id="bmiWeight" type="number" placeholder="الوزن كجم">
-<input id="bmiHeight" type="number" placeholder="الطول سم">
-
-<button class="primary" onclick="calcBMI()">
-احسب
-</button>
-
-</div>
-
-<div class="result" id="bmiResult">
-...
-</div>
-
-</div>
-
-</section>
-
-<section class="tool" id="account">
-
-<div class="tool-header">
-
-<h2>
-👤 الحساب والمزامنة
-</h2>
-
-<button class="close-btn" onclick="goHome()">
-إغلاق
-</button>
-
-</div>
-
-<div class="panel">
-
-<div class="auth-status" id="authStatus">
-غير مسجل الدخول — الحفظ محلي.
-</div>
-
-<div class="auth-tabs">
-
-<button id="registerTab" class="active" onclick="showAuthPage('register')">
-إنشاء حساب
-</button>
-
-<button id="loginTab" onclick="showAuthPage('login')">
-تسجيل الدخول
-</button>
-
-</div>
-
-<div class="auth-page active" id="auth_register">
-
-<h3>
-إنشاء حساب
-</h3>
-
-<div class="grid2">
-
-<input id="registerName" placeholder="الاسم">
-<input id="registerUsername" placeholder="اسم المستخدم">
-<input id="registerEmail" type="email" placeholder="البريد الإلكتروني">
-<input id="registerPassword" type="password" placeholder="كلمة المرور">
-
-</div>
-
-<br>
-<input id="registerPassword2" type="password" placeholder="تأكيد كلمة المرور">
-<br>
-<br>
-
-<button class="primary" style="width:100%" onclick="createAccount()">
-إنشاء الحساب
-</button>
-
-</div>
-
-<div class="auth-page" id="auth_login">
-
-<h3>
-تسجيل الدخول
-</h3>
-
-<input id="loginUsername" placeholder="اسم المستخدم">
-<br>
-<br>
-<input id="loginPassword" type="password" placeholder="كلمة المرور">
-<br>
-<br>
-
-<button class="success" style="width:100%" onclick="loginAccount()">
-تسجيل الدخول
-</button>
-
-</div>
-
-<br>
-
-<div class="grid2">
-
-<button class="primary" onclick="syncNow()">
-☁️ مزامنة الآن
-</button>
-
-<button class="danger" onclick="logoutAccount()">
-تسجيل الخروج
-</button>
-
-</div>
-
-</div>
-
-</section>
-
+<section class="tool" id="account"><div class="tool-header"><h2>👤 الحساب والمزامنة</h2><button class="close-btn" onclick="goHome()">إغلاق</button></div><div class="panel"><div class="auth-status" id="authStatus">غير مسجل الدخول — الحفظ محلي.</div><div class="auth-tabs"><button id="registerTab" class="active" onclick="showAuthPage('register')">إنشاء حساب</button><button id="loginTab" onclick="showAuthPage('login')">تسجيل الدخول</button></div><div class="auth-page active" id="auth_register"><h3>إنشاء حساب</h3><div class="grid2"><input id="registerName" placeholder="الاسم"><input id="registerUsername" placeholder="اسم المستخدم"><input id="registerEmail" type="email" placeholder="البريد الإلكتروني"><input id="registerPassword" type="password" placeholder="كلمة المرور"></div><br><input id="registerPassword2" type="password" placeholder="تأكيد كلمة المرور"><br><br><button class="primary" style="width:100%" onclick="createAccount()">إنشاء الحساب</button></div><div class="auth-page" id="auth_login"><h3>تسجيل الدخول</h3><input id="loginUsername" placeholder="اسم المستخدم"><br><br><input id="loginPassword" type="password" placeholder="كلمة المرور"><br><br><button class="success" style="width:100%" onclick="loginAccount()">تسجيل الدخول</button></div><br><div class="grid2"><button class="primary" onclick="syncNow()">☁️ مزامنة الآن</button><button class="danger" onclick="logoutAccount()">تسجيل الخروج</button></div></div></section>
 </main>
 
-<div class="modal" id="installModal">
-
-<div class="modal-content">
-
-<button class="modal-close" onclick="closeInstallModal()">
-×
-</button>
-
-<h2 style="text-align:center">
-📲 تثبيت مساعدك اليومي
-</h2>
-
-<p style="text-align:center;color:var(--muted);margin:10px 0 16px">
-يمكنك إضافته للشاشة الرئيسية كتطبيق.
-</p>
-
-<button id="installNowButton" class="success" style="width:100%;display:none" onclick="installAppNow()">
-⬇️ تثبيت الآن
-</button>
-
-<div class="result">
-
-<strong>iPhone / iPad:</strong>
-<br>Safari → مشاركة ⬆️ → إضافة إلى الشاشة الرئيسية.
-</div>
-
-<div class="result">
-
-<strong>Android:</strong>
-<br>Chrome → ⋮ → تثبيت التطبيق أو إضافة إلى الشاشة الرئيسية.
-</div>
-
-</div>
-
-</div>
-
-<div class="toast" id="toast">
-
-</div>
-
-<footer>
-مساعدك اليومي • AH13
-</footer>
+<div class="modal" id="installModal"><div class="modal-content"><button class="modal-close" onclick="closeInstallModal()">×</button><h2 style="text-align:center">📲 تثبيت مساعدك اليومي</h2><p style="text-align:center;color:var(--muted);margin:10px 0 16px">يمكنك إضافته للشاشة الرئيسية كتطبيق.</p><button id="installNowButton" class="success" style="width:100%;display:none" onclick="installAppNow()">⬇️ تثبيت الآن</button><div class="result"><strong>iPhone / iPad:</strong><br>Safari → مشاركة ⬆️ → إضافة إلى الشاشة الرئيسية.</div><div class="result"><strong>Android:</strong><br>Chrome → ⋮ → تثبيت التطبيق أو إضافة إلى الشاشة الرئيسية.</div></div></div>
+<div class="toast" id="toast"></div><footer>مساعدك اليومي • AH13</footer>
 
 <script>
-const CURRENCY_URL = 'https://ah1310.github.io/nabd-al-iqtisad/';
-const FIREBASE_CONFIG = { apiKey: 'AIzaSyDBIt-g5Z4qNEP0rpQD-N1L526V6mA6P2Q', authDomain: 'mosaed-yawmi-ah13.firebaseapp.com', projectId: 'mosaed-yawmi-ah13', storageBucket: 'mosaed-yawmi-ah13.firebasestorage.app', messagingSenderId: '571443929806', appId: '1:571443929806:web:8fe003217ae472e0dc269f', measurementId: 'G-8FGN03005T' };
-const KEYS = { tasks: 'AH13_TASKS_V4', notes: 'AH13_NOTES_V4', expenses: 'AH13_EXPENSES_V4', budget: 'AH13_BUDGET_V4', budgetCurrency: 'AH13_BUDGET_CURRENCY_V4', reminders: 'AH13_REMINDERS_V4', tasbeeh: 'AH13_TASBEEH_V4', location: 'AH13_LOCATION_V4', favorites: 'AH13_QURAN_FAVORITES_V4', lastRead: 'AH13_QURAN_LAST_READ_V4', khatma: 'AH13_QURAN_KHATMA_V4', memory: 'AH13_QURAN_MEMORY_V4', dark: 'AH13_DARK_V4' };
-const byId = id => document.getElementById(id);
-function readJSON(key, fallback) { try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
+const CURRENCY_URL='https://ah1310.github.io/nabd-al-iqtisad/';
+const FIREBASE_CONFIG={apiKey:'AIzaSyDBIt-g5Z4qNEP0rpQD-N1L526V6mA6P2Q',authDomain:'mosaed-yawmi-ah13.firebaseapp.com',projectId:'mosaed-yawmi-ah13',storageBucket:'mosaed-yawmi-ah13.firebasestorage.app',messagingSenderId:'571443929806',appId:'1:571443929806:web:8fe003217ae472e0dc269f',measurementId:'G-8FGN03005T'};
+const KEYS={tasks:'AH13_TASKS_V4',notes:'AH13_NOTES_V4',expenses:'AH13_EXPENSES_V4',budget:'AH13_BUDGET_V4',budgetCurrency:'AH13_BUDGET_CURRENCY_V4',reminders:'AH13_REMINDERS_V4',tasbeeh:'AH13_TASBEEH_V4',location:'AH13_LOCATION_V4',favorites:'AH13_QURAN_FAVORITES_V4',lastRead:'AH13_QURAN_LAST_READ_V4',khatma:'AH13_QURAN_KHATMA_V4',memory:'AH13_QURAN_MEMORY_V4',dark:'AH13_DARK_V4'};
+const byId=id=>document.getElementById(id);
+function readJSON(key,fallback){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch{return fallback}}
+function saveJSON(key,value){localStorage.setItem(key,JSON.stringify(value))}
+function safeText(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function escapeJs(v){return String(v??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ')}
+function notify(message){const t=byId('toast');t.textContent=message;t.style.display='block';clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.style.display='none',2200)}
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function fileToDataURL(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)})}
+function loadImage(src){return new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=reject;img.src=src})}
+
+let tasks=readJSON(KEYS.tasks,[]),notes=readJSON(KEYS.notes,[]),expenses=readJSON(KEYS.expenses,[]),reminders=readJSON(KEYS.reminders,[]);
+let monthlyBudget=Number(localStorage.getItem(KEYS.budget)||0),budgetCurrency=localStorage.getItem(KEYS.budgetCurrency)||'EGP',tasbeeh=Number(localStorage.getItem(KEYS.tasbeeh)||0),tasbeehTarget=0;
+let locationData=readJSON(KEYS.location,null),prayerTimes=null,prayerTimezone=null,qiblaBearing=null;
+let quranFavorites=readJSON(KEYS.favorites,[]),quranLastRead=readJSON(KEYS.lastRead,null),khatma=readJSON(KEYS.khatma,null),quranMemory=readJSON(KEYS.memory,[]),currentSurah=1,quranFontSize=29;
+let hadithPage=1,hadithPageSize=10,hadithCurrent=[],hadithFiltered=[],hadithLoadedEdition='';
+let deferredInstallPrompt=null,ffmpegInstance=null,pomoSeconds=25*60,pomoPreset=25,pomoTimer=null;
+let firebaseReady=false,auth=null,db=null,currentUser=null,currentProfile=null,syncTimer=null;
+
+function toggleSidebar(force){const s=byId('sidebar'),o=byId('overlay'),open=typeof force==='boolean'?force:!s.classList.contains('open');s.classList.toggle('open',open);o.classList.toggle('show',open)}
+function openTool(id){toggleSidebar(false);byId('homeSection').style.display='none';document.querySelectorAll('.tool').forEach(t=>t.classList.remove('active'));const t=byId(id);if(t)t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(id==='quran')setupQuran();if(id==='islamic')loadAdhkarCategory('morning');if(id==='expenses')renderExpenses();if(id==='account')updateAuthUI()}
+function goHome(){document.querySelectorAll('.tool').forEach(t=>t.classList.remove('active'));byId('homeSection').style.display='block';toggleSidebar(false);refreshDashboard();window.scrollTo({top:0,behavior:'smooth'})}
+function openCurrencySite(){window.open(CURRENCY_URL,'_blank')}
+function toggleDark(){document.body.classList.toggle('dark');localStorage.setItem(KEYS.dark,document.body.classList.contains('dark')?'1':'0');autoSync()}
+if(localStorage.getItem(KEYS.dark)==='1')document.body.classList.add('dark');
+function getAppTimeZone(){
+  try{
+    return (locationData && locationData.timezone) || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Riyadh';
+  }catch{
+    return 'Asia/Riyadh';
+  }
 }
-catch {
-    return fallback;
-} }
-function saveJSON(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
-function safeText(v) { return String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;'); }
-function escapeJs(v) { return String(v ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' '); }
-function notify(message) { const t = byId('toast'); t.textContent = message; t.style.display = 'block'; clearTimeout(window.__toast); window.__toast = setTimeout(() => t.style.display = 'none', 2200); }
-function downloadBlob(blob, name) { const url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1500); }
-function fileToDataURL(file) { return new Promise((resolve, reject) => { const r = new FileReader(); r.onload = () => resolve(r.result); r.onerror = reject; r.readAsDataURL(file); }); }
-function loadImage(src) { return new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = reject; img.src = src; }); }
-let tasks = readJSON(KEYS.tasks, []), notes = readJSON(KEYS.notes, []), expenses = readJSON(KEYS.expenses, []), reminders = readJSON(KEYS.reminders, []);
-let monthlyBudget = Number(localStorage.getItem(KEYS.budget) || 0), budgetCurrency = localStorage.getItem(KEYS.budgetCurrency) || 'EGP', tasbeeh = Number(localStorage.getItem(KEYS.tasbeeh) || 0), tasbeehTarget = 0;
-let locationData = readJSON(KEYS.location, null), prayerTimes = null, prayerTimezone = null, qiblaBearing = null;
-let quranFavorites = readJSON(KEYS.favorites, []), quranLastRead = readJSON(KEYS.lastRead, null), khatma = readJSON(KEYS.khatma, null), quranMemory = readJSON(KEYS.memory, []), currentSurah = 1, quranFontSize = 29;
-let hadithPage = 1, hadithPageSize = 10, hadithCurrent = [], hadithFiltered = [], hadithLoadedEdition = '';
-let deferredInstallPrompt = null, ffmpegInstance = null, pomoSeconds = 25 * 60, pomoPreset = 25, pomoTimer = null;
-let firebaseReady = false, auth = null, db = null, currentUser = null, currentProfile = null, syncTimer = null;
-function toggleSidebar(force) { const s = byId('sidebar'), o = byId('overlay'), open = typeof force === 'boolean' ? force : !s.classList.contains('open'); s.classList.toggle('open', open); o.classList.toggle('show', open); }
-function openTool(id) { toggleSidebar(false); byId('homeSection').style.display = 'none'; document.querySelectorAll('.tool').forEach(t => t.classList.remove('active')); const t = byId(id); if (t)
-    t.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); if (id === 'quran')
-    setupQuran(); if (id === 'islamic')
-    loadAdhkarCategory('morning'); if (id === 'expenses')
-    renderExpenses(); if (id === 'account')
-    updateAuthUI(); }
-function goHome() { document.querySelectorAll('.tool').forEach(t => t.classList.remove('active')); byId('homeSection').style.display = 'block'; toggleSidebar(false); refreshDashboard(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function openCurrencySite() { window.open(CURRENCY_URL, '_blank'); }
-function toggleDark() { document.body.classList.toggle('dark'); localStorage.setItem(KEYS.dark, document.body.classList.contains('dark') ? '1' : '0'); autoSync(); }
-if (localStorage.getItem(KEYS.dark) === '1')
-    document.body.classList.add('dark');
-function updateHijri() { try {
-    byId('hijriDate').textContent = '📅 ' + new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+function updateDates(){
+  const now=new Date();
+  const timeZone=getAppTimeZone();
+  try{
+    byId('hijriDate').textContent='🕌 '+new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{
+      weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone
+    }).format(now);
+  }catch{
+    byId('hijriDate').textContent='🕌 التاريخ الهجري غير متاح';
+  }
+  try{
+    byId('gregorianDate').textContent='📆 '+new Intl.DateTimeFormat('ar-EG-u-ca-gregory',{
+      weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone
+    }).format(now);
+  }catch{
+    byId('gregorianDate').textContent='📆 '+now.toLocaleDateString('ar-EG');
+  }
 }
-catch { } }
-async function locateAndRefresh() { if (!navigator.geolocation) {
-    notify('المتصفح لا يدعم تحديد الموقع');
-    return;
-} navigator.geolocation.getCurrentPosition(async (p) => { locationData = { lat: p.coords.latitude, lon: p.coords.longitude, accuracy: p.coords.accuracy }; saveJSON(KEYS.location, locationData); updateLocationPill(); await Promise.allSettled([refreshWeather(), refreshPrayer()]); notify('✅ تم تحديد الموقع'); }, () => notify('تعذر تحديد الموقع. اسمح للموقع باستخدام GPS.'), { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 }); }
-function updateLocationPill() { if (locationData)
-    byId('locationPill').textContent = `📍 ${locationData.lat.toFixed(4)}, ${locationData.lon.toFixed(4)}`; }
-function weatherCode(code) { if (code === 0)
-    return 'صحو ☀️'; if ([1, 2, 3].includes(code))
-    return 'غائم جزئيًا ⛅'; if ([45, 48].includes(code))
-    return 'ضباب 🌫️'; if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code))
-    return 'أمطار 🌧️'; if ([71, 73, 75, 77, 85, 86].includes(code))
-    return 'ثلوج ❄️'; if ([95, 96, 99].includes(code))
-    return 'عاصفة رعدية ⛈️'; return 'طقس متغير'; }
-async function refreshWeather() { if (!locationData)
-    return; const box = byId('weatherResult'); box.textContent = 'جاري تحميل الطقس...'; try {
-    const u = `https://api.open-meteo.com/v1/forecast?latitude=${locationData.lat}&longitude=${locationData.lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto`, d = await fetch(u).then(r => r.json()), c = d.current;
-    box.innerHTML = `<div class="weather-row"><div class="weather-big">${Math.round(c.temperature_2m)}°C</div><div><strong>${weatherCode(c.weather_code)}</strong><br>المحسوسة ${Math.round(c.apparent_temperature)}° • الرطوبة ${c.relative_humidity_2m}%<br>الرياح ${c.wind_speed_10m} كم/س<br>العظمى ${Math.round(d.daily.temperature_2m_max[0])}° • الصغرى ${Math.round(d.daily.temperature_2m_min[0])}°</div></div>`;
-    byId('dashWeather').textContent = Math.round(c.temperature_2m) + '°C';
+
+async function locateAndRefresh(){
+  if(!navigator.geolocation){notify('المتصفح لا يدعم تحديد الموقع');return}
+  notify('جاري تحديد موقعك...');
+  navigator.geolocation.getCurrentPosition(async p=>{
+    locationData={lat:p.coords.latitude,lon:p.coords.longitude,accuracy:p.coords.accuracy,name:'',timezone:locationData?.timezone||''};
+    saveJSON(KEYS.location,locationData);
+    updateLocationPill();
+    await Promise.allSettled([updateLocationName(),refreshWeather(),refreshPrayer()]);
+    notify('✅ تم تحديد الموقع');
+  },()=>notify('تعذر تحديد الموقع. اسمح للموقع باستخدام GPS.'),{enableHighAccuracy:true,timeout:15000,maximumAge:60000})
 }
-catch {
-    box.textContent = 'تعذر تحميل الطقس.';
-} }
-function cleanPrayerTime(t) { return String(t || '').split(' ')[0]; }
-function timeMinutes(t) { const [a, b] = cleanPrayerTime(t).split(':').map(Number); return a * 60 + b; }
-function currentPrayerMinutes() { if (prayerTimezone) {
-    try {
-        const parts = new Intl.DateTimeFormat('en-US', { timeZone: prayerTimezone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
-        return Number(parts.find(p => p.type === 'hour').value) * 60 + Number(parts.find(p => p.type === 'minute').value);
+function updateLocationPill(){
+  if(!locationData)return;
+  byId('locationPill').textContent=locationData.name?`📍 ${locationData.name}`:`📍 ${locationData.lat.toFixed(4)}, ${locationData.lon.toFixed(4)}`;
+}
+async function updateLocationName(){
+  if(!locationData)return;
+  try{
+    const url=`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${locationData.lat}&longitude=${locationData.lon}&localityLanguage=ar`;
+    const data=await fetch(url).then(r=>{if(!r.ok)throw new Error('location');return r.json()});
+    const city=data.city||data.locality||data.principalSubdivision||'';
+    const country=data.countryName||'';
+    const name=[city,country].filter(Boolean).join('، ');
+    if(name){
+      locationData.name=name;
+      saveJSON(KEYS.location,locationData);
+      updateLocationPill();
     }
-    catch { }
-} const n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
-async function refreshPrayer() { if (!locationData)
-    return; try {
-    const method = byId('prayerMethod')?.value || 4, ts = Math.floor(Date.now() / 1000), d = await fetch(`https://api.aladhan.com/v1/timings/${ts}?latitude=${locationData.lat}&longitude=${locationData.lon}&method=${method}`).then(r => r.json());
-    prayerTimes = d.data.timings;
-    prayerTimezone = d.data.meta?.timezone || null;
-    const list = [['Fajr', 'الفجر'], ['Sunrise', 'الشروق'], ['Dhuhr', 'الظهر'], ['Asr', 'العصر'], ['Maghrib', 'المغرب'], ['Isha', 'العشاء']];
-    byId('prayerGrid').innerHTML = list.map(([k, n]) => `<div class="prayer">${n}<strong>${cleanPrayerTime(prayerTimes[k])}</strong></div>`).join('');
-    updateNextPrayer();
-    updateQibla();
+  }catch(error){
+    updateLocationPill();
+  }
 }
-catch {
-    byId('nextPrayerBox').textContent = 'تعذر تحميل مواقيت الصلاة.';
-} }
-function updateNextPrayer() { if (!prayerTimes)
-    return; const list = [['Fajr', 'الفجر'], ['Dhuhr', 'الظهر'], ['Asr', 'العصر'], ['Maghrib', 'المغرب'], ['Isha', 'العشاء']], now = currentPrayerMinutes(); let next = null; for (const [k, n] of list) {
-    const m = timeMinutes(prayerTimes[k]);
-    if (m > now) {
-        next = { name: n, time: cleanPrayerTime(prayerTimes[k]), diff: m - now };
-        break;
+function weatherCode(code){if(code===0)return'صحو ☀️';if([1,2,3].includes(code))return'غائم جزئيًا ⛅';if([45,48].includes(code))return'ضباب 🌫️';if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code))return'أمطار 🌧️';if([71,73,75,77,85,86].includes(code))return'ثلوج ❄️';if([95,96,99].includes(code))return'عاصفة رعدية ⛈️';return'طقس متغير'}
+async function refreshWeather(){
+  if(!locationData)return;
+  const box=byId('weatherResult');
+  box.textContent='جاري تحميل الطقس...';
+  try{
+    const u=`https://api.open-meteo.com/v1/forecast?latitude=${locationData.lat}&longitude=${locationData.lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
+    const response=await fetch(u);
+    if(!response.ok)throw new Error('weather');
+    const d=await response.json();
+    const c=d.current;
+    if(d.timezone){
+      locationData.timezone=d.timezone;
+      saveJSON(KEYS.location,locationData);
+      updateDates();
     }
-} if (!next)
-    next = { name: 'الفجر', time: cleanPrayerTime(prayerTimes.Fajr), diff: 24 * 60 - now + timeMinutes(prayerTimes.Fajr) }; byId('nextPrayerBox').innerHTML = `الصلاة القادمة: <strong>${next.name}</strong> ${next.time} — بعد ${Math.floor(next.diff / 60)} ساعة و ${next.diff % 60} دقيقة`; byId('dashPrayer').textContent = `${next.name} ${next.time}`; }
-const rad = v => v * Math.PI / 180, deg = v => v * 180 / Math.PI;
-function updateQibla() { if (!locationData)
-    return; const k = { lat: 21.4225, lon: 39.8262 }, p1 = rad(locationData.lat), p2 = rad(k.lat), dl = rad(k.lon - locationData.lon); let a = Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)); a = (deg(a) + 360) % 360; qiblaBearing = a; byId('qiblaArrow').style.transform = `rotate(${a}deg)`; byId('qiblaText').innerHTML = `اتجاه القبلة تقريبًا <strong>${a.toFixed(1)}°</strong> من الشمال.<br><br><button class="primary" onclick="enableLiveCompass()">🧭 تشغيل البوصلة الحية</button>`; }
-async function enableLiveCompass() { if (typeof DeviceOrientationEvent === 'undefined') {
-    notify('البوصلة غير مدعومة');
-    return;
-} try {
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        const p = await DeviceOrientationEvent.requestPermission();
-        if (p !== 'granted') {
-            notify('لم يتم السماح بالبوصلة');
-            return;
-        }
-    }
-    window.addEventListener('deviceorientation', e => { let h = typeof e.webkitCompassHeading === 'number' ? e.webkitCompassHeading : (typeof e.alpha === 'number' ? 360 - e.alpha : null); if (h !== null && qiblaBearing !== null)
-        byId('qiblaArrow').style.transform = `rotate(${qiblaBearing - h}deg)`; }, true);
-    notify('✅ تم تشغيل البوصلة');
+    box.innerHTML=`<div class="weather-row"><div class="weather-big">${Math.round(c.temperature_2m)}°C</div><div><strong>${weatherCode(c.weather_code)}</strong><br>المحسوسة ${Math.round(c.apparent_temperature)}° • الرطوبة ${c.relative_humidity_2m}%<br>الرياح ${c.wind_speed_10m} كم/س<br>العظمى ${Math.round(d.daily.temperature_2m_max[0])}° • الصغرى ${Math.round(d.daily.temperature_2m_min[0])}°</div></div>`;
+    byId('dashWeather').textContent=Math.round(c.temperature_2m)+'°C';
+  }catch{
+    box.textContent='تعذر تحميل الطقس.';
+  }
 }
-catch {
-    notify('تعذر تشغيل البوصلة');
-} }
-const SURAH_NAMES = ['الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف', 'الأنفال', 'التوبة', 'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم', 'طه', 'الأنبياء', 'الحج', 'المؤمنون', 'النور', 'الفرقان', 'الشعراء', 'النمل', 'القصص', 'العنكبوت', 'الروم', 'لقمان', 'السجدة', 'الأحزاب', 'سبأ', 'فاطر', 'يس', 'الصافات', 'ص', 'الزمر', 'غافر', 'فصلت', 'الشورى', 'الزخرف', 'الدخان', 'الجاثية', 'الأحقاف', 'محمد', 'الفتح', 'الحجرات', 'ق', 'الذاريات', 'الطور', 'النجم', 'القمر', 'الرحمن', 'الواقعة', 'الحديد', 'المجادلة', 'الحشر', 'الممتحنة', 'الصف', 'الجمعة', 'المنافقون', 'التغابن', 'الطلاق', 'التحريم', 'الملك', 'القلم', 'الحاقة', 'المعارج', 'نوح', 'الجن', 'المزمل', 'المدثر', 'القيامة', 'الإنسان', 'المرسلات', 'النبأ', 'النازعات', 'عبس', 'التكوير', 'الانفطار', 'المطففين', 'الانشقاق', 'البروج', 'الطارق', 'الأعلى', 'الغاشية', 'الفجر', 'البلد', 'الشمس', 'الليل', 'الضحى', 'الشرح', 'التين', 'العلق', 'القدر', 'البينة', 'الزلزلة', 'العاديات', 'القارعة', 'التكاثر', 'العصر', 'الهمزة', 'الفيل', 'قريش', 'الماعون', 'الكوثر', 'الكافرون', 'النصر', 'المسد', 'الإخلاص', 'الفلق', 'الناس'];
-let quranReady = false;
-function setupQuran() { if (quranReady) {
-    renderFavorites();
-    renderKhatma();
-    return;
-} const options = SURAH_NAMES.map((n, i) => `<option value="${i + 1}">${i + 1}. ${n}</option>`).join(''); byId('quranSurahSelect').innerHTML = options; byId('memorySurah').innerHTML = options; byId('juzGrid').innerHTML = Array.from({ length: 30 }, (_, i) => `<button onclick="loadJuz(${i + 1})">الجزء ${i + 1}</button>`).join(''); renderFavorites(); renderKhatma(); quranReady = true; if (quranLastRead?.surah)
-    byId('quranSurahSelect').value = quranLastRead.surah; }
-function openQuranTab(tab, button) { document.querySelectorAll('.quran-page').forEach(p => p.classList.remove('active')); document.querySelectorAll('.quran-tab').forEach(p => p.classList.remove('active')); byId('quranPage_' + tab).classList.add('active'); if (button)
-    button.classList.add('active'); if (tab === 'favorites')
-    renderFavorites(); if (tab === 'khatma')
-    renderKhatma(); }
-function reciterInfo() { const [v, b] = byId('reciterSelect').value.split('|'); return { edition: v, bitrate: b || 128 }; }
-function setSurahAudio(number) { const { edition, bitrate } = reciterInfo(); const player = byId('surahAudioPlayer'); player.src = `https://cdn.islamic.network/quran/audio-surah/${bitrate}/${edition}/${number}.mp3`; player.load(); }
-function loadSelectedSurah() { loadFullSurah(Number(byId('quranSurahSelect').value)); }
-async function loadFullSurah(number) { setupQuran(); currentSurah = Number(number); byId('quranSurahSelect').value = currentSurah; setSurahAudio(currentSurah); const r = byId('quranReader'); r.innerHTML = '<div class="result">جاري تحميل السورة كاملة...</div>'; try {
-    const d = await fetch(`https://api.alquran.cloud/v1/surah/${currentSurah}/quran-uthmani-quran-academy`).then(x => x.json()), s = d.data;
-    text = s.ayahs.map(a => `${a.text} ﴿${a.numberInSurah}﴾`).join(' ');
-    r.innerHTML = `<div class="quran-book"><div class="surah-title">سورة ${s.name}</div><div class="surah-meta">${s.numberOfAyahs} آية • ${s.revelationType === 'Meccan' ? 'مكية' : 'مدنية'}</div><div class="surah-full-text" style="font-size:${quranFontSize}px">${text}</div></div>`;
-    quranLastRead = { surah: currentSurah, date: Date.now() };
-    saveJSON(KEYS.lastRead, quranLastRead);
-    autoSync();
-}
-catch {
-    r.innerHTML = '<div class="result">تعذر تحميل السورة. تأكد من الإنترنت.</div>';
-} }
-function playFullSurah() { currentSurah = Number(byId('quranSurahSelect').value || currentSurah); setSurahAudio(currentSurah); const p = byId('surahAudioPlayer'); p.play().catch(() => notify('اضغط زر التشغيل في مشغل الصوت')); }
-function changeQuranFont(change) { quranFontSize = Math.max(20, Math.min(44, quranFontSize + change)); document.querySelectorAll('.surah-full-text,.ayah-snippet').forEach(e => e.style.fontSize = quranFontSize + 'px'); }
-function continueReading() { if (!quranLastRead?.surah) {
-    notify('لا توجد سورة محفوظة');
-    return;
-} loadFullSurah(quranLastRead.surah); }
-function toggleFavoriteSurah() { const n = Number(byId('quranSurahSelect').value); if (quranFavorites.includes(n)) {
-    quranFavorites = quranFavorites.filter(x => x !== n);
-    notify('تم حذف السورة من المفضلة');
-}
-else {
-    quranFavorites.push(n);
-    notify('⭐ تمت إضافة السورة للمفضلة');
-} saveJSON(KEYS.favorites, quranFavorites); renderFavorites(); autoSync(); }
-function renderFavorites() { const box = byId('quranFavorites'); if (!box)
-    return; if (!quranFavorites.length) {
-    box.innerHTML = '<div class="result">لا توجد سور مفضلة.</div>';
-    return;
-} box.innerHTML = quranFavorites.sort((a, b) => a - b).map(n => `<div class="bookmark-card"><strong>${n}. ${SURAH_NAMES[n - 1]}</strong><br><br><button class="primary" onclick="openFavoriteSurah(${n})">📖 فتح السورة كاملة</button> <button class="danger" onclick="removeFavoriteSurah(${n})">حذف</button></div>`).join(''); }
-function openFavoriteSurah(n) { openQuranTab('surahs', document.querySelector('.quran-tab')); loadFullSurah(n); }
-function removeFavoriteSurah(n) { quranFavorites = quranFavorites.filter(x => x !== n); saveJSON(KEYS.favorites, quranFavorites); renderFavorites(); autoSync(); }
-async function loadJuz(n) { const box = byId('juzReader'); box.innerHTML = '<div class="result">جاري تحميل الجزء كاملًا...</div>'; try {
-    const d = await fetch(`https://api.alquran.cloud/v1/juz/${n}/quran-uthmani-quran-academy`).then(r => r.json());
-    const grouped = {};
-    d.data.ayahs.forEach(a => { const s = a.surah.number; if (!grouped[s])
-        grouped[s] = []; grouped[s].push(a); });
-    box.innerHTML = Object.entries(grouped).map(([s, ayahs]) => `<div class="quran-book"><div class="surah-title">سورة ${ayahs[0].surah.name}</div><div class="surah-full-text" style="font-size:${quranFontSize}px">${ayahs.map(a => `${a.text} ﴿${a.numberInSurah}﴾`).join(' ')}</div><br><button class="primary" onclick="openFavoriteSurah(${s})">فتح السورة كاملة</button></div>`).join('');
-}
-catch {
-    box.innerHTML = '<div class="result">تعذر تحميل الجزء.</div>';
-} }
-async function searchQuran() { const q = byId('quranSearchInput').value.trim(), box = byId('quranSearchResults'); if (!q)
-    return; box.innerHTML = '<div class="result">جاري البحث...</div>'; try {
-    const d = await fetch(`https://api.alquran.cloud/v1/search/${encodeURIComponent(q)}/all/ar`).then(r => r.json()), m = d.data.matches || [];
-    box.innerHTML = m.length ? m.slice(0, 100).map(a => `<div class="search-card"><div class="ayah-snippet">${safeText(a.text)}</div><small>${a.surah.name} • الآية ${a.numberInSurah}</small><br><br><button class="primary" onclick="openFavoriteSurah(${a.surah.number})">📖 فتح السورة كاملة</button></div>`).join('') : '<div class="result">لا توجد نتائج.</div>';
-}
-catch {
-    box.innerHTML = '<div class="result">تعذر البحث الآن.</div>';
-} }
-function startKhatma() { const days = Number(byId('khatmaDays').value); khatma = { days, completed: 0, started: Date.now(), lastDate: null }; saveJSON(KEYS.khatma, khatma); renderKhatma(); autoSync(); notify('✅ بدأت الختمة'); }
-function completeKhatmaDay() { if (!khatma) {
-    notify('ابدأ خطة ختمة أولًا');
-    return;
-} const today = new Date().toISOString().slice(0, 10); if (khatma.lastDate === today) {
-    notify('ورد اليوم مسجل بالفعل');
-    return;
-} if (khatma.completed < khatma.days)
-    khatma.completed++; khatma.lastDate = today; saveJSON(KEYS.khatma, khatma); renderKhatma(); autoSync(); notify('✅ تم تسجيل ورد اليوم'); }
-function renderKhatma() { const i = byId('khatmaInfo'), b = byId('khatmaProgress'); if (!i || !b)
-    return; if (!khatma) {
-    i.textContent = 'لم تبدأ ختمة بعد.';
-    b.style.width = '0%';
-    return;
-} const p = Math.min(100, khatma.completed / khatma.days * 100), pages = Math.ceil(604 / khatma.days); i.innerHTML = `الخطة: <strong>${khatma.days} يوم</strong><br>أنجزت: <strong>${khatma.completed} من ${khatma.days}</strong><br>وردك التقريبي: <strong>${pages} صفحة يوميًا</strong><br>الإنجاز: <strong>${p.toFixed(0)}%</strong>`; b.style.width = p + '%'; }
-async function startMemorize() { const s = Number(byId('memorySurah').value), from = Number(byId('memoryFrom').value), to = Number(byId('memoryTo').value), repeat = Number(byId('repeatCount').value), area = byId('memorizeArea'); if (from < 1 || to < from) {
-    notify('راجع أرقام الآيات');
-    return;
-} area.innerHTML = '<div class="result">جاري التحميل...</div>'; try {
-    const { edition } = reciterInfo(), [t, a] = await Promise.all([fetch(`https://api.alquran.cloud/v1/surah/${s}/quran-uthmani-quran-academy`).then(r => r.json()), fetch(`https://api.alquran.cloud/v1/surah/${s}/${edition}`).then(r => r.json())]);
-    const ayahs = t.data.ayahs.filter(x => x.numberInSurah >= from && x.numberInSurah <= to);
-    area.innerHTML = ayahs.map(x => { const au = a.data.ayahs[x.numberInSurah - 1], done = quranMemory.some(m => m.surah === s && m.ayah === x.numberInSurah); return `<div class="memory-card"><div class="ayah-snippet" id="memoryText_${x.numberInSurah}">${x.text} ﴿${x.numberInSurah}﴾</div><audio id="memoryAudio_${x.numberInSurah}" src="${au?.audio || ''}"></audio><div class="quran-toolbar"><button onclick="playMemoryAyah(${x.numberInSurah},${repeat})">🔁 تشغيل ×${repeat}</button><button onclick="toggleMemoryText(${x.numberInSurah})">🙈 إخفاء/إظهار</button><button onclick="markMemorized(${s},${x.numberInSurah},this)">${done ? '✅ محفوظة' : 'حفظتها'}</button></div></div>`; }).join('');
-}
-catch {
-    area.innerHTML = '<div class="result">تعذر تحميل آيات الحفظ.</div>';
-} }
-function toggleMemoryText(a) { byId('memoryText_' + a)?.classList.toggle('hidden-ayah'); }
-function playMemoryAyah(a, times) { const au = byId('memoryAudio_' + a); if (!au)
-    return; let played = 0; const replay = () => { played++; if (played < times) {
-    au.currentTime = 0;
-    au.play().catch(() => { });
-}
-else
-    au.removeEventListener('ended', replay); }; au.addEventListener('ended', replay); au.currentTime = 0; au.play().catch(() => { }); }
-function markMemorized(s, a, b) { if (!quranMemory.some(x => x.surah === s && x.ayah === a)) {
-    quranMemory.push({ surah: s, ayah: a, date: Date.now() });
-    saveJSON(KEYS.memory, quranMemory);
-    b.textContent = '✅ محفوظة';
-    autoSync();
-    notify('✅ تم تسجيل الآية كمحفوظة');
-} }
-function openIslamicTab(tab, button) { document.querySelectorAll('.islamic-page').forEach(p => p.classList.remove('active')); document.querySelectorAll('.islamic-tab').forEach(p => p.classList.remove('active')); byId('islamicPage_' + tab).classList.add('active'); if (button)
-    button.classList.add('active'); if (tab === 'adhkar')
-    loadAdhkarCategory('morning'); }
-const ADHKAR = {
-    morning: { title: '🌅 أذكار الصباح', items: [['آية الكرسي', 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ', 'مرة'], ['الإخلاص', 'قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ', '3 مرات'], ['الفلق', 'قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ ۝ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ', '3 مرات'], ['الناس', 'قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ ۝ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ', '3 مرات'], ['ذكر الصباح', 'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.', 'مرة'], ['اللهم بك أصبحنا', 'اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.', 'مرة'], ['رضيت بالله', 'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.', '3 مرات'], ['بسم الله الذي لا يضر', 'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.', '3 مرات'], ['حسبي الله', 'حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.', '7 مرات'], ['اللهم ما أصبح بي', 'اللهم ما أصبح بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.', 'مرة'], ['يا حي يا قيوم', 'يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.', 'مرة'], ['سيد الاستغفار', 'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك علي وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.', 'مرة'], ['سبحان الله وبحمده', 'سبحان الله وبحمده.', '100 مرة']] },
-    evening: { title: '🌙 أذكار المساء', items: [['آية الكرسي', 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ...', 'مرة'], ['الإخلاص', 'قُلْ هُوَ اللَّهُ أَحَدٌ...', '3 مرات'], ['الفلق', 'قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...', '3 مرات'], ['الناس', 'قُلْ أَعُوذُ بِرَبِّ النَّاسِ...', '3 مرات'], ['ذكر المساء', 'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.', 'مرة'], ['اللهم بك أمسينا', 'اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير.', 'مرة'], ['رضيت بالله', 'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.', '3 مرات'], ['بسم الله الذي لا يضر', 'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.', '3 مرات'], ['أعوذ بكلمات الله', 'أعوذ بكلمات الله التامات من شر ما خلق.', '3 مرات'], ['يا حي يا قيوم', 'يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.', 'مرة'], ['سيد الاستغفار', 'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت...', 'مرة']] },
-    sleep: { title: '😴 أذكار النوم', items: [['باسمك أموت وأحيا', 'باسمك اللهم أموت وأحيا.', 'مرة'], ['اللهم قني عذابك', 'اللهم قني عذابك يوم تبعث عبادك.', '3 مرات'], ['آية الكرسي', 'قراءة آية الكرسي قبل النوم.', 'مرة'], ['آخر آيتين من البقرة', 'قراءة آخر آيتين من سورة البقرة.', 'مرة'], ['اللهم أسلمت نفسي إليك', 'اللهم أسلمت نفسي إليك وفوضت أمري إليك ووجهت وجهي إليك وألجأت ظهري إليك رغبة ورهبة إليك، لا ملجأ ولا منجى منك إلا إليك.', 'مرة'], ['التسبيح', 'سبحان الله 33، والحمد لله 33، والله أكبر 34.', 'قبل النوم']] },
-    wakeup: { title: '☀️ أذكار الاستيقاظ', items: [['الحمد لله', 'الحمد لله الذي أحيانا بعدما أماتنا وإليه النشور.', 'مرة'], ['ذكر الاستيقاظ', 'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، سبحان الله والحمد لله ولا إله إلا الله والله أكبر ولا حول ولا قوة إلا بالله.', 'مرة']] },
-    afterPrayer: { title: '🕌 بعد الصلاة', items: [['الاستغفار', 'أستغفر الله.', '3 مرات'], ['اللهم أنت السلام', 'اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام.', 'مرة'], ['التسبيح', 'سبحان الله.', '33 مرة'], ['التحميد', 'الحمد لله.', '33 مرة'], ['التكبير', 'الله أكبر.', '33 مرة'], ['تمام المائة', 'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.', 'مرة'], ['آية الكرسي', 'قراءة آية الكرسي بعد الصلاة المكتوبة.', 'مرة'], ['المعوذات', 'الإخلاص والفلق والناس.', 'مرة']] },
-    home: { title: '🏠 أذكار المنزل', items: [['دخول المنزل', 'بسم الله ولجنا وبسم الله خرجنا وعلى ربنا توكلنا.', 'عند الدخول'], ['الخروج من المنزل', 'بسم الله، توكلت على الله، ولا حول ولا قوة إلا بالله.', 'عند الخروج']] },
-    travel: { title: '🚗 أذكار السفر', items: [['دعاء الركوب', 'سبحان الذي سخر لنا هذا وما كنا له مقرنين وإنا إلى ربنا لمنقلبون.', 'عند الركوب'], ['دعاء السفر', 'اللهم إنا نسألك في سفرنا هذا البر والتقوى ومن العمل ما ترضى، اللهم هون علينا سفرنا هذا واطو عنا بعده.', 'عند السفر'], ['الرجوع', 'آيبون تائبون عابدون لربنا حامدون.', 'عند الرجوع']] },
-    food: { title: '🍽️ أذكار الطعام', items: [['قبل الطعام', 'بسم الله.', 'قبل الأكل'], ['إذا نسي', 'بسم الله أوله وآخره.', 'عند التذكر'], ['بعد الطعام', 'الحمد لله الذي أطعمني هذا ورزقنيه من غير حول مني ولا قوة.', 'بعد الأكل'], ['لصاحب الطعام', 'اللهم بارك لهم فيما رزقتهم واغفر لهم وارحمهم.', 'دعاء']] },
-    general: { title: '❤️ أذكار عامة', items: [['الاستغفار', 'أستغفر الله وأتوب إليه.', 'قدر الاستطاعة'], ['لا حول ولا قوة', 'لا حول ولا قوة إلا بالله.', 'قدر الاستطاعة'], ['الصلاة على النبي', 'اللهم صل وسلم على نبينا محمد.', 'قدر الاستطاعة'], ['التوحيد', 'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.', '100 مرة'], ['التسبيح', 'سبحان الله العظيم وبحمده.', 'قدر الاستطاعة'], ['دعاء الكرب', 'لا إله إلا أنت سبحانك إني كنت من الظالمين.', 'قدر الاستطاعة'], ['الهم والحزن', 'اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن، وضلع الدين وغلبة الرجال.', 'قدر الاستطاعة'], ['ربنا آتنا', 'ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.', 'قدر الاستطاعة']] }
-};
-function loadAdhkarCategory(cat) { const d = ADHKAR[cat]; if (!d)
-    return; byId('adhkarTitle').innerHTML = `<strong>${d.title}</strong>`; byId('adhkarList').innerHTML = d.items.map(x => `<div class="dhikr-card"><strong>${safeText(x[0])}</strong><br>${safeText(x[1])}<br><span class="dhikr-count">${safeText(x[2])}</span><div class="quran-toolbar"><button onclick="countDhikr(this)">✅ قرأت</button><button onclick="shareText('${escapeJs(x[1])}')">📤 مشاركة</button></div></div>`).join(''); }
-function countDhikr(b) { const n = Number(b.dataset.count || 0) + 1; b.dataset.count = n; b.textContent = '✅ ' + n; }
-async function shareText(text) { try {
-    if (navigator.share)
-        await navigator.share({ text });
-    else {
-        await navigator.clipboard.writeText(text);
-        notify('تم النسخ');
-    }
-}
-catch { } }
-const HADITH_BASE = 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/';
-async function fetchHadithEdition(edition) { try {
-    let r = await fetch(`${HADITH_BASE}${edition}.min.json`);
-    if (!r.ok)
-        throw 0;
-    return await r.json();
-}
-catch {
-    const r = await fetch(`${HADITH_BASE}${edition}.json`);
-    if (!r.ok)
-        throw new Error('failed');
-    return await r.json();
-} }
-function resetHadithPage() { hadithPage = 1; }
-async function loadHadiths() { const ed = byId('hadithBook').value, status = byId('hadithStatus'); if (ed === hadithLoadedEdition && hadithCurrent.length) {
-    hadithFiltered = hadithCurrent;
-    renderHadithPage();
-    return;
-} status.textContent = 'جاري تحميل كتاب الحديث...'; try {
-    const j = await fetchHadithEdition(ed);
-    hadithCurrent = Array.isArray(j.hadiths) ? j.hadiths : [];
-    hadithFiltered = hadithCurrent;
-    hadithLoadedEdition = ed;
-    hadithPage = 1;
-    status.innerHTML = `تم تحميل <strong>${hadithCurrent.length.toLocaleString('ar-EG')}</strong> حديثًا.`;
-    renderHadithPage();
-}
-catch {
-    status.textContent = 'تعذر تحميل الكتاب الآن.';
-    byId('hadithList').innerHTML = '';
-} }
-function renderHadithPage() { const box = byId('hadithList'); if (!hadithFiltered.length) {
-    box.innerHTML = '<div class="result">لا توجد أحاديث.</div>';
-    byId('hadithPageInfo').textContent = 'صفحة 0';
-    return;
-} const total = Math.ceil(hadithFiltered.length / hadithPageSize); hadithPage = Math.max(1, Math.min(hadithPage, total)); const start = (hadithPage - 1) * hadithPageSize, items = hadithFiltered.slice(start, start + hadithPageSize); box.innerHTML = items.map((h, i) => { const text = h.text || h.hadith || '', num = h.hadithnumber ?? h.arabicnumber ?? start + i + 1; return `<div class="hadith-card"><strong>حديث رقم ${num}</strong><br><br>${safeText(text)}<div class="quran-toolbar"><button onclick="shareHadith(${start + i})">📤 مشاركة</button></div></div>`; }).join(''); byId('hadithPageInfo').textContent = `صفحة ${hadithPage} من ${total}`; }
-function nextHadithPage() { const t = Math.ceil(hadithFiltered.length / hadithPageSize); if (hadithPage < t) {
-    hadithPage++;
-    renderHadithPage();
-} }
-function previousHadithPage() { if (hadithPage > 1) {
-    hadithPage--;
-    renderHadithPage();
-} }
-async function searchHadiths() { if (!hadithCurrent.length)
-    await loadHadiths(); const q = byId('hadithSearch').value.trim().toLowerCase(); hadithFiltered = q ? hadithCurrent.filter(h => String(h.text || h.hadith || '').toLowerCase().includes(q)) : hadithCurrent; hadithPage = 1; byId('hadithStatus').innerHTML = `نتائج البحث: <strong>${hadithFiltered.length.toLocaleString('ar-EG')}</strong>`; renderHadithPage(); }
-async function randomHadith() { if (!hadithCurrent.length)
-    await loadHadiths(); if (!hadithCurrent.length)
-    return; const h = hadithCurrent[Math.floor(Math.random() * hadithCurrent.length)], text = h.text || h.hadith || ''; byId('hadithList').innerHTML = `<div class="hadith-card"><strong>🎲 حديث عشوائي</strong><br><br>${safeText(text)}<div class="quran-toolbar"><button onclick="shareText('${escapeJs(text)}')">📤 مشاركة</button></div></div>`; byId('hadithPageInfo').textContent = 'حديث عشوائي'; }
-function shareHadith(index) { const h = hadithFiltered[index]; if (h)
-    shareText(h.text || h.hadith || ''); }
-function renderTasbeeh() { if (!byId('tasbeehCount'))
-    return; byId('tasbeehCount').textContent = tasbeeh; const phrase = byId('tasbeehPhrase')?.value || 'سبحان الله'; byId('tasbeehInfo').textContent = tasbeehTarget ? `${phrase} — ${tasbeeh} من ${tasbeehTarget}` : `${phrase} — العدد ${tasbeeh}`; }
-function tasbeehPlus() { tasbeeh++; localStorage.setItem(KEYS.tasbeeh, tasbeeh); if (tasbeehTarget && tasbeeh >= tasbeehTarget) {
-    navigator.vibrate?.([100, 80, 100]);
-    notify('✅ وصلت للهدف');
-} renderTasbeeh(); autoSync(); }
-function setTasbeehTarget(n) { tasbeehTarget = n; tasbeeh = 0; localStorage.setItem(KEYS.tasbeeh, 0); renderTasbeeh(); }
-function tasbeehReset() { tasbeeh = 0; localStorage.setItem(KEYS.tasbeeh, 0); renderTasbeeh(); autoSync(); }
-async function requestNotifications() { if (!('Notification' in window)) {
-    notify('الإشعارات غير مدعومة');
-    return;
-} const p = await Notification.requestPermission(); notify(p === 'granted' ? '✅ تم السماح بالإشعارات' : 'لم يتم السماح بالإشعارات'); }
-function addReminder() { const title = byId('reminderTitle').value.trim(), date = byId('reminderDate').value, type = byId('reminderType').value, note = byId('reminderNote').value.trim(); if (!title || !date) {
-    notify('اكتب اسم التذكير وحدد الموعد');
-    return;
-} reminders.unshift({ id: Date.now(), title, date, type, note, notified: false }); saveJSON(KEYS.reminders, reminders); byId('reminderTitle').value = ''; byId('reminderDate').value = ''; byId('reminderNote').value = ''; renderReminders(); autoSync(); }
-function deleteReminder(id) { reminders = reminders.filter(x => x.id !== id); saveJSON(KEYS.reminders, reminders); renderReminders(); autoSync(); }
-function renderReminders() { const box = byId('remindersList'); if (!box)
-    return; box.innerHTML = reminders.length ? reminders.map(r => `<div class="reminder-row"><div><strong>${safeText(r.title)}</strong><br><small>${new Date(r.date).toLocaleString('ar-EG')}</small>${r.note ? `<br><small>${safeText(r.note)}</small>` : ''}</div><button class="danger" onclick="deleteReminder(${r.id})">حذف</button></div>`).join('') : '<div class="result">لا توجد تذكيرات.</div>'; }
-async function fireNotification(r) { if (!('Notification' in window) || Notification.permission !== 'granted')
-    return; try {
-    const reg = await navigator.serviceWorker?.getRegistration();
-    if (reg)
-        reg.showNotification('⏰ ' + r.title, { body: r.note || 'حان موعد التذكير', icon: './icon-192.png' });
-    else
-        new Notification('⏰ ' + r.title, { body: r.note || 'حان موعد التذكير' });
-}
-catch { } }
-setInterval(() => { const now = Date.now(); let changed = false; reminders.forEach(r => { if (!r.notified && new Date(r.date).getTime() <= now) {
-    r.notified = true;
-    changed = true;
-    fireNotification(r);
-} }); if (changed) {
-    saveJSON(KEYS.reminders, reminders);
-    renderReminders();
-    autoSync();
-} updateNextPrayer(); }, 15000);
-function currencyLabel(c) { return ({ EGP: 'ج.م', SAR: 'ر.س', USD: '$', EUR: '€', QAR: 'ر.ق', AED: 'د.إ' })[c] || c; }
-function addExpense() { const type = byId('expenseType').value, title = byId('expenseTitle').value.trim(), amount = Number(byId('expenseAmount').value), currency = byId('expenseCurrency').value, category = byId('expenseCategory').value, date = byId('expenseDate').value, note = byId('expenseNote').value.trim(); if (!title || amount <= 0 || !date) {
-    notify('أكمل بيانات العملية');
-    return;
-} expenses.unshift({ id: Date.now(), type, title, amount, currency, category, date, note }); saveJSON(KEYS.expenses, expenses); byId('expenseTitle').value = ''; byId('expenseAmount').value = ''; byId('expenseNote').value = ''; renderExpenses(); autoSync(); }
-function deleteExpense(id) { expenses = expenses.filter(x => x.id !== id); saveJSON(KEYS.expenses, expenses); renderExpenses(); autoSync(); }
-function saveBudget() { monthlyBudget = Number(byId('budgetInput').value) || 0; budgetCurrency = byId('budgetCurrency').value; localStorage.setItem(KEYS.budget, monthlyBudget); localStorage.setItem(KEYS.budgetCurrency, budgetCurrency); renderExpenses(); autoSync(); }
-function renderExpenses() { const table = byId('expenseTable'); if (!table)
-    return; const search = byId('expenseSearch')?.value.trim().toLowerCase() || '', filter = byId('expenseFilter')?.value || 'all'; const list = expenses.filter(x => (!search || x.title.toLowerCase().includes(search) || x.category.toLowerCase().includes(search) || String(x.note || '').toLowerCase().includes(search)) && (filter === 'all' || x.type === filter)); table.innerHTML = list.length ? list.map(x => `<tr><td>${x.date}</td><td>${safeText(x.title)}</td><td>${x.type === 'income' ? 'دخل' : 'مصروف'}</td><td>${safeText(x.category)}</td><td>${Number(x.amount).toLocaleString('ar-EG')}</td><td>${x.currency || 'EGP'}</td><td><button class="danger" onclick="deleteExpense(${x.id})">حذف</button></td></tr>`).join('') : '<tr><td colspan="7">لا توجد عمليات</td></tr>'; const now = new Date(), month = expenses.filter(x => { const d = new Date(x.date + 'T12:00:00'); return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && (x.currency || 'EGP') === budgetCurrency; }), income = expenses.filter(x => x.type === 'income' && (x.currency || 'EGP') === budgetCurrency).reduce((s, x) => s + Number(x.amount), 0), outcome = expenses.filter(x => x.type === 'expense' && (x.currency || 'EGP') === budgetCurrency).reduce((s, x) => s + Number(x.amount), 0), mi = month.filter(x => x.type === 'income').reduce((s, x) => s + Number(x.amount), 0), me = month.filter(x => x.type === 'expense').reduce((s, x) => s + Number(x.amount), 0), sym = currencyLabel(budgetCurrency); byId('expBalance').textContent = `${(income - outcome).toLocaleString('ar-EG')} ${sym}`; byId('expMonthIncome').textContent = `${mi.toLocaleString('ar-EG')} ${sym}`; byId('expMonthExpense').textContent = `${me.toLocaleString('ar-EG')} ${sym}`; byId('expBudgetLeft').textContent = monthlyBudget ? `${(monthlyBudget - me).toLocaleString('ar-EG')} ${sym}` : '--'; const p = monthlyBudget ? Math.min(100, me / monthlyBudget * 100) : 0; byId('budgetFill').style.width = p + '%'; byId('budgetFill').style.background = p >= 100 ? '#dc2626' : p >= 70 ? '#f59e0b' : '#16a34a'; byId('budgetInfo').textContent = monthlyBudget ? `استهلكت ${p.toFixed(1)}% من الميزانية` : 'لم تحدد ميزانية.'; byId('budgetInput').value = monthlyBudget || ''; byId('budgetCurrency').value = budgetCurrency; refreshDashboard(); }
-function exportExpensesCSV() { const rows = [['التاريخ', 'الوصف', 'النوع', 'التصنيف', 'المبلغ', 'العملة', 'الملاحظة'], ...expenses.map(x => [x.date, x.title, x.type === 'income' ? 'دخل' : 'مصروف', x.category, x.amount, x.currency || 'EGP', x.note || ''])], csv = '\uFEFF' + rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n'); downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'expenses.csv'); }
-async function imagesToPDF() { const files = [...byId('imageFile').files]; if (!files.length) {
-    notify('اختر صورة أو أكثر');
-    return;
-} try {
-    const { jsPDF } = window.jspdf, pdf = new jsPDF();
-    for (let i = 0; i < files.length; i++) {
-        const data = await fileToDataURL(files[i]), img = await loadImage(data), c = document.createElement('canvas');
-        c.width = img.naturalWidth;
-        c.height = img.naturalHeight;
-        const ctx = c.getContext('2d');
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(0, 0, c.width, c.height);
-        ctx.drawImage(img, 0, 0);
-        const jpeg = c.toDataURL('image/jpeg', .92);
-        if (i > 0)
-            pdf.addPage();
-        const pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight(), ratio = Math.min((pw - 20) / c.width, (ph - 20) / c.height), w = c.width * ratio, h = c.height * ratio;
-        pdf.addImage(jpeg, 'JPEG', (pw - w) / 2, (ph - h) / 2, w, h);
-    }
-    pdf.save('images.pdf');
-    byId('imageConvertStatus').textContent = '✅ تم إنشاء PDF';
-}
-catch {
-    byId('imageConvertStatus').textContent = 'تعذر إنشاء PDF';
-} }
-async function convertImage(mime, ext) { const f = byId('imageFile').files[0]; if (!f) {
-    notify('اختر صورة');
-    return;
-} const src = await fileToDataURL(f), img = await loadImage(src), c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; const ctx = c.getContext('2d'); if (mime === 'image/jpeg') {
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, c.width, c.height);
-} ctx.drawImage(img, 0, 0); c.toBlob(b => downloadBlob(b, 'converted.' + ext), mime, .92); }
-async function compressImage() { const f = byId('imageFile').files[0]; if (!f) {
-    notify('اختر صورة');
-    return;
-} const src = await fileToDataURL(f), img = await loadImage(src); let w = img.naturalWidth, h = img.naturalHeight; if (w > 1600) {
-    h = Math.round(h * 1600 / w);
-    w = 1600;
-} const c = document.createElement('canvas'); c.width = w; c.height = h; const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h); c.toBlob(b => downloadBlob(b, 'compressed.jpg'), 'image/jpeg', .7); }
-async function resizeImage() { const f = byId('imageFile').files[0]; if (!f) {
-    notify('اختر صورة');
-    return;
-} let w = Number(byId('resizeWidth').value), h = Number(byId('resizeHeight').value); if (!w && !h) {
-    notify('اكتب العرض أو الارتفاع');
-    return;
-} const src = await fileToDataURL(f), img = await loadImage(src); if (!w)
-    w = Math.round(img.naturalWidth * h / img.naturalHeight); if (!h)
-    h = Math.round(img.naturalHeight * w / img.naturalWidth); const c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(img, 0, 0, w, h); c.toBlob(b => downloadBlob(b, 'resized.png'), 'image/png'); }
-async function convertVideo() { const f = byId('videoFile').files[0], format = byId('videoOutput').value; if (!f) {
-    notify('اختر فيديو أو صوت');
-    return;
-} if (typeof FFmpeg === 'undefined') {
-    byId('videoStatus').textContent = 'تعذر تحميل محرك الفيديو.';
-    return;
-} try {
-    const { createFFmpeg, fetchFile } = FFmpeg;
-    if (!ffmpegInstance) {
-        byId('videoStatus').textContent = 'جاري تحميل محرك الفيديو لأول مرة...';
-        ffmpegInstance = createFFmpeg({ log: false, corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js' });
-        ffmpegInstance.setProgress(p => byId('videoProgress').style.width = Math.max(0, Math.min(100, p.ratio * 100)) + '%');
-        await ffmpegInstance.load();
-        window._ffFetchFile = fetchFile;
-    }
-    const ext = f.name.includes('.') ? f.name.split('.').pop() : 'mp4', input = 'input.' + ext, output = 'output.' + format;
-    ffmpegInstance.FS('writeFile', input, await window._ffFetchFile(f));
-    byId('videoStatus').textContent = 'جاري التحويل...';
-    if (format === 'mp3')
-        await ffmpegInstance.run('-i', input, '-vn', '-b:a', '192k', output);
-    else if (format === 'gif')
-        await ffmpegInstance.run('-i', input, '-vf', 'fps=10,scale=480:-1:flags=lanczos', output);
-    else if (format === 'webm')
-        await ffmpegInstance.run('-i', input, '-c:v', 'libvpx-vp9', '-b:v', '0', '-crf', '38', '-c:a', 'libopus', output);
-    else
-        await ffmpegInstance.run('-i', input, '-c:v', 'libx264', '-preset', 'veryfast', '-c:a', 'aac', output);
-    const data = ffmpegInstance.FS('readFile', output);
-    downloadBlob(new Blob([data.buffer]), 'converted.' + format);
-    byId('videoStatus').textContent = '✅ تم التحويل';
-    byId('videoProgress').style.width = '100%';
-}
-catch (e) {
-    console.error(e);
-    byId('videoStatus').textContent = 'تعذر التحويل. جرّب ملفًا أصغر.';
-} }
-function changeFocusPreset() { pomoPreset = Number(byId('focusPreset').value); pausePomo(); pomoSeconds = pomoPreset * 60; updatePomoUI(); }
-function updatePomoUI() { const m = Math.floor(pomoSeconds / 60), s = pomoSeconds % 60; byId('pomoTime').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); }
-function startPomo() { if (pomoTimer)
-    return; pomoTimer = setInterval(() => { pomoSeconds--; updatePomoUI(); if (pomoSeconds <= 0) {
-    pausePomo();
-    fireNotification({ title: 'انتهى وقت التركيز', note: 'خذ استراحة قصيرة' });
-    navigator.vibrate?.([200, 100, 200]);
-    pomoSeconds = pomoPreset * 60;
-    updatePomoUI();
-} }, 1000); }
-function pausePomo() { clearInterval(pomoTimer); pomoTimer = null; }
-function resetPomo() { pausePomo(); pomoSeconds = pomoPreset * 60; updatePomoUI(); }
-function addTask() { const text = byId('taskInput').value.trim(), date = byId('taskDate').value, priority = byId('taskPriority').value; if (!text)
-    return; tasks.unshift({ id: Date.now(), text, date, priority, done: false }); byId('taskInput').value = ''; saveJSON(KEYS.tasks, tasks); renderTasks(); autoSync(); }
-function toggleTask(id) { const t = tasks.find(x => x.id === id); if (t)
-    t.done = !t.done; saveJSON(KEYS.tasks, tasks); renderTasks(); autoSync(); }
-function deleteTask(id) { tasks = tasks.filter(x => x.id !== id); saveJSON(KEYS.tasks, tasks); renderTasks(); autoSync(); }
-function renderTasks() { const box = byId('tasksList'); if (!box)
-    return; if (!tasks.length) {
-    box.innerHTML = '<div class="result">لا توجد مهام.</div>';
-    refreshDashboard();
-    return;
-} box.innerHTML = tasks.map(t => `<div class="task ${t.done ? 'done' : ''}"><div class="task-main"><input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${t.id})"><div><span class="task-text">${safeText(t.text)}</span><br><small>${t.priority === 'urgent' ? '🔴 عاجلة' : t.priority === 'important' ? '🟠 مهمة' : '🟢 عادية'}${t.date ? ' • ' + t.date : ''}</small></div></div><button class="danger" onclick="deleteTask(${t.id})">حذف</button></div>`).join(''); refreshDashboard(); }
-function saveNote() { const title = byId('noteTitle').value.trim() || 'بدون عنوان', text = byId('noteText').value.trim(); if (!text)
-    return; notes.unshift({ id: Date.now(), title, text, date: new Date().toLocaleString('ar-EG') }); saveJSON(KEYS.notes, notes); byId('noteTitle').value = ''; byId('noteText').value = ''; renderNotes(); autoSync(); }
-function deleteNote(id) { notes = notes.filter(x => x.id !== id); saveJSON(KEYS.notes, notes); renderNotes(); autoSync(); }
-function renderNotes() { const box = byId('notesList'); if (!box)
-    return; box.innerHTML = notes.length ? notes.map(n => `<div class="saved-note"><strong>${safeText(n.title)}</strong><br><small>${safeText(n.date)}</small><p>${safeText(n.text)}</p><button class="danger" onclick="deleteNote(${n.id})">حذف</button></div>`).join('') : '<div class="result">لا توجد ملاحظات.</div>'; }
-function calcAdd(v) { byId('calcScreen').value += v; }
-function calcClear() { byId('calcScreen').value = ''; }
-function calcBack() { byId('calcScreen').value = byId('calcScreen').value.slice(0, -1); }
-function calcResult() { const s = byId('calcScreen'); try {
-    if (!/^[0-9+\-*/().\s]+$/.test(s.value))
-        throw 0;
-    s.value = Function('"use strict";return (' + s.value + ')')();
-}
-catch {
-    s.value = 'خطأ';
-} }
-function calculateAge() { const v = byId('birthDate').value; if (!v)
-    return; const b = new Date(v + 'T12:00:00'), n = new Date(); if (b > n) {
-    byId('ageResult').textContent = 'تاريخ غير صحيح';
-    return;
-} let y = n.getFullYear() - b.getFullYear(), m = n.getMonth() - b.getMonth(), d = n.getDate() - b.getDate(); if (d < 0) {
-    m--;
-    d += new Date(n.getFullYear(), n.getMonth(), 0).getDate();
-} if (m < 0) {
-    y--;
-    m += 12;
-} byId('ageResult').innerHTML = `<strong>${y}</strong> سنة و <strong>${m}</strong> شهر و <strong>${d}</strong> يوم`; }
-function calculateDiscount() { const p = Number(byId('originalPrice').value), d = Number(byId('discountPercent').value), s = p * d / 100; byId('discountResult').innerHTML = `قيمة الخصم: <strong>${s.toFixed(2)}</strong><br>السعر بعد الخصم: <strong>${(p - s).toFixed(2)}</strong>`; }
-function calculatePercent() { const n = Number(byId('percentNumber').value), p = Number(byId('percentValue').value); byId('percentResult').innerHTML = `النتيجة: <strong>${(n * p / 100).toFixed(2)}</strong>`; }
-const unitData = { length: { meter: ['متر', 1], kilometer: ['كيلومتر', 1000], centimeter: ['سنتيمتر', .01], millimeter: ['ملليمتر', .001], mile: ['ميل', 1609.344], foot: ['قدم', .3048] }, weight: { kilogram: ['كيلوجرام', 1], gram: ['جرام', .001], milligram: ['ملليجرام', .000001], pound: ['رطل', .45359237] }, temperature: { celsius: ['سيلسيوس'], fahrenheit: ['فهرنهايت'], kelvin: ['كلفن'] } };
-function updateUnits() { const t = byId('unitType').value, o = Object.entries(unitData[t]).map(([v, d]) => `<option value="${v}">${d[0]}</option>`).join(''); byId('fromUnit').innerHTML = o; byId('toUnit').innerHTML = o; if (byId('toUnit').options.length > 1)
-    byId('toUnit').selectedIndex = 1; }
-function convertUnit() { const v = Number(byId('unitValue').value), t = byId('unitType').value, f = byId('fromUnit').value, to = byId('toUnit').value; let r = v; if (t === 'length' || t === 'weight')
-    r = v * unitData[t][f][1] / unitData[t][to][1];
-else {
-    let c = f === 'celsius' ? v : f === 'fahrenheit' ? (v - 32) * 5 / 9 : v - 273.15;
-    r = to === 'celsius' ? c : to === 'fahrenheit' ? c * 9 / 5 + 32 : c + 273.15;
-} byId('unitResult').innerHTML = `النتيجة: <strong>${Number(r.toFixed(6))}</strong>`; }
-function generatePassword() { let chars = ''; if (byId('upper').checked)
-    chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; if (byId('lower').checked)
-    chars += 'abcdefghijklmnopqrstuvwxyz'; if (byId('numbers').checked)
-    chars += '0123456789'; if (byId('symbols').checked)
-    chars += '!@#$%^&*()-_=+[]{}?'; if (!chars) {
-    notify('اختر نوعًا واحدًا على الأقل');
-    return;
-} const len = Math.min(64, Math.max(4, Number(byId('passwordLength').value) || 16)), arr = new Uint32Array(len); crypto.getRandomValues(arr); byId('passwordResult').value = [...arr].map(n => chars[n % chars.length]).join(''); }
-async function copyPassword() { const v = byId('passwordResult').value; if (v) {
-    await navigator.clipboard.writeText(v);
-    notify('تم النسخ');
-} }
-function makeQR() { const box = byId('qrcode'), text = byId('qrText').value.trim(); box.innerHTML = ''; if (text)
-    new QRCode(box, { text, width: 220, height: 220 }); }
-function calcZakat() { const m = Number(byId('zakatMoney').value) || 0; byId('zakatResult').innerHTML = `الزكاة = <strong>${(m * .025).toLocaleString('ar-EG')}</strong><br><small>بنسبة 2.5% مع مراعاة النصاب والحول.</small>`; }
-function calcBMI() { const w = Number(byId('bmiWeight').value), h = Number(byId('bmiHeight').value) / 100; if (!w || !h)
-    return; const b = w / (h * h), s = b < 18.5 ? 'نقص وزن' : b < 25 ? 'وزن طبيعي' : b < 30 ? 'زيادة وزن' : 'سمنة'; byId('bmiResult').innerHTML = `BMI = <strong>${b.toFixed(1)}</strong> — ${s}`; }
-function getAppData() { return { tasks, notes, expenses, reminders, monthlyBudget, budgetCurrency, tasbeeh, quranFavorites, quranLastRead, khatma, quranMemory, dark: document.body.classList.contains('dark') }; }
-function saveEverythingLocal() { saveJSON(KEYS.tasks, tasks); saveJSON(KEYS.notes, notes); saveJSON(KEYS.expenses, expenses); saveJSON(KEYS.reminders, reminders); localStorage.setItem(KEYS.budget, monthlyBudget); localStorage.setItem(KEYS.budgetCurrency, budgetCurrency); localStorage.setItem(KEYS.tasbeeh, tasbeeh); saveJSON(KEYS.favorites, quranFavorites); saveJSON(KEYS.lastRead, quranLastRead); saveJSON(KEYS.khatma, khatma); saveJSON(KEYS.memory, quranMemory); localStorage.setItem(KEYS.dark, document.body.classList.contains('dark') ? '1' : '0'); }
-function applyAppData(d) { if (!d)
-    return; if (Array.isArray(d.tasks))
-    tasks = d.tasks; if (Array.isArray(d.notes))
-    notes = d.notes; if (Array.isArray(d.expenses))
-    expenses = d.expenses; if (Array.isArray(d.reminders))
-    reminders = d.reminders; monthlyBudget = Number(d.monthlyBudget ?? monthlyBudget); budgetCurrency = d.budgetCurrency || budgetCurrency; tasbeeh = Number(d.tasbeeh ?? tasbeeh); if (Array.isArray(d.quranFavorites))
-    quranFavorites = d.quranFavorites; quranLastRead = d.quranLastRead ?? quranLastRead; khatma = d.khatma ?? khatma; if (Array.isArray(d.quranMemory))
-    quranMemory = d.quranMemory; if (typeof d.dark === 'boolean')
-    document.body.classList.toggle('dark', d.dark); saveEverythingLocal(); renderAll(); }
-function exportBackup() { downloadBlob(new Blob([JSON.stringify({ version: 4, createdAt: new Date().toISOString(), appData: getAppData() }, null, 2)], { type: 'application/json' }), 'AH13-backup.json'); }
-async function importBackup() { const f = byId('backupFile').files[0]; if (!f)
-    return; try {
-    const d = JSON.parse(await f.text());
-    applyAppData(d.appData || d);
-    notify('✅ تم استعادة النسخة');
-    autoSync();
-}
-catch {
-    notify('ملف النسخة غير صحيح');
-} }
-function showAuthPage(p) { byId('auth_register').classList.toggle('active', p === 'register'); byId('auth_login').classList.toggle('active', p === 'login'); byId('registerTab').classList.toggle('active', p === 'register'); byId('loginTab').classList.toggle('active', p === 'login'); }
-function normalizeUsername(u) { return String(u).trim().toLowerCase().replace(/\s+/g, ''); }
-async function usernameToAuthEmail(username) { const bytes = new TextEncoder().encode(normalizeUsername(username)), buf = await crypto.subtle.digest('SHA-256', bytes), hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join(''); return 'u_' + hex.slice(0, 40) + '@ah13.local'; }
-function initFirebase() { try {
-    if (!firebase.apps.length)
-        firebase.initializeApp(FIREBASE_CONFIG);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    firebaseReady = true;
-    auth.onAuthStateChanged(async (user) => { currentUser = user; if (user) {
-        await loadUserProfile();
-        await loadCloud();
-    }
-    else {
-        currentProfile = null;
-        updateAuthUI();
-    } });
-}
-catch (e) {
-    console.error(e);
-    firebaseReady = false;
-} }
-async function createAccount() { if (!firebaseReady) {
-    notify('Firebase غير جاهز');
-    return;
-} const name = byId('registerName').value.trim(), username = normalizeUsername(byId('registerUsername').value), email = byId('registerEmail').value.trim(), pass = byId('registerPassword').value, pass2 = byId('registerPassword2').value; if (name.length < 2 || username.length < 3 || !email.includes('@')) {
-    notify('أكمل الاسم واسم المستخدم والبريد');
-    return;
-} if (pass.length < 6) {
-    notify('كلمة المرور 6 أحرف على الأقل');
-    return;
-} if (pass !== pass2) {
-    notify('كلمتا المرور غير متطابقتين');
-    return;
-} try {
-    const authEmail = await usernameToAuthEmail(username), cred = await auth.createUserWithEmailAndPassword(authEmail, pass);
-    currentUser = cred.user;
-    currentProfile = { name, username, email };
-    await db.collection('users').doc(currentUser.uid).set({ profile: currentProfile, appData: getAppData(), createdAt: firebase.firestore.FieldValue.serverTimestamp(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
-    updateAuthUI();
-    notify('✅ تم إنشاء الحساب');
-}
-catch (e) {
-    console.error(e);
-    notify(e.code === 'auth/email-already-in-use' ? 'اسم المستخدم مستخدم بالفعل' : e.code === 'auth/operation-not-allowed' ? 'فعّل Email/Password في Firebase' : 'تعذر إنشاء الحساب');
-} }
-async function loginAccount() { if (!firebaseReady) {
-    notify('Firebase غير جاهز');
-    return;
-} const u = normalizeUsername(byId('loginUsername').value), p = byId('loginPassword').value; if (!u || !p) {
-    notify('اكتب اسم المستخدم وكلمة المرور');
-    return;
-} try {
-    await auth.signInWithEmailAndPassword(await usernameToAuthEmail(u), p);
-    notify('✅ تم تسجيل الدخول');
-}
-catch {
-    notify('اسم المستخدم أو كلمة المرور غير صحيحة');
-} }
-async function logoutAccount() { if (auth) {
-    await auth.signOut();
-    notify('تم تسجيل الخروج');
-} }
-async function loadUserProfile() { if (!currentUser || !db)
-    return; try {
-    const doc = await db.collection('users').doc(currentUser.uid).get();
-    if (doc.exists)
-        currentProfile = doc.data().profile || null;
-    updateAuthUI();
-}
-catch (e) {
-    console.error(e);
-} }
-async function syncNow() { if (!currentUser || !db) {
-    notify('سجل الدخول أولًا');
-    return;
-} try {
-    await db.collection('users').doc(currentUser.uid).set({ profile: currentProfile || {}, appData: getAppData(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
-    notify('✅ تمت المزامنة');
-}
-catch (e) {
-    console.error(e);
-    notify('تعذر المزامنة. راجع Firestore Rules');
-} }
-async function loadCloud() { if (!currentUser || !db)
-    return; try {
-    const doc = await db.collection('users').doc(currentUser.uid).get();
-    if (!doc.exists) {
-        await syncNow();
-        return;
-    }
-    const d = doc.data();
-    if (d.appData) {
-        applyAppData(d.appData);
-        notify('☁️ تم تحميل بيانات حسابك');
-    }
-    else
-        await syncNow();
-}
-catch (e) {
-    console.error(e);
-    notify('تعذر تحميل بيانات السحابة');
-} }
-function autoSync() { if (!currentUser)
-    return; clearTimeout(syncTimer); syncTimer = setTimeout(() => syncNow().catch(() => { }), 1800); }
-function updateAuthUI() { const box = byId('authStatus'); if (!box)
-    return; if (currentUser && currentProfile) {
-    box.innerHTML = `✅ مسجل الدخول<br><strong>${safeText(currentProfile.name)}</strong><br>اسم المستخدم: @${safeText(currentProfile.username)}<br>البريد: ${safeText(currentProfile.email)}`;
-    byId('syncPill').textContent = '☁️ @' + currentProfile.username;
-}
-else {
-    box.innerHTML = 'غير مسجل الدخول — بياناتك محفوظة على هذا الجهاز فقط.';
-    byId('syncPill').textContent = '☁️ محلي';
-} }
-function refreshDashboard() { byId('dashTasks').textContent = tasks.filter(t => !t.done).length; const c = budgetCurrency || 'EGP', income = expenses.filter(x => x.type === 'income' && (x.currency || 'EGP') === c).reduce((s, x) => s + Number(x.amount), 0), out = expenses.filter(x => x.type === 'expense' && (x.currency || 'EGP') === c).reduce((s, x) => s + Number(x.amount), 0); byId('dashBalance').textContent = `${(income - out).toLocaleString('ar-EG')} ${currencyLabel(c)}`; }
-window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstallPrompt = e; byId('installNowButton').style.display = 'block'; });
-window.addEventListener('appinstalled', () => { deferredInstallPrompt = null; byId('installNowButton').style.display = 'none'; notify('✅ تم تثبيت التطبيق'); });
-function openInstallModal() { byId('installModal').classList.add('show'); }
-function closeInstallModal() { byId('installModal').classList.remove('show'); }
-async function installAppNow() { if (deferredInstallPrompt) {
-    await deferredInstallPrompt.prompt();
-    deferredInstallPrompt = null;
-}
-else
-    notify('استخدم تعليمات التثبيت الظاهرة'); }
-function renderAll() { renderTasks(); renderNotes(); renderExpenses(); renderReminders(); renderTasbeeh(); renderFavorites(); renderKhatma(); refreshDashboard(); updatePomoUI(); updateAuthUI(); }
-function initializeApp() { updateHijri(); updateLocationPill(); setupQuran(); renderAll(); updateUnits(); const today = new Date().toISOString().slice(0, 10); byId('expenseDate').value = today; byId('taskDate').value = today; if (locationData) {
-    refreshWeather();
-    refreshPrayer();
-} initFirebase(); loadAdhkarCategory('morning'); }
-if ('serviceWorker' in navigator)
-    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => { }));
-document.addEventListener('DOMContentLoaded', initializeApp);
+function cleanPrayerTime(t){return String(t||'').split(' ')[0]}
+function timeMinutes(t){const[a,b]=cleanPrayerTime(t).split(':').map(Number);return a*60+b}
+function currentPrayerMinutes(){if(prayerTimezone){try{const parts=new Intl.DateTimeFormat('en-US',{timeZone:prayerTimezone,hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());return Number(parts.find(p=>p.type==='hour').value)*60+Number(parts.find(p=>p.type==='minute').value)}catch{}}const n=new Date();return n.getHours()*60+n.getMinutes()}
+async function refreshPrayer(){if(!locationData)return;try{const method=byId('prayerMethod')?.value||4,ts=Math.floor(Date.now()/1000),d=await fetch(`https://api.aladhan.com/v1/timings/${ts}?latitude=${locationData.lat}&longitude=${locationData.lon}&method=${method}`).then(r=>r.json());prayerTimes=d.data.timings;prayerTimezone=d.data.meta?.timezone||null;const list=[['Fajr','الفجر'],['Sunrise','الشروق'],['Dhuhr','الظهر'],['Asr','العصر'],['Maghrib','المغرب'],['Isha','العشاء']];byId('prayerGrid').innerHTML=list.map(([k,n])=>`<div class="prayer">${n}<strong>${cleanPrayerTime(prayerTimes[k])}</strong></div>`).join('');updateNextPrayer();updateQibla()}catch{byId('nextPrayerBox').textContent='تعذر تحميل مواقيت الصلاة.'}}
+function updateNextPrayer(){if(!prayerTimes)return;const list=[['Fajr','الفجر'],['Dhuhr','الظهر'],['Asr','العصر'],['Maghrib','المغرب'],['Isha','العشاء']],now=currentPrayerMinutes();let next=null;for(const[k,n]of list){const m=timeMinutes(prayerTimes[k]);if(m>now){next={name:n,time:cleanPrayerTime(prayerTimes[k]),diff:m-now};break}}if(!next)next={name:'الفجر',time:cleanPrayerTime(prayerTimes.Fajr),diff:24*60-now+timeMinutes(prayerTimes.Fajr)};byId('nextPrayerBox').innerHTML=`الصلاة القادمة: <strong>${next.name}</strong> ${next.time} — بعد ${Math.floor(next.diff/60)} ساعة و ${next.diff%60} دقيقة`;byId('dashPrayer').textContent=`${next.name} ${next.time}`}
+const rad=v=>v*Math.PI/180,deg=v=>v*180/Math.PI;
+function updateQibla(){if(!locationData)return;const k={lat:21.4225,lon:39.8262},p1=rad(locationData.lat),p2=rad(k.lat),dl=rad(k.lon-locationData.lon);let a=Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl));a=(deg(a)+360)%360;qiblaBearing=a;byId('qiblaArrow').style.transform=`rotate(${a}deg)`;byId('qiblaText').innerHTML=`اتجاه القبلة تقريبًا <strong>${a.toFixed(1)}°</strong> من الشمال.<br><br><button class="primary" onclick="enableLiveCompass()">🧭 تشغيل البوصلة الحية</button>`}
+async function enableLiveCompass(){if(typeof DeviceOrientationEvent==='undefined'){notify('البوصلة غير مدعومة');return}try{if(typeof DeviceOrientationEvent.requestPermission==='function'){const p=await DeviceOrientationEvent.requestPermission();if(p!=='granted'){notify('لم يتم السماح بالبوصلة');return}}window.addEventListener('deviceorientation',e=>{let h=typeof e.webkitCompassHeading==='number'?e.webkitCompassHeading:(typeof e.alpha==='number'?360-e.alpha:null);if(h!==null&&qiblaBearing!==null)byId('qiblaArrow').style.transform=`rotate(${qiblaBearing-h}deg)`},true);notify('✅ تم تشغيل البوصلة')}catch{notify('تعذر تشغيل البوصلة')}}
+
+const SURAH_NAMES=['الفاتحة','البقرة','آل عمران','النساء','المائدة','الأنعام','الأعراف','الأنفال','التوبة','يونس','هود','يوسف','الرعد','إبراهيم','الحجر','النحل','الإسراء','الكهف','مريم','طه','الأنبياء','الحج','المؤمنون','النور','الفرقان','الشعراء','النمل','القصص','العنكبوت','الروم','لقمان','السجدة','الأحزاب','سبأ','فاطر','يس','الصافات','ص','الزمر','غافر','فصلت','الشورى','الزخرف','الدخان','الجاثية','الأحقاف','محمد','الفتح','الحجرات','ق','الذاريات','الطور','النجم','القمر','الرحمن','الواقعة','الحديد','المجادلة','الحشر','الممتحنة','الصف','الجمعة','المنافقون','التغابن','الطلاق','التحريم','الملك','القلم','الحاقة','المعارج','نوح','الجن','المزمل','المدثر','القيامة','الإنسان','المرسلات','النبأ','النازعات','عبس','التكوير','الانفطار','المطففين','الانشقاق','البروج','الطارق','الأعلى','الغاشية','الفجر','البلد','الشمس','الليل','الضحى','الشرح','التين','العلق','القدر','البينة','الزلزلة','العاديات','القارعة','التكاثر','العصر','الهمزة','الفيل','قريش','الماعون','الكوثر','الكافرون','النصر','المسد','الإخلاص','الفلق','الناس'];
+let quranReady=false;
+function setupQuran(){if(quranReady){renderFavorites();renderKhatma();return}const options=SURAH_NAMES.map((n,i)=>`<option value="${i+1}">${i+1}. ${n}</option>`).join('');byId('quranSurahSelect').innerHTML=options;byId('memorySurah').innerHTML=options;byId('juzGrid').innerHTML=Array.from({length:30},(_,i)=>`<button onclick="loadJuz(${i+1})">الجزء ${i+1}</button>`).join('');renderFavorites();renderKhatma();quranReady=true;if(quranLastRead?.surah)byId('quranSurahSelect').value=quranLastRead.surah}
+function openQuranTab(tab,button){document.querySelectorAll('.quran-page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.quran-tab').forEach(p=>p.classList.remove('active'));byId('quranPage_'+tab).classList.add('active');if(button)button.classList.add('active');if(tab==='favorites')renderFavorites();if(tab==='khatma')renderKhatma()}
+function reciterInfo(){const[v,b]=byId('reciterSelect').value.split('|');return{edition:v,bitrate:b||128}}
+function setSurahAudio(number){const{edition,bitrate}=reciterInfo();const player=byId('surahAudioPlayer');player.src=`https://cdn.islamic.network/quran/audio-surah/${bitrate}/${edition}/${number}.mp3`;player.load()}
+function loadSelectedSurah(){loadFullSurah(Number(byId('quranSurahSelect').value))}
+async function loadFullSurah(number){setupQuran();currentSurah=Number(number);byId('quranSurahSelect').value=currentSurah;setSurahAudio(currentSurah);const r=byId('quranReader');r.innerHTML='<div class="result">جاري تحميل السورة كاملة...</div>';try{let response=await fetch(`https://api.alquran.cloud/v1/surah/${currentSurah}/quran-uthmani-quran-academy`);if(!response.ok)response=await fetch(`https://api.alquran.cloud/v1/surah/${currentSurah}/quran-uthmani`);if(!response.ok)throw new Error('quran');const d=await response.json(),s=d.data;const text=s.ayahs.map(a=>`${a.text} ﴿${a.numberInSurah}﴾`).join(' ');r.innerHTML=`<div class="quran-book"><div class="surah-title">سورة ${s.name}</div><div class="surah-meta">${s.numberOfAyahs} آية • ${s.revelationType==='Meccan'?'مكية':'مدنية'}</div><div class="surah-full-text" style="font-size:${quranFontSize}px">${text}</div></div>`;quranLastRead={surah:currentSurah,date:Date.now()};saveJSON(KEYS.lastRead,quranLastRead);autoSync()}catch{r.innerHTML='<div class="result">تعذر تحميل السورة. تأكد من الإنترنت.</div>'}}
+function playFullSurah(){currentSurah=Number(byId('quranSurahSelect').value||currentSurah);setSurahAudio(currentSurah);const p=byId('surahAudioPlayer');p.play().catch(()=>notify('اضغط زر التشغيل في مشغل الصوت'))}
+function changeQuranFont(change){quranFontSize=Math.max(20,Math.min(44,quranFontSize+change));document.querySelectorAll('.surah-full-text,.ayah-snippet').forEach(e=>e.style.fontSize=quranFontSize+'px')}
+function continueReading(){if(!quranLastRead?.surah){notify('لا توجد سورة محفوظة');return}loadFullSurah(quranLastRead.surah)}
+function toggleFavoriteSurah(){const n=Number(byId('quranSurahSelect').value);if(quranFavorites.includes(n)){quranFavorites=quranFavorites.filter(x=>x!==n);notify('تم حذف السورة من المفضلة')}else{quranFavorites.push(n);notify('⭐ تمت إضافة السورة للمفضلة')}saveJSON(KEYS.favorites,quranFavorites);renderFavorites();autoSync()}
+function renderFavorites(){const box=byId('quranFavorites');if(!box)return;if(!quranFavorites.length){box.innerHTML='<div class="result">لا توجد سور مفضلة.</div>';return}box.innerHTML=quranFavorites.sort((a,b)=>a-b).map(n=>`<div class="bookmark-card"><strong>${n}. ${SURAH_NAMES[n-1]}</strong><br><br><button class="primary" onclick="openFavoriteSurah(${n})">📖 فتح السورة كاملة</button> <button class="danger" onclick="removeFavoriteSurah(${n})">حذف</button></div>`).join('')}
+function openFavoriteSurah(n){openQuranTab('surahs',document.querySelector('.quran-tab'));loadFullSurah(n)}
+function removeFavoriteSurah(n){quranFavorites=quranFavorites.filter(x=>x!==n);saveJSON(KEYS.favorites,quranFavorites);renderFavorites();autoSync()}
+async function loadJuz(n){const box=byId('juzReader');box.innerHTML='<div class="result">جاري تحميل الجزء كاملًا...</div>';try{const d=await fetch(`https://api.alquran.cloud/v1/juz/${n}/quran-uthmani-quran-academy`).then(r=>r.json());const grouped={};d.data.ayahs.forEach(a=>{const s=a.surah.number;if(!grouped[s])grouped[s]=[];grouped[s].push(a)});box.innerHTML=Object.entries(grouped).map(([s,ayahs])=>`<div class="quran-book"><div class="surah-title">سورة ${ayahs[0].surah.name}</div><div class="surah-full-text" style="font-size:${quranFontSize}px">${ayahs.map(a=>`${a.text} ﴿${a.numberInSurah}﴾`).join(' ')}</div><br><button class="primary" onclick="openFavoriteSurah(${s})">فتح السورة كاملة</button></div>`).join('')}catch{box.innerHTML='<div class="result">تعذر تحميل الجزء.</div>'}}
+async function searchQuran(){const q=byId('quranSearchInput').value.trim(),box=byId('quranSearchResults');if(!q)return;box.innerHTML='<div class="result">جاري البحث...</div>';try{const d=await fetch(`https://api.alquran.cloud/v1/search/${encodeURIComponent(q)}/all/ar`).then(r=>r.json()),m=d.data.matches||[];box.innerHTML=m.length?m.slice(0,100).map(a=>`<div class="search-card"><div class="ayah-snippet">${safeText(a.text)}</div><small>${a.surah.name} • الآية ${a.numberInSurah}</small><br><br><button class="primary" onclick="openFavoriteSurah(${a.surah.number})">📖 فتح السورة كاملة</button></div>`).join(''):'<div class="result">لا توجد نتائج.</div>'}catch{box.innerHTML='<div class="result">تعذر البحث الآن.</div>'}}
+function startKhatma(){const days=Number(byId('khatmaDays').value);khatma={days,completed:0,started:Date.now(),lastDate:null};saveJSON(KEYS.khatma,khatma);renderKhatma();autoSync();notify('✅ بدأت الختمة')}
+function completeKhatmaDay(){if(!khatma){notify('ابدأ خطة ختمة أولًا');return}const today=new Date().toISOString().slice(0,10);if(khatma.lastDate===today){notify('ورد اليوم مسجل بالفعل');return}if(khatma.completed<khatma.days)khatma.completed++;khatma.lastDate=today;saveJSON(KEYS.khatma,khatma);renderKhatma();autoSync();notify('✅ تم تسجيل ورد اليوم')}
+function renderKhatma(){const i=byId('khatmaInfo'),b=byId('khatmaProgress');if(!i||!b)return;if(!khatma){i.textContent='لم تبدأ ختمة بعد.';b.style.width='0%';return}const p=Math.min(100,khatma.completed/khatma.days*100),pages=Math.ceil(604/khatma.days);i.innerHTML=`الخطة: <strong>${khatma.days} يوم</strong><br>أنجزت: <strong>${khatma.completed} من ${khatma.days}</strong><br>وردك التقريبي: <strong>${pages} صفحة يوميًا</strong><br>الإنجاز: <strong>${p.toFixed(0)}%</strong>`;b.style.width=p+'%'}
+async function startMemorize(){const s=Number(byId('memorySurah').value),from=Number(byId('memoryFrom').value),to=Number(byId('memoryTo').value),repeat=Number(byId('repeatCount').value),area=byId('memorizeArea');if(from<1||to<from){notify('راجع أرقام الآيات');return}area.innerHTML='<div class="result">جاري التحميل...</div>';try{const{edition}=reciterInfo(),[t,a]=await Promise.all([fetch(`https://api.alquran.cloud/v1/surah/${s}/quran-uthmani-quran-academy`).then(r=>r.json()),fetch(`https://api.alquran.cloud/v1/surah/${s}/${edition}`).then(r=>r.json())]);const ayahs=t.data.ayahs.filter(x=>x.numberInSurah>=from&&x.numberInSurah<=to);area.innerHTML=ayahs.map(x=>{const au=a.data.ayahs[x.numberInSurah-1],done=quranMemory.some(m=>m.surah===s&&m.ayah===x.numberInSurah);return`<div class="memory-card"><div class="ayah-snippet" id="memoryText_${x.numberInSurah}">${x.text} ﴿${x.numberInSurah}﴾</div><audio id="memoryAudio_${x.numberInSurah}" src="${au?.audio||''}"></audio><div class="quran-toolbar"><button onclick="playMemoryAyah(${x.numberInSurah},${repeat})">🔁 تشغيل ×${repeat}</button><button onclick="toggleMemoryText(${x.numberInSurah})">🙈 إخفاء/إظهار</button><button onclick="markMemorized(${s},${x.numberInSurah},this)">${done?'✅ محفوظة':'حفظتها'}</button></div></div>`}).join('')}catch{area.innerHTML='<div class="result">تعذر تحميل آيات الحفظ.</div>'}}
+function toggleMemoryText(a){byId('memoryText_'+a)?.classList.toggle('hidden-ayah')}
+function playMemoryAyah(a,times){const au=byId('memoryAudio_'+a);if(!au)return;let played=0;const replay=()=>{played++;if(played<times){au.currentTime=0;au.play().catch(()=>{})}else au.removeEventListener('ended',replay)};au.addEventListener('ended',replay);au.currentTime=0;au.play().catch(()=>{})}
+function markMemorized(s,a,b){if(!quranMemory.some(x=>x.surah===s&&x.ayah===a)){quranMemory.push({surah:s,ayah:a,date:Date.now()});saveJSON(KEYS.memory,quranMemory);b.textContent='✅ محفوظة';autoSync();notify('✅ تم تسجيل الآية كمحفوظة')}}
+
+function openIslamicTab(tab,button){document.querySelectorAll('.islamic-page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.islamic-tab').forEach(p=>p.classList.remove('active'));byId('islamicPage_'+tab).classList.add('active');if(button)button.classList.add('active');if(tab==='adhkar')loadAdhkarCategory('morning')}
+const ADHKAR={
+morning:{title:'🌅 أذكار الصباح',items:[['آية الكرسي','اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ','مرة'],['الإخلاص','قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ','3 مرات'],['الفلق','قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ ۝ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ','3 مرات'],['الناس','قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ ۝ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ','3 مرات'],['ذكر الصباح','أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.','مرة'],['اللهم بك أصبحنا','اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.','مرة'],['رضيت بالله','رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.','3 مرات'],['بسم الله الذي لا يضر','بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.','3 مرات'],['حسبي الله','حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.','7 مرات'],['اللهم ما أصبح بي','اللهم ما أصبح بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.','مرة'],['يا حي يا قيوم','يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.','مرة'],['سيد الاستغفار','اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك علي وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.','مرة'],['سبحان الله وبحمده','سبحان الله وبحمده.','100 مرة']]},
+evening:{title:'🌙 أذكار المساء',items:[['آية الكرسي','اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ...','مرة'],['الإخلاص','قُلْ هُوَ اللَّهُ أَحَدٌ...','3 مرات'],['الفلق','قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...','3 مرات'],['الناس','قُلْ أَعُوذُ بِرَبِّ النَّاسِ...','3 مرات'],['ذكر المساء','أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.','مرة'],['اللهم بك أمسينا','اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير.','مرة'],['رضيت بالله','رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.','3 مرات'],['بسم الله الذي لا يضر','بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.','3 مرات'],['أعوذ بكلمات الله','أعوذ بكلمات الله التامات من شر ما خلق.','3 مرات'],['يا حي يا قيوم','يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.','مرة'],['سيد الاستغفار','اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت...','مرة']]},
+sleep:{title:'😴 أذكار النوم',items:[['باسمك أموت وأحيا','باسمك اللهم أموت وأحيا.','مرة'],['اللهم قني عذابك','اللهم قني عذابك يوم تبعث عبادك.','3 مرات'],['آية الكرسي','قراءة آية الكرسي قبل النوم.','مرة'],['آخر آيتين من البقرة','قراءة آخر آيتين من سورة البقرة.','مرة'],['اللهم أسلمت نفسي إليك','اللهم أسلمت نفسي إليك وفوضت أمري إليك ووجهت وجهي إليك وألجأت ظهري إليك رغبة ورهبة إليك، لا ملجأ ولا منجى منك إلا إليك.','مرة'],['التسبيح','سبحان الله 33، والحمد لله 33، والله أكبر 34.','قبل النوم']]},
+wakeup:{title:'☀️ أذكار الاستيقاظ',items:[['الحمد لله','الحمد لله الذي أحيانا بعدما أماتنا وإليه النشور.','مرة'],['ذكر الاستيقاظ','لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، سبحان الله والحمد لله ولا إله إلا الله والله أكبر ولا حول ولا قوة إلا بالله.','مرة']]},
+afterPrayer:{title:'🕌 بعد الصلاة',items:[['الاستغفار','أستغفر الله.','3 مرات'],['اللهم أنت السلام','اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام.','مرة'],['التسبيح','سبحان الله.','33 مرة'],['التحميد','الحمد لله.','33 مرة'],['التكبير','الله أكبر.','33 مرة'],['تمام المائة','لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.','مرة'],['آية الكرسي','قراءة آية الكرسي بعد الصلاة المكتوبة.','مرة'],['المعوذات','الإخلاص والفلق والناس.','مرة']]},
+home:{title:'🏠 أذكار المنزل',items:[['دخول المنزل','بسم الله ولجنا وبسم الله خرجنا وعلى ربنا توكلنا.','عند الدخول'],['الخروج من المنزل','بسم الله، توكلت على الله، ولا حول ولا قوة إلا بالله.','عند الخروج']]},
+travel:{title:'🚗 أذكار السفر',items:[['دعاء الركوب','سبحان الذي سخر لنا هذا وما كنا له مقرنين وإنا إلى ربنا لمنقلبون.','عند الركوب'],['دعاء السفر','اللهم إنا نسألك في سفرنا هذا البر والتقوى ومن العمل ما ترضى، اللهم هون علينا سفرنا هذا واطو عنا بعده.','عند السفر'],['الرجوع','آيبون تائبون عابدون لربنا حامدون.','عند الرجوع']]},
+food:{title:'🍽️ أذكار الطعام',items:[['قبل الطعام','بسم الله.','قبل الأكل'],['إذا نسي','بسم الله أوله وآخره.','عند التذكر'],['بعد الطعام','الحمد لله الذي أطعمني هذا ورزقنيه من غير حول مني ولا قوة.','بعد الأكل'],['لصاحب الطعام','اللهم بارك لهم فيما رزقتهم واغفر لهم وارحمهم.','دعاء']]},
+general:{title:'❤️ أذكار عامة',items:[['الاستغفار','أستغفر الله وأتوب إليه.','قدر الاستطاعة'],['لا حول ولا قوة','لا حول ولا قوة إلا بالله.','قدر الاستطاعة'],['الصلاة على النبي','اللهم صل وسلم على نبينا محمد.','قدر الاستطاعة'],['التوحيد','لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.','100 مرة'],['التسبيح','سبحان الله العظيم وبحمده.','قدر الاستطاعة'],['دعاء الكرب','لا إله إلا أنت سبحانك إني كنت من الظالمين.','قدر الاستطاعة'],['الهم والحزن','اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن، وضلع الدين وغلبة الرجال.','قدر الاستطاعة'],['ربنا آتنا','ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.','قدر الاستطاعة']]}}
+function loadAdhkarCategory(cat){const d=ADHKAR[cat];if(!d)return;byId('adhkarTitle').innerHTML=`<strong>${d.title}</strong>`;byId('adhkarList').innerHTML=d.items.map(x=>`<div class="dhikr-card"><strong>${safeText(x[0])}</strong><br>${safeText(x[1])}<br><span class="dhikr-count">${safeText(x[2])}</span><div class="quran-toolbar"><button onclick="countDhikr(this)">✅ قرأت</button><button onclick="shareText('${escapeJs(x[1])}')">📤 مشاركة</button></div></div>`).join('')}
+function countDhikr(b){const n=Number(b.dataset.count||0)+1;b.dataset.count=n;b.textContent='✅ '+n}
+async function shareText(text){try{if(navigator.share)await navigator.share({text});else{await navigator.clipboard.writeText(text);notify('تم النسخ')}}catch{}}
+const HADITH_BASE='https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/';
+async function fetchHadithEdition(edition){try{let r=await fetch(`${HADITH_BASE}${edition}.min.json`);if(!r.ok)throw 0;return await r.json()}catch{const r=await fetch(`${HADITH_BASE}${edition}.json`);if(!r.ok)throw new Error('failed');return await r.json()}}
+function resetHadithPage(){hadithPage=1}
+async function loadHadiths(){const ed=byId('hadithBook').value,status=byId('hadithStatus');if(ed===hadithLoadedEdition&&hadithCurrent.length){hadithFiltered=hadithCurrent;renderHadithPage();return}status.textContent='جاري تحميل كتاب الحديث...';try{const j=await fetchHadithEdition(ed);hadithCurrent=Array.isArray(j.hadiths)?j.hadiths:[];hadithFiltered=hadithCurrent;hadithLoadedEdition=ed;hadithPage=1;status.innerHTML=`تم تحميل <strong>${hadithCurrent.length.toLocaleString('ar-EG')}</strong> حديثًا.`;renderHadithPage()}catch{status.textContent='تعذر تحميل الكتاب الآن.';byId('hadithList').innerHTML=''}}
+function renderHadithPage(){const box=byId('hadithList');if(!hadithFiltered.length){box.innerHTML='<div class="result">لا توجد أحاديث.</div>';byId('hadithPageInfo').textContent='صفحة 0';return}const total=Math.ceil(hadithFiltered.length/hadithPageSize);hadithPage=Math.max(1,Math.min(hadithPage,total));const start=(hadithPage-1)*hadithPageSize,items=hadithFiltered.slice(start,start+hadithPageSize);box.innerHTML=items.map((h,i)=>{const text=h.text||h.hadith||'',num=h.hadithnumber??h.arabicnumber??start+i+1;return`<div class="hadith-card"><strong>حديث رقم ${num}</strong><br><br>${safeText(text)}<div class="quran-toolbar"><button onclick="shareHadith(${start+i})">📤 مشاركة</button></div></div>`}).join('');byId('hadithPageInfo').textContent=`صفحة ${hadithPage} من ${total}`}
+function nextHadithPage(){const t=Math.ceil(hadithFiltered.length/hadithPageSize);if(hadithPage<t){hadithPage++;renderHadithPage()}}
+function previousHadithPage(){if(hadithPage>1){hadithPage--;renderHadithPage()}}
+async function searchHadiths(){if(!hadithCurrent.length)await loadHadiths();const q=byId('hadithSearch').value.trim().toLowerCase();hadithFiltered=q?hadithCurrent.filter(h=>String(h.text||h.hadith||'').toLowerCase().includes(q)):hadithCurrent;hadithPage=1;byId('hadithStatus').innerHTML=`نتائج البحث: <strong>${hadithFiltered.length.toLocaleString('ar-EG')}</strong>`;renderHadithPage()}
+async function randomHadith(){if(!hadithCurrent.length)await loadHadiths();if(!hadithCurrent.length)return;const h=hadithCurrent[Math.floor(Math.random()*hadithCurrent.length)],text=h.text||h.hadith||'';byId('hadithList').innerHTML=`<div class="hadith-card"><strong>🎲 حديث عشوائي</strong><br><br>${safeText(text)}<div class="quran-toolbar"><button onclick="shareText('${escapeJs(text)}')">📤 مشاركة</button></div></div>`;byId('hadithPageInfo').textContent='حديث عشوائي'}
+function shareHadith(index){const h=hadithFiltered[index];if(h)shareText(h.text||h.hadith||'')}
+function renderTasbeeh(){if(!byId('tasbeehCount'))return;byId('tasbeehCount').textContent=tasbeeh;const phrase=byId('tasbeehPhrase')?.value||'سبحان الله';byId('tasbeehInfo').textContent=tasbeehTarget?`${phrase} — ${tasbeeh} من ${tasbeehTarget}`:`${phrase} — العدد ${tasbeeh}`}
+function tasbeehPlus(){tasbeeh++;localStorage.setItem(KEYS.tasbeeh,tasbeeh);if(tasbeehTarget&&tasbeeh>=tasbeehTarget){navigator.vibrate?.([100,80,100]);notify('✅ وصلت للهدف')}renderTasbeeh();autoSync()}
+function setTasbeehTarget(n){tasbeehTarget=n;tasbeeh=0;localStorage.setItem(KEYS.tasbeeh,0);renderTasbeeh()}
+function tasbeehReset(){tasbeeh=0;localStorage.setItem(KEYS.tasbeeh,0);renderTasbeeh();autoSync()}
+
+async function requestNotifications(){if(!('Notification'in window)){notify('الإشعارات غير مدعومة');return}const p=await Notification.requestPermission();notify(p==='granted'?'✅ تم السماح بالإشعارات':'لم يتم السماح بالإشعارات')}
+function addReminder(){const title=byId('reminderTitle').value.trim(),date=byId('reminderDate').value,type=byId('reminderType').value,note=byId('reminderNote').value.trim();if(!title||!date){notify('اكتب اسم التذكير وحدد الموعد');return}reminders.unshift({id:Date.now(),title,date,type,note,notified:false});saveJSON(KEYS.reminders,reminders);byId('reminderTitle').value='';byId('reminderDate').value='';byId('reminderNote').value='';renderReminders();autoSync()}
+function deleteReminder(id){reminders=reminders.filter(x=>x.id!==id);saveJSON(KEYS.reminders,reminders);renderReminders();autoSync()}
+function renderReminders(){const box=byId('remindersList');if(!box)return;box.innerHTML=reminders.length?reminders.map(r=>`<div class="reminder-row"><div><strong>${safeText(r.title)}</strong><br><small>${new Date(r.date).toLocaleString('ar-EG')}</small>${r.note?`<br><small>${safeText(r.note)}</small>`:''}</div><button class="danger" onclick="deleteReminder(${r.id})">حذف</button></div>`).join(''):'<div class="result">لا توجد تذكيرات.</div>'}
+async function fireNotification(r){if(!('Notification'in window)||Notification.permission!=='granted')return;try{const reg=await navigator.serviceWorker?.getRegistration();if(reg)reg.showNotification('⏰ '+r.title,{body:r.note||'حان موعد التذكير',icon:'./icon-192.png'});else new Notification('⏰ '+r.title,{body:r.note||'حان موعد التذكير'})}catch{}}
+setInterval(()=>{const now=Date.now();let changed=false;reminders.forEach(r=>{if(!r.notified&&new Date(r.date).getTime()<=now){r.notified=true;changed=true;fireNotification(r)}});if(changed){saveJSON(KEYS.reminders,reminders);renderReminders();autoSync()}updateNextPrayer()},15000);
+
+function currencyLabel(c){return({EGP:'ج.م',SAR:'ر.س',USD:'$',EUR:'€',QAR:'ر.ق',AED:'د.إ'})[c]||c}
+function addExpense(){const type=byId('expenseType').value,title=byId('expenseTitle').value.trim(),amount=Number(byId('expenseAmount').value),currency=byId('expenseCurrency').value,category=byId('expenseCategory').value,date=byId('expenseDate').value,note=byId('expenseNote').value.trim();if(!title||amount<=0||!date){notify('أكمل بيانات العملية');return}expenses.unshift({id:Date.now(),type,title,amount,currency,category,date,note});saveJSON(KEYS.expenses,expenses);byId('expenseTitle').value='';byId('expenseAmount').value='';byId('expenseNote').value='';renderExpenses();autoSync()}
+function deleteExpense(id){expenses=expenses.filter(x=>x.id!==id);saveJSON(KEYS.expenses,expenses);renderExpenses();autoSync()}
+function saveBudget(){monthlyBudget=Number(byId('budgetInput').value)||0;budgetCurrency=byId('budgetCurrency').value;localStorage.setItem(KEYS.budget,monthlyBudget);localStorage.setItem(KEYS.budgetCurrency,budgetCurrency);renderExpenses();autoSync()}
+function renderExpenses(){const table=byId('expenseTable');if(!table)return;const search=byId('expenseSearch')?.value.trim().toLowerCase()||'',filter=byId('expenseFilter')?.value||'all';const list=expenses.filter(x=>(!search||x.title.toLowerCase().includes(search)||x.category.toLowerCase().includes(search)||String(x.note||'').toLowerCase().includes(search))&&(filter==='all'||x.type===filter));table.innerHTML=list.length?list.map(x=>`<tr><td>${x.date}</td><td>${safeText(x.title)}</td><td>${x.type==='income'?'دخل':'مصروف'}</td><td>${safeText(x.category)}</td><td>${Number(x.amount).toLocaleString('ar-EG')}</td><td>${x.currency||'EGP'}</td><td><button class="danger" onclick="deleteExpense(${x.id})">حذف</button></td></tr>`).join(''):'<tr><td colspan="7">لا توجد عمليات</td></tr>';const now=new Date(),month=expenses.filter(x=>{const d=new Date(x.date+'T12:00:00');return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()&&(x.currency||'EGP')===budgetCurrency}),income=expenses.filter(x=>x.type==='income'&&(x.currency||'EGP')===budgetCurrency).reduce((s,x)=>s+Number(x.amount),0),outcome=expenses.filter(x=>x.type==='expense'&&(x.currency||'EGP')===budgetCurrency).reduce((s,x)=>s+Number(x.amount),0),mi=month.filter(x=>x.type==='income').reduce((s,x)=>s+Number(x.amount),0),me=month.filter(x=>x.type==='expense').reduce((s,x)=>s+Number(x.amount),0),sym=currencyLabel(budgetCurrency);byId('expBalance').textContent=`${(income-outcome).toLocaleString('ar-EG')} ${sym}`;byId('expMonthIncome').textContent=`${mi.toLocaleString('ar-EG')} ${sym}`;byId('expMonthExpense').textContent=`${me.toLocaleString('ar-EG')} ${sym}`;byId('expBudgetLeft').textContent=monthlyBudget?`${(monthlyBudget-me).toLocaleString('ar-EG')} ${sym}`:'--';const p=monthlyBudget?Math.min(100,me/monthlyBudget*100):0;byId('budgetFill').style.width=p+'%';byId('budgetFill').style.background=p>=100?'#dc2626':p>=70?'#f59e0b':'#16a34a';byId('budgetInfo').textContent=monthlyBudget?`استهلكت ${p.toFixed(1)}% من الميزانية`:'لم تحدد ميزانية.';byId('budgetInput').value=monthlyBudget||'';byId('budgetCurrency').value=budgetCurrency;refreshDashboard()}
+function exportExpensesCSV(){const rows=[['التاريخ','الوصف','النوع','التصنيف','المبلغ','العملة','الملاحظة'],...expenses.map(x=>[x.date,x.title,x.type==='income'?'دخل':'مصروف',x.category,x.amount,x.currency||'EGP',x.note||''])],csv='\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'expenses.csv')}
+
+async function imagesToPDF(){const files=[...byId('imageFile').files];if(!files.length){notify('اختر صورة أو أكثر');return}try{const{jsPDF}=window.jspdf,pdf=new jsPDF();for(let i=0;i<files.length;i++){const data=await fileToDataURL(files[i]),img=await loadImage(data),c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);const jpeg=c.toDataURL('image/jpeg',.92);if(i>0)pdf.addPage();const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight(),ratio=Math.min((pw-20)/c.width,(ph-20)/c.height),w=c.width*ratio,h=c.height*ratio;pdf.addImage(jpeg,'JPEG',(pw-w)/2,(ph-h)/2,w,h)}pdf.save('images.pdf');byId('imageConvertStatus').textContent='✅ تم إنشاء PDF'}catch{byId('imageConvertStatus').textContent='تعذر إنشاء PDF'}}
+async function convertImage(mime,ext){const f=byId('imageFile').files[0];if(!f){notify('اختر صورة');return}const src=await fileToDataURL(f),img=await loadImage(src),c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d');if(mime==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height)}ctx.drawImage(img,0,0);c.toBlob(b=>downloadBlob(b,'converted.'+ext),mime,.92)}
+async function compressImage(){const f=byId('imageFile').files[0];if(!f){notify('اختر صورة');return}const src=await fileToDataURL(f),img=await loadImage(src);let w=img.naturalWidth,h=img.naturalHeight;if(w>1600){h=Math.round(h*1600/w);w=1600}const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);c.toBlob(b=>downloadBlob(b,'compressed.jpg'),'image/jpeg',.7)}
+async function resizeImage(){const f=byId('imageFile').files[0];if(!f){notify('اختر صورة');return}let w=Number(byId('resizeWidth').value),h=Number(byId('resizeHeight').value);if(!w&&!h){notify('اكتب العرض أو الارتفاع');return}const src=await fileToDataURL(f),img=await loadImage(src);if(!w)w=Math.round(img.naturalWidth*h/img.naturalHeight);if(!h)h=Math.round(img.naturalHeight*w/img.naturalWidth);const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);c.toBlob(b=>downloadBlob(b,'resized.png'),'image/png')}
+async function convertVideo(){const f=byId('videoFile').files[0],format=byId('videoOutput').value;if(!f){notify('اختر فيديو أو صوت');return}if(typeof FFmpeg==='undefined'){byId('videoStatus').textContent='تعذر تحميل محرك الفيديو.';return}try{const{createFFmpeg,fetchFile}=FFmpeg;if(!ffmpegInstance){byId('videoStatus').textContent='جاري تحميل محرك الفيديو لأول مرة...';ffmpegInstance=createFFmpeg({log:false,corePath:'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'});ffmpegInstance.setProgress(p=>byId('videoProgress').style.width=Math.max(0,Math.min(100,p.ratio*100))+'%');await ffmpegInstance.load();window._ffFetchFile=fetchFile}const ext=f.name.includes('.')?f.name.split('.').pop():'mp4',input='input.'+ext,output='output.'+format;ffmpegInstance.FS('writeFile',input,await window._ffFetchFile(f));byId('videoStatus').textContent='جاري التحويل...';if(format==='mp3')await ffmpegInstance.run('-i',input,'-vn','-b:a','192k',output);else if(format==='gif')await ffmpegInstance.run('-i',input,'-vf','fps=10,scale=480:-1:flags=lanczos',output);else if(format==='webm')await ffmpegInstance.run('-i',input,'-c:v','libvpx-vp9','-b:v','0','-crf','38','-c:a','libopus',output);else await ffmpegInstance.run('-i',input,'-c:v','libx264','-preset','veryfast','-c:a','aac',output);const data=ffmpegInstance.FS('readFile',output);downloadBlob(new Blob([data.buffer]),'converted.'+format);byId('videoStatus').textContent='✅ تم التحويل';byId('videoProgress').style.width='100%'}catch(e){console.error(e);byId('videoStatus').textContent='تعذر التحويل. جرّب ملفًا أصغر.'}}
+
+function changeFocusPreset(){pomoPreset=Number(byId('focusPreset').value);pausePomo();pomoSeconds=pomoPreset*60;updatePomoUI()}
+function updatePomoUI(){const m=Math.floor(pomoSeconds/60),s=pomoSeconds%60;byId('pomoTime').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function startPomo(){if(pomoTimer)return;pomoTimer=setInterval(()=>{pomoSeconds--;updatePomoUI();if(pomoSeconds<=0){pausePomo();fireNotification({title:'انتهى وقت التركيز',note:'خذ استراحة قصيرة'});navigator.vibrate?.([200,100,200]);pomoSeconds=pomoPreset*60;updatePomoUI()}},1000)}
+function pausePomo(){clearInterval(pomoTimer);pomoTimer=null}
+function resetPomo(){pausePomo();pomoSeconds=pomoPreset*60;updatePomoUI()}
+
+function addTask(){const text=byId('taskInput').value.trim(),date=byId('taskDate').value,priority=byId('taskPriority').value;if(!text)return;tasks.unshift({id:Date.now(),text,date,priority,done:false});byId('taskInput').value='';saveJSON(KEYS.tasks,tasks);renderTasks();autoSync()}
+function toggleTask(id){const t=tasks.find(x=>x.id===id);if(t)t.done=!t.done;saveJSON(KEYS.tasks,tasks);renderTasks();autoSync()}
+function deleteTask(id){tasks=tasks.filter(x=>x.id!==id);saveJSON(KEYS.tasks,tasks);renderTasks();autoSync()}
+function renderTasks(){const box=byId('tasksList');if(!box)return;if(!tasks.length){box.innerHTML='<div class="result">لا توجد مهام.</div>';refreshDashboard();return}box.innerHTML=tasks.map(t=>`<div class="task ${t.done?'done':''}"><div class="task-main"><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${t.id})"><div><span class="task-text">${safeText(t.text)}</span><br><small>${t.priority==='urgent'?'🔴 عاجلة':t.priority==='important'?'🟠 مهمة':'🟢 عادية'}${t.date?' • '+t.date:''}</small></div></div><button class="danger" onclick="deleteTask(${t.id})">حذف</button></div>`).join('');refreshDashboard()}
+function saveNote(){const title=byId('noteTitle').value.trim()||'بدون عنوان',text=byId('noteText').value.trim();if(!text)return;notes.unshift({id:Date.now(),title,text,date:new Date().toLocaleString('ar-EG')});saveJSON(KEYS.notes,notes);byId('noteTitle').value='';byId('noteText').value='';renderNotes();autoSync()}
+function deleteNote(id){notes=notes.filter(x=>x.id!==id);saveJSON(KEYS.notes,notes);renderNotes();autoSync()}
+function renderNotes(){const box=byId('notesList');if(!box)return;box.innerHTML=notes.length?notes.map(n=>`<div class="saved-note"><strong>${safeText(n.title)}</strong><br><small>${safeText(n.date)}</small><p>${safeText(n.text)}</p><button class="danger" onclick="deleteNote(${n.id})">حذف</button></div>`).join(''):'<div class="result">لا توجد ملاحظات.</div>'}
+function calcAdd(v){byId('calcScreen').value+=v}function calcClear(){byId('calcScreen').value=''}function calcBack(){byId('calcScreen').value=byId('calcScreen').value.slice(0,-1)}function calcResult(){const s=byId('calcScreen');try{if(!/^[0-9+\-*/().\s]+$/.test(s.value))throw 0;s.value=Function('"use strict";return ('+s.value+')')()}catch{s.value='خطأ'}}
+function calculateAge(){const v=byId('birthDate').value;if(!v)return;const b=new Date(v+'T12:00:00'),n=new Date();if(b>n){byId('ageResult').textContent='تاريخ غير صحيح';return}let y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth(),d=n.getDate()-b.getDate();if(d<0){m--;d+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}byId('ageResult').innerHTML=`<strong>${y}</strong> سنة و <strong>${m}</strong> شهر و <strong>${d}</strong> يوم`}
+function calculateDiscount(){const p=Number(byId('originalPrice').value),d=Number(byId('discountPercent').value),s=p*d/100;byId('discountResult').innerHTML=`قيمة الخصم: <strong>${s.toFixed(2)}</strong><br>السعر بعد الخصم: <strong>${(p-s).toFixed(2)}</strong>`}
+function calculatePercent(){const n=Number(byId('percentNumber').value),p=Number(byId('percentValue').value);byId('percentResult').innerHTML=`النتيجة: <strong>${(n*p/100).toFixed(2)}</strong>`}
+const unitData={length:{meter:['متر',1],kilometer:['كيلومتر',1000],centimeter:['سنتيمتر',.01],millimeter:['ملليمتر',.001],mile:['ميل',1609.344],foot:['قدم',.3048]},weight:{kilogram:['كيلوجرام',1],gram:['جرام',.001],milligram:['ملليجرام',.000001],pound:['رطل',.45359237]},temperature:{celsius:['سيلسيوس'],fahrenheit:['فهرنهايت'],kelvin:['كلفن']}};
+function updateUnits(){const t=byId('unitType').value,o=Object.entries(unitData[t]).map(([v,d])=>`<option value="${v}">${d[0]}</option>`).join('');byId('fromUnit').innerHTML=o;byId('toUnit').innerHTML=o;if(byId('toUnit').options.length>1)byId('toUnit').selectedIndex=1}
+function convertUnit(){const v=Number(byId('unitValue').value),t=byId('unitType').value,f=byId('fromUnit').value,to=byId('toUnit').value;let r=v;if(t==='length'||t==='weight')r=v*unitData[t][f][1]/unitData[t][to][1];else{let c=f==='celsius'?v:f==='fahrenheit'?(v-32)*5/9:v-273.15;r=to==='celsius'?c:to==='fahrenheit'?c*9/5+32:c+273.15}byId('unitResult').innerHTML=`النتيجة: <strong>${Number(r.toFixed(6))}</strong>`}
+function generatePassword(){let chars='';if(byId('upper').checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';if(byId('lower').checked)chars+='abcdefghijklmnopqrstuvwxyz';if(byId('numbers').checked)chars+='0123456789';if(byId('symbols').checked)chars+='!@#$%^&*()-_=+[]{}?';if(!chars){notify('اختر نوعًا واحدًا على الأقل');return}const len=Math.min(64,Math.max(4,Number(byId('passwordLength').value)||16)),arr=new Uint32Array(len);crypto.getRandomValues(arr);byId('passwordResult').value=[...arr].map(n=>chars[n%chars.length]).join('')}
+async function copyPassword(){const v=byId('passwordResult').value;if(v){await navigator.clipboard.writeText(v);notify('تم النسخ')}}
+function makeQR(){const box=byId('qrcode'),text=byId('qrText').value.trim();box.innerHTML='';if(text)new QRCode(box,{text,width:220,height:220})}
+function calcZakat(){const m=Number(byId('zakatMoney').value)||0;byId('zakatResult').innerHTML=`الزكاة = <strong>${(m*.025).toLocaleString('ar-EG')}</strong><br><small>بنسبة 2.5% مع مراعاة النصاب والحول.</small>`}
+function calcBMI(){const w=Number(byId('bmiWeight').value),h=Number(byId('bmiHeight').value)/100;if(!w||!h)return;const b=w/(h*h),s=b<18.5?'نقص وزن':b<25?'وزن طبيعي':b<30?'زيادة وزن':'سمنة';byId('bmiResult').innerHTML=`BMI = <strong>${b.toFixed(1)}</strong> — ${s}`}
+
+function getAppData(){return{tasks,notes,expenses,reminders,monthlyBudget,budgetCurrency,tasbeeh,quranFavorites,quranLastRead,khatma,quranMemory,dark:document.body.classList.contains('dark')}}
+function saveEverythingLocal(){saveJSON(KEYS.tasks,tasks);saveJSON(KEYS.notes,notes);saveJSON(KEYS.expenses,expenses);saveJSON(KEYS.reminders,reminders);localStorage.setItem(KEYS.budget,monthlyBudget);localStorage.setItem(KEYS.budgetCurrency,budgetCurrency);localStorage.setItem(KEYS.tasbeeh,tasbeeh);saveJSON(KEYS.favorites,quranFavorites);saveJSON(KEYS.lastRead,quranLastRead);saveJSON(KEYS.khatma,khatma);saveJSON(KEYS.memory,quranMemory);localStorage.setItem(KEYS.dark,document.body.classList.contains('dark')?'1':'0')}
+function applyAppData(d){if(!d)return;if(Array.isArray(d.tasks))tasks=d.tasks;if(Array.isArray(d.notes))notes=d.notes;if(Array.isArray(d.expenses))expenses=d.expenses;if(Array.isArray(d.reminders))reminders=d.reminders;monthlyBudget=Number(d.monthlyBudget??monthlyBudget);budgetCurrency=d.budgetCurrency||budgetCurrency;tasbeeh=Number(d.tasbeeh??tasbeeh);if(Array.isArray(d.quranFavorites))quranFavorites=d.quranFavorites;quranLastRead=d.quranLastRead??quranLastRead;khatma=d.khatma??khatma;if(Array.isArray(d.quranMemory))quranMemory=d.quranMemory;if(typeof d.dark==='boolean')document.body.classList.toggle('dark',d.dark);saveEverythingLocal();renderAll()}
+function exportBackup(){downloadBlob(new Blob([JSON.stringify({version:4,createdAt:new Date().toISOString(),appData:getAppData()},null,2)],{type:'application/json'}),'AH13-backup.json')}
+async function importBackup(){const f=byId('backupFile').files[0];if(!f)return;try{const d=JSON.parse(await f.text());applyAppData(d.appData||d);notify('✅ تم استعادة النسخة');autoSync()}catch{notify('ملف النسخة غير صحيح')}}
+
+function showAuthPage(p){byId('auth_register').classList.toggle('active',p==='register');byId('auth_login').classList.toggle('active',p==='login');byId('registerTab').classList.toggle('active',p==='register');byId('loginTab').classList.toggle('active',p==='login')}
+function normalizeUsername(u){return String(u).trim().toLowerCase().replace(/\s+/g,'')}
+async function usernameToAuthEmail(username){const bytes=new TextEncoder().encode(normalizeUsername(username)),buf=await crypto.subtle.digest('SHA-256',bytes),hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');return'u_'+hex.slice(0,40)+'@ah13.local'}
+function initFirebase(){try{if(!firebase.apps.length)firebase.initializeApp(FIREBASE_CONFIG);auth=firebase.auth();db=firebase.firestore();firebaseReady=true;auth.onAuthStateChanged(async user=>{currentUser=user;if(user){await loadUserProfile();await loadCloud()}else{currentProfile=null;updateAuthUI()}})}catch(e){console.error(e);firebaseReady=false}}
+async function createAccount(){if(!firebaseReady){notify('Firebase غير جاهز');return}const name=byId('registerName').value.trim(),username=normalizeUsername(byId('registerUsername').value),email=byId('registerEmail').value.trim(),pass=byId('registerPassword').value,pass2=byId('registerPassword2').value;if(name.length<2||username.length<3||!email.includes('@')){notify('أكمل الاسم واسم المستخدم والبريد');return}if(pass.length<6){notify('كلمة المرور 6 أحرف على الأقل');return}if(pass!==pass2){notify('كلمتا المرور غير متطابقتين');return}try{const authEmail=await usernameToAuthEmail(username),cred=await auth.createUserWithEmailAndPassword(authEmail,pass);currentUser=cred.user;currentProfile={name,username,email};await db.collection('users').doc(currentUser.uid).set({profile:currentProfile,appData:getAppData(),createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});updateAuthUI();notify('✅ تم إنشاء الحساب')}catch(e){console.error(e);notify(e.code==='auth/email-already-in-use'?'اسم المستخدم مستخدم بالفعل':e.code==='auth/operation-not-allowed'?'فعّل Email/Password في Firebase':'تعذر إنشاء الحساب')}}
+async function loginAccount(){if(!firebaseReady){notify('Firebase غير جاهز');return}const u=normalizeUsername(byId('loginUsername').value),p=byId('loginPassword').value;if(!u||!p){notify('اكتب اسم المستخدم وكلمة المرور');return}try{await auth.signInWithEmailAndPassword(await usernameToAuthEmail(u),p);notify('✅ تم تسجيل الدخول')}catch{notify('اسم المستخدم أو كلمة المرور غير صحيحة')}}
+async function logoutAccount(){if(auth){await auth.signOut();notify('تم تسجيل الخروج')}}
+async function loadUserProfile(){if(!currentUser||!db)return;try{const doc=await db.collection('users').doc(currentUser.uid).get();if(doc.exists)currentProfile=doc.data().profile||null;updateAuthUI()}catch(e){console.error(e)}}
+async function syncNow(){if(!currentUser||!db){notify('سجل الدخول أولًا');return}try{await db.collection('users').doc(currentUser.uid).set({profile:currentProfile||{},appData:getAppData(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});notify('✅ تمت المزامنة')}catch(e){console.error(e);notify('تعذر المزامنة. راجع Firestore Rules')}}
+async function loadCloud(){if(!currentUser||!db)return;try{const doc=await db.collection('users').doc(currentUser.uid).get();if(!doc.exists){await syncNow();return}const d=doc.data();if(d.appData){applyAppData(d.appData);notify('☁️ تم تحميل بيانات حسابك')}else await syncNow()}catch(e){console.error(e);notify('تعذر تحميل بيانات السحابة')}}
+function autoSync(){if(!currentUser)return;clearTimeout(syncTimer);syncTimer=setTimeout(()=>syncNow().catch(()=>{}),1800)}
+function updateAuthUI(){const box=byId('authStatus');if(!box)return;if(currentUser&&currentProfile){box.innerHTML=`✅ مسجل الدخول<br><strong>${safeText(currentProfile.name)}</strong><br>اسم المستخدم: @${safeText(currentProfile.username)}<br>البريد: ${safeText(currentProfile.email)}`;byId('syncPill').textContent='☁️ @'+currentProfile.username}else{box.innerHTML='غير مسجل الدخول — بياناتك محفوظة على هذا الجهاز فقط.';byId('syncPill').textContent='☁️ محلي'}}
+
+function refreshDashboard(){byId('dashTasks').textContent=tasks.filter(t=>!t.done).length;const c=budgetCurrency||'EGP',income=expenses.filter(x=>x.type==='income'&&(x.currency||'EGP')===c).reduce((s,x)=>s+Number(x.amount),0),out=expenses.filter(x=>x.type==='expense'&&(x.currency||'EGP')===c).reduce((s,x)=>s+Number(x.amount),0);byId('dashBalance').textContent=`${(income-out).toLocaleString('ar-EG')} ${currencyLabel(c)}`}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;byId('installNowButton').style.display='block'});window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;byId('installNowButton').style.display='none';notify('✅ تم تثبيت التطبيق')});function openInstallModal(){byId('installModal').classList.add('show')}function closeInstallModal(){byId('installModal').classList.remove('show')}async function installAppNow(){if(deferredInstallPrompt){await deferredInstallPrompt.prompt();deferredInstallPrompt=null}else notify('استخدم تعليمات التثبيت الظاهرة')}
+function renderAll(){renderTasks();renderNotes();renderExpenses();renderReminders();renderTasbeeh();renderFavorites();renderKhatma();refreshDashboard();updatePomoUI();updateAuthUI()}
+function initializeApp(){updateDates();updateLocationPill();setupQuran();renderAll();updateUnits();const today=new Date().toISOString().slice(0,10);byId('expenseDate').value=today;byId('taskDate').value=today;if(locationData){if(!locationData.name)updateLocationName();refreshWeather();refreshPrayer()}initFirebase();loadAdhkarCategory('morning')}
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(reg=>reg.update()).catch(()=>{}));document.addEventListener('DOMContentLoaded',initializeApp);
 </script>
 </body>
 </html>
