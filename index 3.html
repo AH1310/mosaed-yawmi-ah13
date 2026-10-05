@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090d18">
+
+<title>لعبة الجاسوس - AH13</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Tahoma,sans-serif;
+    color:#fff;
+    background:
+    radial-gradient(circle at top,#23345c 0%,#10182b 38%,#070a12 100%);
+}
+
+button,input,select{
+    font:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+#app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    margin:auto;
+    padding:75px 16px 30px;
+}
+
+.ah13{
+    position:fixed;
+    right:14px;
+    top:14px;
+    z-index:999;
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#735cff,#3e7bff);
+    border:1px solid rgba(255,255,255,.25);
+    width:64px;
+    height:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:11px;
+    font-weight:900;
+    letter-spacing:1px;
+    box-shadow:0 6px 25px rgba(74,94,255,.35);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.logo .icon{
+    font-size:60px;
+}
+
+.logo h1{
+    font-size:32px;
+    margin-top:5px;
+}
+
+.logo p{
+    color:#9ca9c4;
+    margin-top:8px;
+    line-height:1.7;
+}
+
+.card{
+    background:rgba(18,25,44,.88);
+    border:1px solid rgba(255,255,255,.09);
+    padding:20px;
+    border-radius:24px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.title{
+    text-align:center;
+    font-size:26px;
+    font-weight:900;
+}
+
+.subtitle{
+    text-align:center;
+    color:#9ca9c4;
+    margin-top:7px;
+    line-height:1.6;
+}
+
+.label{
+    color:#cdd5e7;
+    margin:18px 2px 8px;
+    display:block;
+}
+
+select,
+.nameInput{
+    width:100%;
+    padding:14px;
+    background:#0e1527;
+    color:#fff;
+    border:1px solid #283451;
+    border-radius:14px;
+    outline:none;
+    font-size:16px;
+}
+
+.playerRow{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+}
+
+.playerRow .nameInput{
+    flex:1;
+}
+
+.removeBtn{
+    width:50px;
+    border-radius:14px;
+    background:#42202a;
+    color:#ff7b8b;
+    font-weight:bold;
+}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border-radius:15px;
+    margin-top:12px;
+    font-weight:900;
+    font-size:17px;
+    transition:.15s;
+}
+
+.btn:active{
+    transform:scale(.98);
+}
+
+.primary{
+    background:linear-gradient(135deg,#735cff,#416fff);
+    color:#fff;
+}
+
+.secondary{
+    background:#252e45;
+    color:#fff;
+}
+
+.green{
+    background:#159466;
+    color:#fff;
+}
+
+.red{
+    background:#b7374e;
+    color:#fff;
+}
+
+.gold{
+    background:linear-gradient(135deg,#e3a91b,#c77e08);
+    color:#fff;
+}
+
+.small{
+    font-size:13px;
+    color:#8997b5;
+    text-align:center;
+    margin-top:13px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.bigIcon{
+    text-align:center;
+    font-size:72px;
+    margin-bottom:12px;
+}
+
+.center{
+    text-align:center;
+}
+
+.playerBig{
+    font-size:31px;
+    font-weight:900;
+    margin-top:12px;
+    color:#7dd9ff;
+}
+
+.roleBox{
+    margin-top:22px;
+    padding:24px 15px;
+    border-radius:20px;
+    background:#0b1221;
+    border:1px solid #27344e;
+}
+
+.secretWord{
+    color:#68d9ff;
+    font-size:38px;
+    font-weight:900;
+    margin-top:10px;
+}
+
+.spyText{
+    color:#ff6679;
+    font-size:35px;
+    font-weight:900;
+}
+
+.scoreBox{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0d1424;
+    border:1px solid #25304a;
+    border-radius:15px;
+    padding:13px;
+    margin-top:9px;
+}
+
+.score{
+    color:#ffd761;
+    font-weight:900;
+}
+
+.questionBox{
+    padding:28px 15px;
+    text-align:center;
+    border-radius:22px;
+    background:
+    linear-gradient(145deg,rgba(86,79,255,.18),rgba(0,180,255,.08));
+    border:1px solid rgba(114,142,255,.25);
+    margin-top:20px;
+}
+
+.questionName{
+    font-size:29px;
+    font-weight:900;
+    color:#7fdbff;
+    margin:10px 0;
+}
+
+.arrow{
+    font-size:42px;
+    margin:5px;
+}
+
+.askTarget{
+    font-size:29px;
+    font-weight:900;
+    color:#ffdb69;
+}
+
+.voteOption,
+.guessOption{
+    width:100%;
+    padding:16px;
+    margin-top:10px;
+    border-radius:15px;
+    color:#fff;
+    background:#202b42;
+    border:1px solid #32405d;
+    font-size:17px;
+    font-weight:800;
+}
+
+.voteOption:active,
+.guessOption:active{
+    background:#35466c;
+}
+
+.progress{
+    text-align:center;
+    color:#8492ad;
+    margin-top:15px;
+}
+
+.feedback{
+    margin-top:18px;
+    padding:17px;
+    border-radius:17px;
+    font-weight:900;
+    font-size:18px;
+    line-height:1.7;
+    text-align:center;
+}
+
+.feedback.correct{
+    color:#75ffc3;
+    background:rgba(16,160,103,.15);
+    border:1px solid rgba(33,218,143,.3);
+}
+
+.feedback.wrong{
+    color:#ff9eaa;
+    background:rgba(200,55,77,.14);
+    border:1px solid rgba(230,75,96,.3);
+}
+
+.resultSpy{
+    color:#ff6578;
+    font-size:31px;
+    font-weight:900;
+    margin:10px 0;
+}
+
+.wordReveal{
+    background:#0d1424;
+    padding:13px;
+    border-radius:14px;
+    margin:14px 0;
+}
+
+.rank{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px;
+    margin-top:10px;
+    background:#0d1424;
+    border-radius:15px;
+}
+
+.rankName{
+    font-weight:900;
+}
+
+.roundPlus{
+    display:block;
+    margin-top:4px;
+    color:#63e8ab;
+    font-size:13px;
+}
+
+.winner{
+    text-align:center;
+    padding:30px 16px;
+}
+
+.trophy{
+    font-size:90px;
+}
+
+.winnerName{
+    color:#ffd95d;
+    font-size:40px;
+    font-weight:900;
+    margin-top:15px;
+}
+
+.rules{
+    margin-top:16px;
+    background:#0c1322;
+    border-radius:16px;
+    padding:14px;
+    color:#aeb8cf;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.counter{
+    display:inline-block;
+    background:#252e45;
+    color:#b8c4dd;
+    border-radius:20px;
+    padding:7px 12px;
+    font-size:13px;
+    margin-top:15px;
+}
+
+@media(max-width:370px){
+    #app{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .card{
+        padding:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a
+    class="ah13"
+    href="https://ahmedhafezfrontend-ah13.netlify.app"
+    target="_blank"
+    rel="noopener"
+>AH13</a>
+
+<div id="app"></div>
+
+<script>
+
+/* ===============================
+   قاعدة الكلمات
+================================ */
+
+const wordGroups = {
+
+food:[
+"بيتزا","برجر","كشري","شاورما","مكرونة",
+"بطاطس","فراخ","سمك","أرز","كنافة",
+"فلافل","شوكولاتة","آيس كريم","فشار","كبدة",
+"محشي","ملوخية","بسبوسة","كفتة","شوربة",
+"بان كيك","دونات","تفاح","موز","مانجو"
+],
+
+animals:[
+"أسد","نمر","فيل","زرافة","قرد",
+"حصان","قط","كلب","تمساح","دولفين",
+"ذئب","دب","أرنب","جمل","ثعلب",
+"كنغر","بطريق","سلحفاة","غزال","حوت",
+"سمكة قرش","ببغاء","نسر","بومة","فهد"
+],
+
+countries:[
+"مصر","السعودية","قطر","الإمارات","الكويت",
+"المغرب","تونس","الجزائر","فرنسا","إيطاليا",
+"إسبانيا","ألمانيا","اليابان","البرازيل","الأرجنتين",
+"الهند","تركيا","الصين","كندا","أمريكا",
+"المكسيك","اليونان","البرتغال","العراق","الأردن"
+],
+
+football:[
+"محمد صلاح","ميسي","رونالدو","نيمار","مبابي",
+"برشلونة","ريال مدريد","ليفربول","الأهلي","الزمالك",
+"الهلال","النصر","مانشستر سيتي","أرسنال","تشيلسي",
+"بايرن ميونخ","إنتر ميلان","ميلان","باريس","مانشستر يونايتد",
+"الاتحاد","منتخب مصر","منتخب السعودية","مرمى","ركلة جزاء"
+],
+
+objects:[
+"هاتف","سيارة","ساعة","قلم","كتاب",
+"مفتاح","كرسي","ثلاجة","تلفزيون","حقيبة",
+"كاميرا","كمبيوتر","مروحة","نظارة","باب",
+"سرير","طاولة","مصباح","سماعة","شاحن",
+"مرآة","مقص","ملعقة","كوب","حذاء"
+],
+
+places:[
+"مدرسة","مستشفى","مطعم","مطار","شاطئ",
+"فندق","مول","ملعب","حديقة","سينما",
+"متحف","بنك","صيدلية","محطة قطار","سوبر ماركت",
+"جامعة","مكتبة","مخبز","مقهى","نادي",
+"مسجد","حديقة حيوان","مدينة ألعاب","مزرعة","مصنع"
+]
+
+};
+
+
+const categoryNames = {
+food:"🍔 أكلات",
+animals:"🐯 حيوانات",
+countries:"🌍 دول",
+football:"⚽ كرة قدم",
+objects:"🎒 أشياء",
+places:"📍 أماكن",
+random:"🎲 عشوائي"
+};
+
+
+/* ===============================
+   حالة اللعبة
+================================ */
+
+let state = {
+
+screen:"setup",
+
+players:[],
+
+category:"random",
+
+actualCategory:"food",
+
+secretWord:"",
+
+spyIndex:-1,
+
+roleIndex:0,
+
+roleVisible:false,
+
+questionPairs:[],
+
+questionIndex:0,
+
+voteIndex:0,
+
+votes:{},
+
+guessOptions:[],
+
+spyGuessResult:null,
+
+roundPoints:{},
+
+winner:null
+
+};
+
+
+/* ===============================
+   أدوات
+================================ */
+
+function shuffle(array){
+
+    const arr=[...array];
+
+    for(let i=arr.length-1;i>0;i--){
+
+        const j=
+        Math.floor(
+            Math.random()*(i+1)
+        );
+
+        [arr[i],arr[j]]=
+        [arr[j],arr[i]];
+    }
+
+    return arr;
+}
+
+
+function randomItem(arr){
+
+    return arr[
+        Math.floor(
+            Math.random()*arr.length
+        )
+    ];
+}
+
+
+function escapeHtml(text){
+
+    return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+function saveScores(){
+
+    const data=
+    state.players.map(p=>({
+        id:p.id,
+        name:p.name,
+        score:p.score
+    }));
+
+    localStorage.setItem(
+        "AH13_SPY_GAME_PLAYERS",
+        JSON.stringify(data)
+    );
+}
+
+
+function loadSavedPlayers(){
+
+    try{
+
+        const saved=
+        JSON.parse(
+            localStorage.getItem(
+                "AH13_SPY_GAME_PLAYERS"
+            )
+        );
+
+        if(Array.isArray(saved)){
+            return saved;
+        }
+
+    }catch(e){}
+
+    return [];
+}
+
+
+/* ===============================
+   الرسم
+================================ */
+
+function render(){
+
+    const app=
+    document.getElementById("app");
+
+    if(state.screen==="setup"){
+        renderSetup(app);
+    }
+
+    else if(state.screen==="roles"){
+        renderRoles(app);
+    }
+
+    else if(state.screen==="questions"){
+        renderQuestions(app);
+    }
+
+    else if(state.screen==="discussion"){
+        renderDiscussion(app);
+    }
+
+    else if(state.screen==="voting"){
+        renderVoting(app);
+    }
+
+    else if(state.screen==="spyGuess"){
+        renderSpyGuess(app);
+    }
+
+    else if(state.screen==="result"){
+        renderResult(app);
+    }
+
+    else if(state.screen==="winner"){
+        renderWinner(app);
+    }
+}
+
+
+/* ===============================
+   الصفحة الرئيسية
+================================ */
+
+function renderSetup(app){
+
+    let playerRows="";
+
+    state.players.forEach(
+        (player,index)=>{
+
+        playerRows+=`
+        <div class="playerRow">
+
+            <input
+                class="nameInput"
+                value="${escapeHtml(player.name)}"
+                placeholder="اسم اللاعب ${index+1}"
+                oninput="changePlayerName(${player.id},this.value)"
+            >
+
+            <button
+                class="removeBtn"
+                onclick="removePlayer(${player.id})"
+            >
+                ✕
+            </button>
+
+        </div>
+
+        <div class="scoreBox">
+
+            <span>
+                ${escapeHtml(player.name || "بدون اسم")}
+            </span>
+
+            <span class="score">
+                🏆 ${player.score} نقطة
+            </span>
+
+        </div>
+        `;
+    });
+
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">🕵️</div>
+
+        <h1>لعبة الجاسوس</h1>
+
+        <p>
+            اكتشفوا الجاسوس قبل ما يعرف الكلمة
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <label class="label">
+            اختر القسم
+        </label>
+
+        <select
+            onchange="state.category=this.value"
+        >
+
+            ${Object.entries(categoryNames)
+            .map(([id,name])=>`
+
+                <option
+                    value="${id}"
+                    ${state.category===id ? "selected":""}
+                >
+                    ${name}
+                </option>
+
+            `).join("")}
+
+        </select>
+
+
+        <label class="label">
+            اللاعبين
+        </label>
+
+
+        <div id="playersArea">
+
+            ${
+                state.players.length
+                ? playerRows
+                : `
+                <div class="small">
+                    لا يوجد لاعبين حتى الآن.
+                    <br>
+                    اضغط «إضافة لاعب» وابدأ بكتابة الأسماء.
+                </div>
+                `
+            }
+
+        </div>
+
+
+        <button
+            class="btn secondary"
+            onclick="addPlayer()"
+        >
+            + إضافة لاعب
+        </button>
+
+
+        <button
+            class="btn primary"
+            onclick="startRound()"
+        >
+            🎮 ابدأ الجولة
+        </button>
+
+
+        <button
+            class="btn red"
+            onclick="resetScores()"
+        >
+            تصفير النتائج
+        </button>
+
+
+        <div class="rules">
+
+            🎯 كل لاعب عادي يصوّت للجاسوس بشكل صحيح:
+            <b>+100 نقطة</b>
+
+            <br>
+
+            🕵️ الجاسوس إذا خمن الكلمة الصحيحة:
+            <b>+100 نقطة</b>
+
+            <br>
+
+            🏆 أول لاعب يصل إلى
+            <b>1000 نقطة</b>
+            يفوز.
+
+        </div>
+
+    </div>
+    `;
+}
+
+
+/* ===============================
+   إضافة اللاعبين
+================================ */
+
+function addPlayer(){
+
+    state.players.push({
+
+        id:
+        Date.now()
+        +
+        Math.floor(Math.random()*10000),
+
+        name:"",
+
+        score:0
+    });
+
+    render();
+}
+
+
+function removePlayer(id){
+
+    state.players=
+    state.players.filter(
+        p=>p.id!==id
+    );
+
+    saveScores();
+
+    render();
+}
+
+
+function changePlayerName(id,value){
+
+    const player=
+    state.players.find(
+        p=>p.id===id
+    );
+
+    if(player){
+
+        player.name=value;
+
+        saveScores();
+    }
+}
+
+
+/* ===============================
+   بدء الجولة
+================================ */
+
+function startRound(){
+
+    state.players=
+    state.players.filter(
+        p=>p.name.trim()!==""
+    );
+
+
+    if(state.players.length<3){
+
+        alert(
+            "أضف 3 لاعبين على الأقل."
+        );
+
+        render();
+
+        return;
+    }
+
+
+    /* منع الأسماء المكررة */
+
+    const names=
+    state.players.map(
+        p=>p.name.trim().toLowerCase()
+    );
+
+    if(
+        new Set(names).size
+        !==
+        names.length
+    ){
+
+        alert(
+            "لا تستخدم نفس الاسم لأكثر من لاعب."
+        );
+
+        return;
+    }
+
+
+    /* اختيار الفئة والكلمة */
+
+    if(state.category==="random"){
+
+        const categories=
+        Object.keys(wordGroups);
+
+        state.actualCategory=
+        randomItem(categories);
+
+    }else{
+
+        state.actualCategory=
+        state.category;
+    }
+
+
+    state.secretWord=
+    randomItem(
+        wordGroups[
+            state.actualCategory
+        ]
+    );
+
+
+    /* اختيار الجاسوس */
+
+    state.spyIndex=
+    Math.floor(
+        Math.random()
+        *
+        state.players.length
+    );
+
+
+    state.roleIndex=0;
+
+    state.roleVisible=false;
+
+    state.voteIndex=0;
+
+    state.votes={};
+
+    state.spyGuessResult=null;
+
+    state.roundPoints={};
+
+
+    /* تجهيز 10 اختيارات للجاسوس */
+
+    const otherWords=
+    wordGroups[
+        state.actualCategory
+    ].filter(
+        w=>w!==state.secretWord
+    );
+
+
+    state.guessOptions=
+    shuffle([
+        state.secretWord,
+        ...shuffle(otherWords).slice(0,9)
+    ]);
+
+
+    /* تجهيز من يسأل من */
+
+    createQuestionPairs();
+
+
+    state.screen="roles";
+
+    saveScores();
+
+    render();
+}
+
+
+/* ===============================
+   كشف الأدوار
+================================ */
+
+function renderRoles(app){
+
+    const player=
+    state.players[
+        state.roleIndex
+    ];
+
+    const isSpy=
+    state.roleIndex
+    ===
+    state.spyIndex;
+
+
+    if(!state.roleVisible){
+
+        app.innerHTML=`
+
+        <div class="logo">
+
+            <div class="icon">📱</div>
+
+            <h1>مرّر الهاتف</h1>
+
+        </div>
+
+
+        <div class="card center">
+
+            <div class="subtitle">
+                مرّر الهاتف إلى
+            </div>
+
+            <div class="playerBig">
+                ${escapeHtml(player.name)}
+            </div>
+
+
+            <p class="subtitle">
+                تأكد إن باقي اللاعبين
+                مش شايفين الشاشة.
+            </p>
+
+
+            <button
+                class="btn primary"
+                onclick="showRole()"
+            >
+                👁️ اعرف دورك
+            </button>
+
+
+            <div class="counter">
+
+                لاعب
+                ${state.roleIndex+1}
+                من
+                ${state.players.length}
+
+            </div>
+
+        </div>
+        `;
+
+        return;
+    }
+
+
+    if(isSpy){
+
+        app.innerHTML=`
+
+        <div class="logo">
+
+            <div class="icon">🤫</div>
+
+            <h1>
+                ${escapeHtml(player.name)}
+            </h1>
+
+        </div>
+
+
+        <div class="card center">
+
+            <div class="roleBox">
+
+                <div style="font-size:70px">
+                    🕵️
+                </div>
+
+                <div class="spyText">
+                    أنت الجاسوس
+                </div>
+
+                <p class="subtitle">
+                    لا تعرف الكلمة.
+                    <br>
+                    اسمع كلام اللاعبين وحاول
+                    اكتشافها بدون ما يكتشفوك.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn secondary"
+                onclick="nextRole()"
+            >
+                إخفاء الدور والمتابعة
+            </button>
+
+        </div>
+        `;
+
+    }else{
+
+        app.innerHTML=`
+
+        <div class="logo">
+
+            <div class="icon">🤫</div>
+
+            <h1>
+                ${escapeHtml(player.name)}
+            </h1>
+
+        </div>
+
+
+        <div class="card center">
+
+            <div class="roleBox">
+
+                <div class="subtitle">
+                    الكلمة بتاعتك هي
+                </div>
+
+                <div class="secretWord">
+                    ${escapeHtml(state.secretWord)}
+                </div>
+
+                <p class="subtitle">
+
+                    اعطِ تلميحات ذكية
+                    ولا تقول الكلمة بشكل مباشر.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn secondary"
+                onclick="nextRole()"
+            >
+                إخفاء الكلمة والمتابعة
+            </button>
+
+        </div>
+        `;
+    }
+}
+
+
+function showRole(){
+
+    state.roleVisible=true;
+
+    render();
+}
+
+
+function nextRole(){
+
+    state.roleVisible=false;
+
+    state.roleIndex++;
+
+
+    if(
+        state.roleIndex
+        >=
+        state.players.length
+    ){
+
+        state.questionIndex=0;
+
+        state.screen="questions";
+
+    }
+
+    render();
+}
+
+
+/* ===============================
+   مرحلة الأسئلة
+================================ */
+
+function createQuestionPairs(){
+
+    const indexes=
+    shuffle(
+        state.players.map(
+            (_,i)=>i
+        )
+    );
+
+
+    state.questionPairs=[];
+
+
+    for(
+        let i=0;
+        i<indexes.length;
+        i++
+    ){
+
+        const asker=
+        indexes[i];
+
+        const target=
+        indexes[
+            (i+1)%indexes.length
+        ];
+
+
+        state.questionPairs.push({
+            asker,
+            target
+        });
+    }
+}
+
+
+function renderQuestions(app){
+
+    const pair=
+    state.questionPairs[
+        state.questionIndex
+    ];
+
+
+    const asker=
+    state.players[
+        pair.asker
+    ];
+
+
+    const target=
+    state.players[
+        pair.target
+    ];
+
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">❓</div>
+
+        <h1>
+            دور السؤال
+        </h1>
+
+        <p>
+            كل لاعب يسأل لاعبًا آخر
+            سؤالًا أو يطلب منه تلميحًا.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="questionBox">
+
+            <div class="subtitle">
+                الآن
+            </div>
+
+
+            <div class="questionName">
+                ${escapeHtml(asker.name)}
+            </div>
+
+
+            <div>
+                يسأل
+            </div>
+
+
+            <div class="arrow">
+                ↓
+            </div>
+
+
+            <div class="askTarget">
+                ${escapeHtml(target.name)}
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="nextQuestion()"
+        >
+
+            ${
+                state.questionIndex
+                ===
+                state.questionPairs.length-1
+
+                ? "انتهت الأسئلة"
+                : "السؤال التالي"
+            }
+
+        </button>
+
+
+        <div class="counter center">
+
+            ${state.questionIndex+1}
+            /
+            ${state.questionPairs.length}
+
+        </div>
+
+    </div>
+    `;
+}
+
+
+function nextQuestion(){
+
+    state.questionIndex++;
+
+
+    if(
+        state.questionIndex
+        >=
+        state.questionPairs.length
+    ){
+
+        state.screen=
+        "discussion";
+    }
+
+    render();
+}
+
+
+/* ===============================
+   النقاش المفتوح
+================================ */
+
+function renderDiscussion(app){
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">🗣️</div>
+
+        <h1>
+            النقاش مفتوح
+        </h1>
+
+        <p>
+            تكلموا براحتكم وحاولوا
+            معرفة الجاسوس.
+        </p>
+
+    </div>
+
+
+    <div class="card center">
+
+        <div
+            style="
+            font-size:80px;
+            margin:10px
+            "
+        >
+            💬
+        </div>
+
+
+        <h2>
+            لا يوجد مؤقت
+        </h2>
+
+
+        <p class="subtitle">
+
+            عندما تكونوا جاهزين
+            اضغطوا على بدء التصويت.
+
+        </p>
+
+
+        <button
+            class="btn primary"
+            onclick="beginVoting()"
+        >
+            🗳️ بدء التصويت
+        </button>
+
+    </div>
+    `;
+}
+
+
+function beginVoting(){
+
+    state.voteIndex=0;
+
+    state.votes={};
+
+    state.screen=
+    "voting";
+
+    render();
+}
+
+
+/* ===============================
+   التصويت
+================================ */
+
+function renderVoting(app){
+
+    const voter=
+    state.players[
+        state.voteIndex
+    ];
+
+
+    let options="";
+
+
+    state.players.forEach(
+        (player,index)=>{
+
+        /* لا يصوت اللاعب لنفسه */
+
+        if(
+            index===
+            state.voteIndex
+        ){
+            return;
+        }
+
+
+        options+=`
+
+        <button
+            class="voteOption"
+            onclick="castVote(${index})"
+        >
+            👤
+            ${escapeHtml(player.name)}
+        </button>
+
+        `;
+    });
+
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">🗳️</div>
+
+        <h1>
+            التصويت
+        </h1>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="subtitle">
+            دور
+        </div>
+
+
+        <div class="playerBig center">
+            ${escapeHtml(voter.name)}
+        </div>
+
+
+        <p class="subtitle">
+            اختَر من تعتقد أنه الجاسوس.
+        </p>
+
+
+        <div style="margin-top:20px">
+            ${options}
+        </div>
+
+
+        <div class="progress">
+
+            التصويت
+            ${state.voteIndex+1}
+            من
+            ${state.players.length}
+
+        </div>
+
+    </div>
+    `;
+}
+
+
+function castVote(targetIndex){
+
+    state.votes[
+        state.voteIndex
+    ]=targetIndex;
+
+
+    state.voteIndex++;
+
+
+    if(
+        state.voteIndex
+        >=
+        state.players.length
+    ){
+
+        state.screen=
+        "spyGuess";
+
+    }
+
+    render();
+}
+
+
+/* ===============================
+   تخمين الجاسوس
+================================ */
+
+function renderSpyGuess(app){
+
+    const spy=
+    state.players[
+        state.spyIndex
+    ];
+
+
+    let options="";
+
+
+    state.guessOptions.forEach(
+        (word,index)=>{
+
+        options+=`
+
+        <button
+            class="guessOption"
+            onclick="selectSpyGuess(${index})"
+            ${
+                state.spyGuessResult
+                ? "disabled"
+                : ""
+            }
+        >
+
+            ${escapeHtml(word)}
+
+        </button>
+
+        `;
+    });
+
+
+    let feedback="";
+
+
+    if(state.spyGuessResult){
+
+        if(
+            state.spyGuessResult.correct
+        ){
+
+            feedback=`
+
+            <div class="feedback correct">
+
+                ✅ الاختيار صحيح
+                <br>
+                ربحت 100 نقطة 🎉
+
+            </div>
+
+            `;
+
+        }else{
+
+            feedback=`
+
+            <div class="feedback wrong">
+
+                ❌ الاختيار غير صحيح
+                <br>
+                لم تحصل على نقاط.
+
+                <br><br>
+
+                الكلمة الصحيحة:
+                <b>
+                ${escapeHtml(state.secretWord)}
+                </b>
+
+            </div>
+
+            `;
+        }
+
+
+        feedback+=`
+
+        <button
+            class="btn primary"
+            onclick="showRoundResult()"
+        >
+            عرض نتيجة الجولة
+        </button>
+
+        `;
+    }
+
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">🕵️</div>
+
+        <h1>
+            فرصة الجاسوس
+        </h1>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="subtitle">
+            الجاسوس هو
+        </div>
+
+
+        <div class="playerBig center">
+            ${escapeHtml(spy.name)}
+        </div>
+
+
+        <p class="subtitle">
+
+            أمامك 10 اختيارات.
+            <br>
+            اختَر الكلمة التي تعتقد
+            أن اللاعبين كانوا يتحدثون عنها.
+
+        </p>
+
+
+        ${
+            state.spyGuessResult
+            ? ""
+            : `<div style="margin-top:20px">
+                ${options}
+               </div>`
+        }
+
+
+        ${feedback}
+
+    </div>
+    `;
+}
+
+
+/* ===============================
+   حساب النقاط
+================================ */
+
+function selectSpyGuess(optionIndex){
+
+    if(state.spyGuessResult){
+        return;
+    }
+
+
+    const guessedWord=
+    state.guessOptions[
+        optionIndex
+    ];
+
+
+    const correct=
+    guessedWord
+    ===
+    state.secretWord;
+
+
+    const points={};
+
+
+    state.players.forEach(
+        player=>{
+            points[player.id]=0;
+        }
+    );
+
+
+    /*
+      نقاط التصويت:
+      اللاعب العادي فقط.
+      الجاسوس لا يأخذ 100 نقطة
+      مقابل التصويت لأنه يعرف نفسه.
+    */
+
+    state.players.forEach(
+        (player,index)=>{
+
+        if(index===state.spyIndex){
+            return;
+        }
+
+        if(
+            state.votes[index]
+            ===
+            state.spyIndex
+        ){
+
+            points[
+                player.id
+            ]+=100;
+        }
+    });
+
+
+    /* نقاط تخمين الجاسوس */
+
+    if(correct){
+
+        const spy=
+        state.players[
+            state.spyIndex
+        ];
+
+        points[
+            spy.id
+        ]+=100;
+    }
+
+
+    /* إضافة النقاط */
+
+    state.players.forEach(
+        player=>{
+
+            player.score+=
+            points[
+                player.id
+            ] || 0;
+        }
+    );
+
+
+    state.roundPoints=
+    points;
+
+
+    state.spyGuessResult={
+        word:guessedWord,
+        correct
+    };
+
+
+    saveScores();
+
+    render();
+}
+
+
+/* ===============================
+   نتيجة الجولة
+================================ */
+
+function showRoundResult(){
+
+    const reached=
+    [...state.players]
+    .sort(
+        (a,b)=>b.score-a.score
+    )
+    .find(
+        p=>p.score>=1000
+    );
+
+
+    if(reached){
+
+        state.winner=
+        reached;
+
+        state.screen=
+        "winner";
+
+    }else{
+
+        state.screen=
+        "result";
+    }
+
+
+    render();
+}
+
+
+function renderResult(app){
+
+    const spy=
+    state.players[
+        state.spyIndex
+    ];
+
+
+    const ranked=
+    [...state.players]
+    .sort(
+        (a,b)=>b.score-a.score
+    );
+
+
+    const scoreHtml=
+    ranked.map(
+        (player,index)=>`
+
+        <div class="rank">
+
+            <div>
+
+                <span class="rankName">
+
+                    ${index+1}.
+                    ${escapeHtml(player.name)}
+
+                </span>
+
+
+                <span class="roundPlus">
+
+                    +${
+                        state.roundPoints[
+                            player.id
+                        ] || 0
+                    }
+                    في هذه الجولة
+
+                </span>
+
+            </div>
+
+
+            <div class="score">
+
+                🏆 ${player.score}
+
+            </div>
+
+        </div>
+
+        `
+    ).join("");
+
+
+    app.innerHTML=`
+
+    <div class="logo">
+
+        <div class="icon">📊</div>
+
+        <h1>
+            نتيجة الجولة
+        </h1>
+
+    </div>
+
+
+    <div class="card center">
+
+        <div class="subtitle">
+            الجاسوس كان
+        </div>
+
+
+        <div class="resultSpy">
+            ${escapeHtml(spy.name)}
+        </div>
+
+
+        <div class="wordReveal">
+
+            الكلمة كانت:
+
+            <b style="color:#75dfff">
+                ${escapeHtml(state.secretWord)}
+            </b>
+
+        </div>
+
+
+        <div style="text-align:right">
+            ${scoreHtml}
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="startRound()"
+        >
+            🔄 جولة جديدة
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="newGame()"
+        >
+            🎮 لعبة جديدة
+        </button>
+
+
+        <button
+            class="btn red"
+            onclick="resetScores()"
+        >
+            تصفير النتائج
+        </button>
+
+    </div>
+    `;
+}
+
+
+/* ===============================
+   شاشة الفائز
+================================ */
+
+function renderWinner(app){
+
+    app.innerHTML=`
+
+    <div class="card winner">
+
+        <div class="trophy">
+            🏆
+        </div>
+
+
+        <div class="title">
+            الفائز باللعبة
+        </div>
+
+
+        <div class="winnerName">
+            ${escapeHtml(state.winner.name)}
+        </div>
+
+
+        <div
+            style="
+            font-size:24px;
+            margin-top:10px;
+            color:#ffd761
+            "
+        >
+            ${state.winner.score}
+            نقطة
+        </div>
+
+
+        <p class="subtitle">
+            وصل إلى 1000 نقطة 🎉
+        </p>
+
+
+        <button
+            class="btn secondary"
+            onclick="newGame()"
+        >
+            🎮 لعبة جديدة
+        </button>
+
+
+        <button
+            class="btn red"
+            onclick="resetScores()"
+        >
+            تصفير النتائج
+        </button>
+
+    </div>
+    `;
+}
+
+
+/* ===============================
+   لعبة جديدة وتصفير النتائج
+================================ */
+
+function newGame(){
+
+    state.screen=
+    "setup";
+
+    state.roleIndex=0;
+
+    state.roleVisible=false;
+
+    state.questionIndex=0;
+
+    state.voteIndex=0;
+
+    state.votes={};
+
+    state.spyGuessResult=null;
+
+    state.roundPoints={};
+
+    state.winner=null;
+
+    saveScores();
+
+    render();
+}
+
+
+function resetScores(){
+
+    if(
+        !confirm(
+            "هل أنت متأكد من تصفير جميع النتائج؟"
+        )
+    ){
+        return;
+    }
+
+
+    state.players.forEach(
+        player=>{
+            player.score=0;
+        }
+    );
+
+
+    saveScores();
+
+    state.screen=
+    "setup";
+
+    state.winner=null;
+
+    render();
+}
+
+
+/* ===============================
+   البداية
+================================ */
+
+state.players=
+loadSavedPlayers();
+
+render();
+
+</script>
+
+</body>
+</html>
