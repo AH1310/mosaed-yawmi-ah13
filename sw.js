@@ -1,4 +1,4 @@
-const CACHE = 'ah13-daily-v4';
+const CACHE = 'ah13-daily-v5';
 
 const CORE = [
   './',
